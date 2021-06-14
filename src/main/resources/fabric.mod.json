@@ -1,0 +1,37 @@
+{
+  "schemaVersion": 1,
+  "id": "unikko",
+  "version": "${version}",
+
+  "name": "Unikko",
+  "description": "A Minecraft utility mod dev'd by Ahenkeshi",
+  "authors": [
+    "jnkyto / Ahenkeshi"
+  ],
+  "contact": {
+    "homepage": "https://kytoniemi.tech",
+    "issues": "https://github.com/jnkyto/EpstoriClient/issues"
+  },
+
+  "license": "CC0-1.0",
+  "icon": "assets/unikko/unikko.png",
+
+  "environment": "client",
+  "entrypoints": {
+    "main": [
+      "com.ahenkeshi.unikko.Unikko"
+    ]
+  },
+  "mixins": [
+    "unikko.mixins.json"
+  ],
+
+  "depends": {
+    "fabricloader": ">=0.7.4",
+    "fabric": "*",
+    "minecraft": "1.16.x"
+  },
+  "suggests": {
+    "another-mod": "clientcommands by Earthcomputer"
+  }
+}
