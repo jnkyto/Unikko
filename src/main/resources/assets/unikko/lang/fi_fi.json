@@ -1,0 +1,20 @@
+{
+  "unikko": "§d[Unikko]§7",
+  "command.failed": "§d[Unikko]§7: Komennon suoritus epäonnistui.",
+  "commands.ufov.success": "§d[Unikko]§7: Asetettiin FOV arvoon %f",
+  "commands.ugamma.success": "§d[Unikko]§7: Asetettiin Gamma arvoon %f",
+
+  "commands.ucred.line.0": "§dUnikon§9 teille tarjosi:",
+  "commands.ucred.line.1": "§2> §c§lKehittäjä: §r§cjnkyto/Ahenkeshi",
+  "commands.ucred.line.2": "§2> §9Unikko on julkaistu CC0-1.0 -lisenssillä.",
+  "commands.ucred.line.3": "§2> §9Lisätietoa GitHubissa: §a§njnkyto/Unikko",
+
+  "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu, käy päävalikossa ottaaksesi muutokset käyttöön. Arvo nyt: %f",
+  "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC togglattu, käy päävalikossa ottaaksesi muutokset käyttöön. Arvo nyt: %f",
+
+  "command.context.here": " > Ei tarpeeksi parametreja.",
+
+  "unikko.devd": "Ahenkeshi teki tän",
+
+  "translatabletext.test": "§d[Unikko]§7: Tämä on testimerkkijono."
+}

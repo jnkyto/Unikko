@@ -1,0 +1,20 @@
+{
+  "unikko": "§d[Unikko]§7",
+  "command.failed": "§d[Unikko]§7: Command failed.",
+  "commands.ufov.success": "§d[Unikko]§7: Set FOV to %f",
+  "commands.ugamma.success": "§d[Unikko]§7: Set Gamma to %f",
+
+  "commands.ucred.line.0": "§dUnikko§7§9 was brought to you by:",
+  "commands.ucred.line.1": "§2> §c§lDeveloper: §r§cjnkyto/Ahenkeshi",
+  "commands.ucred.line.2": "§2> §9Unikko is licensed under CC0-1.0.",
+  "commands.ucred.line.3": "§2> §9More info on GitHub: §a§njnkyto/Unikko",
+
+  "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender toggled, visit title screen to apply. Value now: %f",
+  "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled, visit title screen to apply. Value now: %f",
+
+  "command.context.here": " > Expected more arguments.",
+
+  "unikko.devd": "Dev'd by Ahenkeshi",
+
+  "translatabletext.test": "§d[Unikko]§7: This is a test string."
+}
