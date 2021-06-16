@@ -42,10 +42,10 @@ public abstract class MixinInGameHud {
                 TextRenderer textRenderer = this.getFontRenderer();
                 textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION,
                         10, 10, RainbowColor.gen(0));
-                textRenderer.drawWithShadow(matrices, devd, 10, 20, RainbowColor.gen(300));
+                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, 10, 20, RainbowColor.gen(300));
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
                         df.format(zpos)), 10, screenHeight - 26, 16777215);
-                textRenderer.drawWithShadow(matrices, fps, screenWidth-50, 10, 16777215);
+                textRenderer.drawWithShadow(matrices, fps, 10, screenHeight - 36, 16777215);
             }
         }
     }

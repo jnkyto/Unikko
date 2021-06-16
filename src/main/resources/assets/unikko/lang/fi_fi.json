@@ -9,7 +9,7 @@
   "commands.ucred.line.2": "§2> §9Unikko on julkaistu CC0-1.0 -lisenssillä.",
   "commands.ucred.line.3": "§2> §9Lisätietoa GitHubissa: §a§njnkyto/Unikko",
 
-  "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu, käy päävalikossa ottaaksesi muutokset käyttöön. Arvo nyt: %f",
+  "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu. Arvo nyt: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC togglattu, käy päävalikossa ottaaksesi muutokset käyttöön. Arvo nyt: %f",
 
   "command.context.here": " > Ei tarpeeksi parametreja.",

@@ -48,7 +48,7 @@ dependencies {
 	// You may need to force-disable transitiveness on them.
 
 	//begin Ahenkeshi's dependencies
-	modImplementation include("io.github.cottonmc:LibGui:3.4.0+1.16.5")
+	modImplementation include("io.github.cottonmc:LibGui:4.0.0+1.17")
 	include(implementation("club.minnced:discord-rpc-release:v3.4.0"))
 	include(implementation("club.minnced:java-discord-rpc:2.0.2"))
 	include(implementation("com.googlecode.json-simple:json-simple:1.1.1"))
