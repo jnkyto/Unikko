@@ -3,14 +3,14 @@
   "id": "unikko",
   "version": "${version}",
 
-  "name": "Unikko",
+  "name": "Unikko (for 1.16.5)",
   "description": "A Minecraft utility mod dev'd by Ahenkeshi",
   "authors": [
     "jnkyto / Ahenkeshi"
   ],
   "contact": {
     "homepage": "https://kytoniemi.tech",
-    "issues": "https://github.com/jnkyto/EpstoriClient/issues"
+    "issues": "https://github.com/jnkyto/Unikko/issues"
   },
 
   "license": "CC0-1.0",
