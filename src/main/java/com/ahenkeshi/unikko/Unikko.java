@@ -23,7 +23,7 @@ public class Unikko implements ClientModInitializer, ModInitializer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		BoolUtils.update();
+		BoolUtils.saveBooleansToConfigFile();
 
 		System.out.println("Unikko: Successfully initialized!");
 	}

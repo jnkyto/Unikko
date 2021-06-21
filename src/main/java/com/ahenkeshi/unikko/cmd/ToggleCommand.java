@@ -1,5 +1,6 @@
 package com.ahenkeshi.unikko.cmd;
 
+import com.ahenkeshi.unikko.modules.DiscordRPC;
 import com.ahenkeshi.unikko.utils.BoolUtils;
 import com.ahenkeshi.unikko.utils.ConfigUtils;
 import com.mojang.brigadier.CommandDispatcher;
@@ -23,17 +24,19 @@ public class ToggleCommand {
     }
 
     private static int toggle(ServerCommandSource source, String setting)   {
-        String bool = ConfigUtils.getValueWithKey(setting);
+        String bool = String.valueOf(BoolUtils.get(setting));
         if(bool.equals("true")) {
             bool = "false";
-            ConfigUtils.putInFile(setting, bool);
         } else  {
             bool = "true";
-            ConfigUtils.putInFile(setting, bool);
         }
+        BoolUtils.updateBoolean(setting, bool);
         Text feedback = new TranslatableText("commands.utoggle." + setting + ".success", bool);
         sendFeedback(feedback);
-        BoolUtils.update();
+        BoolUtils.saveBooleansToConfigFile();
+        if(setting.equals("discordRpc")) {
+            DiscordRPC.init();
+        }
         return 0;
     }
 }
