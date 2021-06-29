@@ -27,6 +27,8 @@ public class BoolUtils {
             case "discordRpc":
                 discordRpc = Boolean.valueOf(bool);
                 break;
+            default:
+                throw new IllegalStateException("Unikko: Unexpected value in BoolUtils/updateBoolean: " + setting);
         }
     }
 

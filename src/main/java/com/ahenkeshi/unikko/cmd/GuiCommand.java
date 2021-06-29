@@ -5,6 +5,7 @@ import com.ahenkeshi.unikko.gui.UnikkoGui;
 import com.ahenkeshi.unikko.gui.UnikkoScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.cotton.gui.GuiDescription;
+import io.github.cottonmc.cotton.gui.client.CottonClientScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.ServerCommandSource;
 
