@@ -26,8 +26,9 @@ public class DiscordRPC {
     public static void init() {
         handlers.ready = (user) -> System.out.println("Unikko: DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
+        boolean shouldStart = BoolUtils.get("discordRpc");
 
-        if (BoolUtils.get("discordRpc")) {
+        if (shouldStart) {
             basicPresence();
             new Thread(() -> {
                 while (!Thread.currentThread().isInterrupted()) {
@@ -40,11 +41,11 @@ public class DiscordRPC {
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
-                        updatePresence();
-                    }
-                };
+                    updatePresence();
+                }
+            };
             t.scheduleAtFixedRate(task, 5000, 5000);
-            System.out.println("Unikko: Successfully initialized!");
+            System.out.println("Unikko: DiscordRPC successfully started!");
         } else {
             lib.Discord_ClearPresence();
             lib.Discord_Shutdown();

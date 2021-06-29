@@ -14,7 +14,7 @@ public class Unikko implements ClientModInitializer, ModInitializer {
 
 	public static final String MODID = "Unikko";
 	public static final String VERSION = "1.0.0";
-	public static final String REL_DATE = "2021/06/16";
+	public static final String REL_DATE = "2021/06/21";
 
 	@Override
 	public void onInitialize()	{
@@ -23,7 +23,7 @@ public class Unikko implements ClientModInitializer, ModInitializer {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		BoolUtils.update();
+		BoolUtils.saveBooleansToConfigFile();
 
 		System.out.println("Unikko: Successfully initialized!");
 	}

@@ -10,7 +10,7 @@
   "commands.ucred.line.3": "§2> §9More info on GitHub: §a§njnkyto/Unikko",
 
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender toggled. Value now: %f",
-  "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled, visit title screen to apply. Value now: %f",
+  "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled. Value now: %f",
 
   "command.context.here": " > Expected more arguments.",
 
