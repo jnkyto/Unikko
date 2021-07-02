@@ -13,8 +13,8 @@ import java.io.IOException;
 public class Unikko implements ClientModInitializer, ModInitializer {
 
 	public static final String MODID = "Unikko";
-	public static final String VERSION = "1.0.0";
-	public static final String REL_DATE = "2021/06/21";
+	public static final String VERSION = "1.0.1";
+	public static final String REL_DATE = "2021/06/30";
 
 	@Override
 	public void onInitialize()	{
