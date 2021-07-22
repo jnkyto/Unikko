@@ -1,8 +1,8 @@
 package com.ahenkeshi.unikko;
 
 import com.ahenkeshi.unikko.cmd.*;
-import com.ahenkeshi.unikko.utils.BoolUtils;
-import com.ahenkeshi.unikko.utils.ConfigUtils;
+import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.HardConfigUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import net.fabricmc.api.ClientModInitializer;
 import net.fabricmc.api.ModInitializer;
@@ -14,16 +14,16 @@ public class Unikko implements ClientModInitializer, ModInitializer {
 
 	public static final String MODID = "Unikko";
 	public static final String VERSION = "1.0.1";
-	public static final String REL_DATE = "2021/06/30";
+	public static final String REL_DATE = "2021/07/23";
 
 	@Override
 	public void onInitialize()	{
 		try {
-			ConfigUtils.createFile();
+			HardConfigUtils.createFile();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
-		BoolUtils.saveBooleansToConfigFile();
+		SoftConfigUtils.saveBooleansToConfigFile();
 
 		System.out.println("Unikko: Successfully initialized!");
 	}

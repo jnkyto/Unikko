@@ -3,7 +3,7 @@
   "id": "unikko",
   "version": "${version}",
 
-  "name": "Unikko (for 1.17)",
+  "name": "Unikko (for 1.17.x)",
   "description": "A Minecraft utility mod dev'd by Ahenkeshi",
   "authors": [
     "jnkyto / Ahenkeshi"

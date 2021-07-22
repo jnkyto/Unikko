@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.Unikko;
@@ -12,6 +16,7 @@ import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.s2c.play.CommandTreeS2CPacket;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
 import net.minecraft.server.command.ServerCommandSource;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -23,7 +28,7 @@ public class MixinClientPlayNetworkHandler {
     @Shadow
     private CommandDispatcher<CommandSource> commandDispatcher;
 
-    @Shadow
+    @Shadow @Final
     private MinecraftClient client;
 
     @SuppressWarnings("unchecked")

@@ -1,6 +1,11 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.utils;
 
 import com.ahenkeshi.unikko.Unikko;
+import net.fabricmc.loader.api.FabricLoader;
 import org.json.simple.JSONObject;
 import org.json.simple.parser.JSONParser;
 import org.json.simple.parser.ParseException;
@@ -13,21 +18,18 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @SuppressWarnings("unchecked")
-public class ConfigUtils {
-    public static File configFolder;
+public class HardConfigUtils {
+    public static File configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID));
     public static JSONObject configJson;
-    public static String jsonName = (Unikko.MODID + "_" + Unikko.VERSION + ".json");
+    public static String jsonName = (configFolder.getPath() + "/" + Unikko.MODID + "_" + Unikko.VERSION + ".json");
 
     public static void createFile() throws IOException {
-        /*configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID +
-                "_" + Unikko.VERSION));
-        configFolder.mkdirs();*/ // i really should put the json on it's own folder, i don't know how to do that yet
+        //noinspection ResultOfMethodCallIgnored
+        configFolder.mkdirs();
         if(!Files.exists(Paths.get(jsonName)))    {
             configJson = new JSONObject();
-            configJson.put(Unikko.MODID, Unikko.VERSION);
-            configJson.put("hudRender", "true");    // ensure hud is rendered by default, i don't know where else to put this
-            configJson.put("discordRpc", "true");   // same thing here for discordRpc
-            Files.write(Paths.get(jsonName), configJson.toJSONString().getBytes(StandardCharsets.UTF_8));
+            createDefaultEntries();
+            Files.writeString(Paths.get(jsonName), configJson.toJSONString());
             System.out.println("Unikko: Created new configfile " + jsonName);
         } else  {
             try {
@@ -50,7 +52,7 @@ public class ConfigUtils {
         else  {configJson.put(setting, value);}
         System.out.println(Unikko.MODID + " " + setting + " was changed in configfile");
         try {
-            Files.write(Paths.get(jsonName), configJson.toJSONString().getBytes(StandardCharsets.UTF_8));
+            Files.writeString(Paths.get(jsonName), configJson.toJSONString());
         } catch (IOException e) {e.printStackTrace();}
     }
 
@@ -59,4 +61,19 @@ public class ConfigUtils {
             return (String) configJson.get(key);
         } else  {return "false";}
     }
+
+    public static void createDefaultEntries()   {   // default entries to be added to configfile upon creation
+        configJson.put(Unikko.MODID, Unikko.VERSION);
+        configJson.put("hudRender", "true");
+        configJson.put("discordRpc", "true");
+        configJson.put("watermarkX", "10");
+        configJson.put("watermarkY", "10");
+        configJson.put("reldateX", "10");
+        configJson.put("reldateY", "20");
+        configJson.put("yawX", "10");
+        configJson.put("yawY", "0");
+        configJson.put("fpsX", "110");
+        configJson.put("fpsY", "10");
+    }
 }
+

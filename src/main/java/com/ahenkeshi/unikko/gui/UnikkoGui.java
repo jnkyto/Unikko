@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.gui;
 
 import io.github.cottonmc.cotton.gui.client.LightweightGuiDescription;
@@ -14,7 +18,7 @@ public class UnikkoGui extends LightweightGuiDescription {
         setRootPanel(root);
         root.setSize(256,240);
 
-        WLabel label = new WLabel(new TranslatableText("epstoriclient"));
+        WLabel label = new WLabel(new TranslatableText("unikko"));
         root.add(label, 0, 0, 4, 1);
 
         WSprite icon = new WSprite(new Identifier("minecraft:textures/item/redstone.png"));
