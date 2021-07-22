@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.cmd;
 
 import com.mojang.brigadier.CommandDispatcher;
@@ -18,9 +22,9 @@ public class GammaCommand {
 
         dispatcher.register(literal("ugamma")
                 .then(argument("gamma", doubleArg())
-                    .executes(ctx -> setGamma(ctx.getSource(), getDouble(ctx, "gamma"))))
+                        .executes(ctx -> setGamma(ctx.getSource(), getDouble(ctx, "gamma"))))
                 .then(literal("FullBright")
-                    .executes(ctx -> setGamma(ctx.getSource(), 100))));
+                        .executes(ctx -> setGamma(ctx.getSource(), 100))));
     }
 
     private static int setGamma(ServerCommandSource source, double newGamma)    {

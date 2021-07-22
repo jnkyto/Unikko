@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.cmd.CommandManager;
@@ -16,7 +20,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
-    @Unique private boolean sprintWasPressed = false;
+    // @Unique private boolean sprintWasPressed = false;
 
     public MixinClientPlayerEntity(ClientWorld world, GameProfile profile)  {
         super(world, profile);

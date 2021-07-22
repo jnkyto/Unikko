@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.utils;
 
 import com.ahenkeshi.unikko.Unikko;
@@ -14,13 +18,14 @@ import java.nio.file.Files;
 import java.nio.file.Paths;
 
 @SuppressWarnings("unchecked")
-public class ConfigUtils {
+public class HardConfigUtils {
     public static File configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID));
     public static JSONObject configJson;
     public static String jsonName = (configFolder.getPath() + "/" + Unikko.MODID + "_" + Unikko.VERSION + ".json");
 
     public static void createFile() throws IOException {
-        configFolder.mkdirs(); // i really should put the json on it's own folder, i don't know how to do that yet
+        //noinspection ResultOfMethodCallIgnored
+        configFolder.mkdirs();
         if(!Files.exists(Paths.get(jsonName)))    {
             configJson = new JSONObject();
             createDefaultEntries();
@@ -61,6 +66,14 @@ public class ConfigUtils {
         configJson.put(Unikko.MODID, Unikko.VERSION);
         configJson.put("hudRender", "true");
         configJson.put("discordRpc", "true");
+        configJson.put("watermarkX", "10");
+        configJson.put("watermarkY", "10");
+        configJson.put("reldateX", "10");
+        configJson.put("reldateY", "20");
+        configJson.put("yawX", "10");
+        configJson.put("yawY", "0");
+        configJson.put("fpsX", "110");
+        configJson.put("fpsY", "10");
     }
 }
 

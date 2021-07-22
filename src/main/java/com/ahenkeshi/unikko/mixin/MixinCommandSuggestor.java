@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.cmd.CommandManager;
@@ -18,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(CommandSuggestor.class)
 public class MixinCommandSuggestor {
     @Shadow private ParseResults<CommandSource> parse;
-    @Shadow @Final private TextFieldWidget textField;
+    @Shadow @Final TextFieldWidget textField;
 
     @Unique private int oldMaxLength;
     @Unique private boolean wasCommand = false;

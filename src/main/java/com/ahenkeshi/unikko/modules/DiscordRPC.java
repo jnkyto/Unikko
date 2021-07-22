@@ -1,9 +1,13 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.modules;
 
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRichPresence;
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.utils.BoolUtils;
+import com.ahenkeshi.unikko.utils.SoftConfigUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -26,7 +30,7 @@ public class DiscordRPC {
     public static void init() {
         handlers.ready = (user) -> System.out.println("Unikko: DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = BoolUtils.get("discordRpc");
+        boolean shouldStart = (boolean) SoftConfigUtils.get("discordRpc");
 
         if (shouldStart) {
             basicPresence();
@@ -41,9 +45,9 @@ public class DiscordRPC {
             TimerTask task = new TimerTask() {
                 @Override
                 public void run() {
-                        updatePresence();
-                    }
-                };
+                    updatePresence();
+                }
+            };
             t.scheduleAtFixedRate(task, 5000, 5000);
             System.out.println("Unikko: DiscordRPC successfully started!");
         } else {

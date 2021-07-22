@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.cmd;
 
 import static com.ahenkeshi.unikko.cmd.CommandManager.*;
@@ -5,7 +9,6 @@ import com.ahenkeshi.unikko.gui.UnikkoGui;
 import com.ahenkeshi.unikko.gui.UnikkoScreen;
 import com.mojang.brigadier.CommandDispatcher;
 import io.github.cottonmc.cotton.gui.GuiDescription;
-import io.github.cottonmc.cotton.gui.client.CottonClientScreen;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.server.command.ServerCommandSource;
 
@@ -23,8 +26,8 @@ public class GuiCommand {
     }
 
     private static int openGUI(ServerCommandSource source)  {
-        System.out.println("Unikko: Gui toggled");
-        MinecraftClient.getInstance().openScreen(new UnikkoScreen(new UnikkoGui()));
+        /*System.out.println("Unikko: Gui toggled");
+        MinecraftClient.getInstance().openScreen(new UnikkoScreen(new UnikkoGui()));*/
         return 0;
     }
 }

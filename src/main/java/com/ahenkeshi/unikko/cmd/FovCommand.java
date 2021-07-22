@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.cmd;
 
 import com.mojang.brigadier.CommandDispatcher;
@@ -18,14 +22,14 @@ public class FovCommand {
 
         dispatcher.register(literal("ufov")
                 .then(argument("fov", doubleArg())
-                    .executes(ctx -> setFov(ctx.getSource(), getDouble(ctx, "fov"))))
+                        .executes(ctx -> setFov(ctx.getSource(), getDouble(ctx, "fov"))))
                 .then(literal("noob")
                         .executes(ctx -> setFov(ctx.getSource(), 70)))
                 .then(literal("pro")
                         .executes(ctx -> setFov(ctx.getSource(), 110)))
                 .then(literal("idiot")
                         .executes(ctx -> setFov(ctx.getSource(), 120))));
-        }
+    }
 
     private static int setFov(ServerCommandSource source, double newFov) {
         System.out.println("Unikko: ufov command was used");
