@@ -11,19 +11,20 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.ahenkeshi.unikko.cmd.CommandManager.*;
+import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 import static com.mojang.brigadier.arguments.DoubleArgumentType.*;
 import static net.minecraft.server.command.CommandManager.*;
 
 public class GammaCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher) {
-        addCommand("ugamma");
-        System.out.println("Unikko: ugamma command registered.");
+        addCommand("gamma");
+        System.out.println("Unikko: ;gamma command registered.");
 
-        dispatcher.register(literal("ugamma")
+        dispatcher.register(literal("gamma")
                 .then(argument("gamma", doubleArg())
                     .executes(ctx -> setGamma(ctx.getSource(), getDouble(ctx, "gamma"))))
-                .then(literal("FullBright")
+                .then(literal("fb")
                     .executes(ctx -> setGamma(ctx.getSource(), 100))));
     }
 
@@ -32,7 +33,7 @@ public class GammaCommand {
         MinecraftClient.getInstance().options.gamma = newGamma;
         Text feedback = new TranslatableText("commands.ugamma.success", newGamma);
         sendFeedback(feedback);
-        return 0;
+        return SINGLE_SUCCESS;
     }
 
 }

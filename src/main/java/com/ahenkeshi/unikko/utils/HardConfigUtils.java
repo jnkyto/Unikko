@@ -71,7 +71,7 @@ public class HardConfigUtils {
         configJson.put("reldateX", "10");
         configJson.put("reldateY", "20");
         configJson.put("yawX", "10");
-        configJson.put("yawY", "0");
+        configJson.put("yawY", "188");
         configJson.put("fpsX", "110");
         configJson.put("fpsY", "10");
     }

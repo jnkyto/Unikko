@@ -2,6 +2,8 @@
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
 */
 
+// THIS MIXIN IS CURRENTLY BROKEN AND NOT NEEDED
+
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.cmd.CommandManager;
@@ -19,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+/*
 @Mixin(CommandSuggestor.class)
 public class MixinCommandSuggestor {
     @Shadow private ParseResults<CommandSource> parse;
@@ -48,5 +51,4 @@ public class MixinCommandSuggestor {
             wasCommand = false;
             textField.setMaxLength(oldMaxLength);
         }
-    }
-}
+}*/

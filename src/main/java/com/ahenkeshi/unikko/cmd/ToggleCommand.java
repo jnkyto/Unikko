@@ -12,14 +12,15 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.ahenkeshi.unikko.cmd.CommandManager.*;
+import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 import static net.minecraft.server.command.CommandManager.*;
 
 public class ToggleCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher)  {
-        addCommand("utoggle");
-        System.out.println("Unikko: utoggle command registered");
+        addCommand("toggle");
+        System.out.println("Unikko: ;toggle command registered");
 
-        dispatcher.register(literal("utoggle")
+        dispatcher.register(literal("toggle")
                 .then(literal("hudrender")
                     .executes(ctx -> toggle(ctx.getSource(), "hudRender")))
                 .then(literal("discordrpc")
@@ -40,6 +41,6 @@ public class ToggleCommand {
         if(setting.equals("discordRpc")) {
             DiscordRPC.init();
         }
-        return 0;
+        return SINGLE_SUCCESS;
     }
 }

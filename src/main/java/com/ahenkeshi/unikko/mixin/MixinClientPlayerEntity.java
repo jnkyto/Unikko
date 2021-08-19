@@ -10,6 +10,8 @@ import com.mojang.authlib.GameProfile;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
+import net.minecraft.text.Text;
+import net.minecraft.text.TranslatableText;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
@@ -28,7 +30,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onSendChatMessage(String message, CallbackInfo ci) {
-        if (message.startsWith("/"))    {
+        if (message.startsWith(";"))    {
             System.out.println("Unikko: A chat message with a command symbol was sent");
             StringReader reader = new StringReader(message);
             reader.skip();
@@ -37,8 +39,11 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
             reader.setCursor(cursor);
             if (CommandManager.isCommand(commandName))  {
                 CommandManager.executeCommand(reader, message);
-                ci.cancel();
+            } else  {
+                Text feedback = new TranslatableText("command.notfound");
+                CommandManager.sendFeedback(feedback);
             }
+            ci.cancel();
         }
     }
 }

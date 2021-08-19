@@ -10,14 +10,16 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.ahenkeshi.unikko.cmd.CommandManager.*;
+import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 import static net.minecraft.server.command.CommandManager.*;
+
 
 public class CredCommand {
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher)  {
-        addCommand("ucred");
-        System.out.println("Unikko: ucred command registered");
+        addCommand("cred");
+        System.out.println("Unikko: ;cred command registered");
 
-        dispatcher.register(literal("ucred").executes(ctx ->
+        dispatcher.register(literal("cred").executes(ctx ->
                 credits(ctx.getSource(), "commands.ucred.line.")));
     }
 
@@ -26,6 +28,6 @@ public class CredCommand {
             Text feedback = new TranslatableText(message + i);
             sendFeedback(feedback);
         }
-        return 0;
+        return SINGLE_SUCCESS;
     }
 }

@@ -12,9 +12,24 @@
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu. Arvo nyt: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC togglattu. Arvo nyt: %f",
 
+  "commands.uhelp.line.0": "§d[Unikko]§7 Command help:",
+  "commands.uhelp.line.1": "§c.fov§7 - Change the field of view",
+  "commands.uhelp.line.2": "§c.gamma§7 - Change gamma, also works as fullbright",
+  "commands.uhelp.line.3": "§c.toggle§7 - Toggle the state of a module",
+  "commands.uhelp.line.4": "§c.help§7 - Show this very help section",
+  "commands.uhelp.line.5": "§7Do §9.help §e<command>§7 for more info",
+  "commands.uhelp.line.6": "§7Do §9;help §e<command>§7 for more info",
+
+  "commands.uhelp.command.fov": "§7Change the fov to whatever! Become the ultimate pvp master, who sees everything!\nUsage: §c.fov §e<value>",
+  "commands.uhelp.command.gamma": "§7Change gamma to whatever! Bypass the limitations of Minecraft!\nUsage: §c.gamma §e<value>",
+  "commands.uhelp.command.toggle": "§7Usage: §c.toggle §e<module>",
+  "commands.uhelp.command.help": "§7You already know how to use help.",
+  "commands.uhelp.command.cred": "§7Do you really need help for a credits command?",
+
   "command.context.here": " > Ei tarpeeksi parametreja.",
 
   "unikko.devd": "Ahenkeshi teki tän",
 
-  "translatabletext.test": "§d[Unikko]§7: Tämä on testimerkkijono."
+  "translatabletext.test": "§d[Unikko]§7: Tämä on testimerkkijono.",
+  "command.notfound": "§d[Unikko]§7: Incomplete or missing command. Do §c;help§7 or §c;say§7 if you just want to send a chat message"
 }

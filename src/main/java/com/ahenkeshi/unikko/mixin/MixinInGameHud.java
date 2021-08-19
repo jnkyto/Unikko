@@ -5,7 +5,6 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.utils.RunningValues;
 import com.ahenkeshi.unikko.utils.SoftConfigUtils;
 import com.ahenkeshi.unikko.utils.FacingTowards;
 import com.ahenkeshi.unikko.utils.RainbowColor;
@@ -13,8 +12,6 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
-import net.minecraft.text.Text;
-import net.minecraft.text.TranslatableText;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -27,7 +24,6 @@ import java.text.DecimalFormat;
 public abstract class MixinInGameHud {
     MinecraftClient mc = MinecraftClient.getInstance();
     private final DecimalFormat df = new DecimalFormat("0.0");
-    private boolean ranonce = false;
     String yawStr;
 
     @Shadow public abstract TextRenderer getTextRenderer();
@@ -39,11 +35,6 @@ public abstract class MixinInGameHud {
             String fps = ("fps: " + Integer.parseInt(mc.fpsDebugString.split(" ")[0].split("/")[0]));
             int screenHeight = mc.getWindow().getScaledHeight();
             // int screenWidth = mc.getWindow().getScaledWidth(); not needed atm
-            RunningValues.setYawY(screenHeight);
-            if(!ranonce)    {
-                RunningValues.setInitialized(true);
-                ranonce = true;
-            }
             double xpos = mc.player.getX();
             double ypos = mc.player.getY();
             double zpos = mc.player.getZ();
@@ -59,8 +50,8 @@ public abstract class MixinInGameHud {
                         (int) SoftConfigUtils.get("reldateY"), RainbowColor.gen(300));
                         // ^ render release date
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
-                        df.format(zpos)), (int) SoftConfigUtils.get("yawX"), RunningValues.getYawY(), 16777215);
-                        // ^ render yaw and coords
+                        df.format(zpos)), (int) SoftConfigUtils.get("yawX"), screenHeight - 26, 16777215);
+                        // ^ render yaw and coords (i swear
                 textRenderer.drawWithShadow(matrices, fps, (int) SoftConfigUtils.get("fpsX"),
                         (int) SoftConfigUtils.get("fpsY"), 16777215);
                         // ^ render fps

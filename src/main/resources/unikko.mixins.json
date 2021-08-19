@@ -2,11 +2,11 @@
   "required": true,
   "minVersion": "0.8",
   "package": "com.ahenkeshi.unikko.mixin",
-  "compatibilityLevel": "JAVA_8",
+  "compatibilityLevel": "JAVA_16",
   "mixins": [
     "MixinClientPlayerEntity",
     "MixinClientPlayNetworkHandler",
-    "MixinCommandSuggestor",
+
     "MixinInGameHud",
     "MixinMinecraftClient",
     "MixinTextFieldWidget",

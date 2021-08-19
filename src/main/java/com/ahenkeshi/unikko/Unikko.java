@@ -11,26 +11,25 @@ import net.minecraft.server.command.ServerCommandSource;
 import java.io.IOException;
 
 public class Unikko implements ClientModInitializer, ModInitializer {
+	public static final boolean DEV_MODE = true;
 
 	public static final String MODID = "Unikko";
-	public static final String VERSION = "1.0.1";
-	public static final String REL_DATE = "2021/07/23";
+	public static String REL_DATE = "2021/08/19";
+	public static String VERSION = "1.0.1";
 
 	@Override
 	public void onInitialize()	{
-		try {
-			HardConfigUtils.createFile();
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
+		try {HardConfigUtils.createFile();} catch (IOException e) {e.printStackTrace();}
 		SoftConfigUtils.saveBooleansToConfigFile();
 
-		System.out.println("Unikko: Successfully initialized!");
+		if(DEV_MODE){VERSION += "-dev";} else{REL_DATE = "";}
+
+		System.out.println("Unikko: what's the difference between onInitialize and onInitializeClient");
 	}
 
 	@Override
 	public void onInitializeClient() {
-
+		System.out.println("Unikko: i may never know");
 	}
 
 	public static void registerCommands(CommandDispatcher<ServerCommandSource> dispatcher)	{
@@ -38,6 +37,8 @@ public class Unikko implements ClientModInitializer, ModInitializer {
 		GammaCommand.register(dispatcher);
 		CredCommand.register(dispatcher);
 		ToggleCommand.register(dispatcher);
+		HelpCommand.register(dispatcher);
+		SayCommand.register(dispatcher);
 		//GuiCommand.register(dispatcher);
 
 		// if (MinecraftClient.getInstance().isIntegratedServerRunning())	{}

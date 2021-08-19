@@ -49,7 +49,6 @@ public class SoftConfigUtils {
         switch (setting) {
             case "hudRender" -> hudRender = Boolean.valueOf(val);
             case "discordRpc" -> discordRpc = Boolean.valueOf(val);
-            case "yawY" -> yawY = Integer.parseInt(val);
             default -> throw new IllegalStateException("Unikko: Unexpected value in SoftConfigUtils/updateBoolean: " + setting);
         }
     }

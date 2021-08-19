@@ -11,24 +11,23 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.ahenkeshi.unikko.cmd.CommandManager.*;
+import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 import static com.mojang.brigadier.arguments.DoubleArgumentType.*;
 import static net.minecraft.server.command.CommandManager.*;
 
 public class FovCommand {
 
     public static void register(CommandDispatcher<ServerCommandSource> dispatcher)  {
-        addCommand("ufov");
-        System.out.println("Unikko: ufov command registered.");
+        addCommand("fov");
+        System.out.println("Unikko: ;fov command registered.");
 
-        dispatcher.register(literal("ufov")
+        dispatcher.register(literal("fov")
                 .then(argument("fov", doubleArg())
                     .executes(ctx -> setFov(ctx.getSource(), getDouble(ctx, "fov"))))
-                .then(literal("noob")
+                .then(literal("normal")
                         .executes(ctx -> setFov(ctx.getSource(), 70)))
-                .then(literal("pro")
-                        .executes(ctx -> setFov(ctx.getSource(), 110)))
-                .then(literal("idiot")
-                        .executes(ctx -> setFov(ctx.getSource(), 120))));
+                .then(literal("quake")
+                        .executes(ctx -> setFov(ctx.getSource(), 110))));
         }
 
     private static int setFov(ServerCommandSource source, double newFov) {
@@ -37,7 +36,7 @@ public class FovCommand {
         Text feedback = new TranslatableText("commands.ufov.success", newFov);
         sendFeedback(feedback);
 
-        return 0;
+        return SINGLE_SUCCESS;
     }
 
 }
