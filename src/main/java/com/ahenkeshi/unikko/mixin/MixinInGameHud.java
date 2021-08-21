@@ -12,6 +12,7 @@ import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.InGameHud;
 import net.minecraft.client.util.math.MatrixStack;
+import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 import org.spongepowered.asm.mixin.injection.At;
@@ -22,7 +23,8 @@ import java.text.DecimalFormat;
 
 @Mixin(InGameHud.class)
 public abstract class MixinInGameHud {
-    MinecraftClient mc = MinecraftClient.getInstance();
+    @Shadow @Final
+    private MinecraftClient client;
     private final DecimalFormat df = new DecimalFormat("0.0");
     String yawStr;
 
@@ -31,16 +33,16 @@ public abstract class MixinInGameHud {
     @Inject(method="render", at=@At("RETURN"))
     private void render(MatrixStack matrices, float tickDelta, CallbackInfo ci)  {
         // Text devd = new TranslatableText("unikko.devd");
-        if(this.mc.player != null) {
-            String fps = ("fps: " + Integer.parseInt(mc.fpsDebugString.split(" ")[0].split("/")[0]));
-            int screenHeight = mc.getWindow().getScaledHeight();
+        if(this.client.player != null) {
+            String fps = ("fps: " + Integer.parseInt(client.fpsDebugString.split(" ")[0].split("/")[0]));
+            int screenHeight = client.getWindow().getScaledHeight();
             // int screenWidth = mc.getWindow().getScaledWidth(); not needed atm
-            double xpos = mc.player.getX();
-            double ypos = mc.player.getY();
-            double zpos = mc.player.getZ();
-            String yaw = mc.player.getHorizontalFacing().asString();
+            double xpos = client.player.getX();
+            double ypos = client.player.getY();
+            double zpos = client.player.getZ();
+            String yaw = client.player.getHorizontalFacing().asString();
             yawStr = FacingTowards.get(yaw);
-            if(!this.mc.options.debugEnabled && (boolean) SoftConfigUtils.get("hudRender")) {
+            if(!this.client.options.debugEnabled && (boolean) SoftConfigUtils.get("hudRender")) {
                 TextRenderer textRenderer = this.getTextRenderer();
                 textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION,
                         (int) SoftConfigUtils.get("watermarkX"), (int) SoftConfigUtils.get("watermarkY"),

@@ -23,9 +23,9 @@ public class ToggleCommand extends Command {
     @Override
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
         builder.executes(ctx ->(incomplete(ctx.getSource())))
-                .then(literal("hudrender")
+                .then(literal("hud")
                     .executes(ctx -> toggle(ctx.getSource(), "hudRender")))
-                .then(literal("discordrpc")
+                .then(literal("rpc")
                         .executes(ctx -> toggle(ctx.getSource(), "discordRpc")));
     }
 
