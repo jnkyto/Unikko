@@ -51,7 +51,7 @@ public abstract class MixinInGameHud {
                         // ^ render release date
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
                         df.format(zpos)), (int) SoftConfigUtils.get("yawX"), screenHeight - 26, 16777215);
-                        // ^ render yaw and coords (i swear
+                        // ^ render yaw and coords (i gave up on yawY. i promise i'll figure it out)
                 textRenderer.drawWithShadow(matrices, fps, (int) SoftConfigUtils.get("fpsX"),
                         (int) SoftConfigUtils.get("fpsY"), 16777215);
                         // ^ render fps

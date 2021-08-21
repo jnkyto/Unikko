@@ -19,7 +19,7 @@
   "commands.uhelp.line.3": "  §c;toggle§7 - Toggle the state of a module",
   "commands.uhelp.line.4": "  §c;help§7 - Show this very help section",
   "commands.uhelp.line.5": "  §c;cred§7 - Show credits",
-  "commands.uhelp.line.6": "  §c;say - Send a message to chat",
+  "commands.uhelp.line.6": "  §c;say§7 - Send a message to chat",
   "commands.uhelp.line.7": "§7Do §c;help <command>§7 for more info",
 
   "commands.uhelp.command.fov": "§7Usage: §c;fov §e<value>§7. §e'normal' §7or §e'quake' §7can also be used as the value.",

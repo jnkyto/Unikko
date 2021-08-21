@@ -16,7 +16,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 public class MixinTitleScreen {
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info)    {
-        System.out.println("Unikko: MixinTitleScreen");
+        System.out.println("Unikko: MixinTitleScreen mixin doing the mixining");
         SoftConfigUtils.saveBooleansToConfigFile();
         DiscordRPC.init();
     }

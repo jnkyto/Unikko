@@ -4,16 +4,15 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.mixin;
 
-import com.ahenkeshi.unikko.cmd.CommandManager;
-import com.mojang.brigadier.StringReader;
+import com.ahenkeshi.unikko.cmd.CommandHandler;
+import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.authlib.GameProfile;
+import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
 import net.minecraft.client.network.ClientPlayerEntity;
 import net.minecraft.client.world.ClientWorld;
-import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 import org.spongepowered.asm.mixin.Mixin;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
@@ -32,16 +31,11 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     private void onSendChatMessage(String message, CallbackInfo ci) {
         if (message.startsWith(";"))    {
             System.out.println("Unikko: A chat message with a command symbol was sent");
-            StringReader reader = new StringReader(message);
-            reader.skip();
-            int cursor = reader.getCursor();
-            String commandName = reader.canRead() ? reader.readUnquotedString() : "";
-            reader.setCursor(cursor);
-            if (CommandManager.isCommand(commandName))  {
-                CommandManager.executeCommand(reader, message);
-            } else  {
-                Text feedback = new TranslatableText("command.notfound");
-                CommandManager.sendFeedback(feedback);
+            try {
+                CommandHandler.dispatch(message.substring(1));
+            } catch (CommandSyntaxException e) {
+                ChatInfoUtils.sendFeedback(new TranslatableText("command.notfound"));
+                e.printStackTrace();
             }
             ci.cancel();
         }

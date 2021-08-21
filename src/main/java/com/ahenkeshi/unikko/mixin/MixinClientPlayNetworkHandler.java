@@ -4,7 +4,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.mixin;
 
-import com.ahenkeshi.unikko.Unikko;
+import com.ahenkeshi.unikko.cmd.CommandHandler;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.client.MinecraftClient;
@@ -15,7 +15,6 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.s2c.play.CommandTreeS2CPacket;
 import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
-import net.minecraft.server.command.ServerCommandSource;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -31,19 +30,17 @@ public class MixinClientPlayNetworkHandler {
     @Shadow @Final
     private MinecraftClient client;
 
-    @SuppressWarnings("unchecked")
     @Inject(method = "<init>", at = @At("RETURN"))
     public void onInit(MinecraftClient mc, Screen screen, ClientConnection connection, GameProfile profile, CallbackInfo ci)    {
-        Unikko.registerCommands((CommandDispatcher<ServerCommandSource>) (Object) commandDispatcher);
+        CommandHandler.init();
     }
 
     /*@Inject(method = "onGameJoin", at = @At("RETURN"))
     private void postGameJoin(CallbackInfo ci)  {Relogger.onRelogSuccess();}*/
 
-    @SuppressWarnings("unchecked")
     @Inject(method = "onCommandTree", at = @At("TAIL"))
     public void onOnCommandTree(CommandTreeS2CPacket packet, CallbackInfo ci)   {
-        Unikko.registerCommands((CommandDispatcher<ServerCommandSource>) (Object) commandDispatcher);
+        CommandHandler.init();
     }
 
     @Inject(method = "onEntitySpawn", at = @At("TAIL"))

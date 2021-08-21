@@ -19,6 +19,7 @@
   "commands.uhelp.line.4": "§c.help§7 - Show this very help section",
   "commands.uhelp.line.5": "§7Do §9.help §e<command>§7 for more info",
   "commands.uhelp.line.6": "§7Do §9;help §e<command>§7 for more info",
+  "commands.uhelp.line.7": "§7Do §c;help <command>§7 for more info",
 
   "commands.uhelp.command.fov": "§7Change the fov to whatever! Become the ultimate pvp master, who sees everything!\nUsage: §c.fov §e<value>",
   "commands.uhelp.command.gamma": "§7Change gamma to whatever! Bypass the limitations of Minecraft!\nUsage: §c.gamma §e<value>",
@@ -31,5 +32,6 @@
   "unikko.devd": "Ahenkeshi teki tän",
 
   "translatabletext.test": "§d[Unikko]§7: Tämä on testimerkkijono.",
-  "command.notfound": "§d[Unikko]§7: Incomplete or missing command. Do §c;help§7 or §c;say§7 if you just want to send a chat message"
+  "command.notfound": "§d[Unikko]§7: Incomplete or missing command. Do §c;help§7 or §c;say§7 if you just want to send a chat message",
+  "commands.uhelp.command.say": "§7Sends a message to chat. Needed for messages that start with ';'. Usage: §c;say §e<message>§7."
 }
