@@ -12,6 +12,7 @@
 
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender toggled. Value now: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled. Value now: %f",
+  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: rpcAll toggled. Value now: %f",
 
   "commands.uhelp.line.0": "§d[Unikko] §fCommand help:§r",
   "commands.uhelp.line.1": "  §cfov§7 - Change the field of view",

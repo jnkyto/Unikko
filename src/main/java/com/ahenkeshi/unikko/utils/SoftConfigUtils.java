@@ -17,6 +17,7 @@ public class SoftConfigUtils {
 
     private static Boolean hudRender = Boolean.valueOf(HardConfigUtils.getValueWithKey("hudRender"));
     private static Boolean discordRpc = Boolean.valueOf(HardConfigUtils.getValueWithKey("discordRpc"));
+    private static Boolean rpcAll = Boolean.valueOf(HardConfigUtils.getValueWithKey("rpcAll"));
     private static String cmdPrefix = HardConfigUtils.getValueWithKey("cmdPrefix");
     private static int watermarkX = Integer.parseInt(HardConfigUtils.getValueWithKey("watermarkX"));
     private static int watermarkY = Integer.parseInt(HardConfigUtils.getValueWithKey("watermarkY"));
@@ -30,6 +31,7 @@ public class SoftConfigUtils {
     public static void saveBooleansToConfigFile()    {
         booleans.put("hudRender", hudRender);
         booleans.put("discordRpc", discordRpc);
+        booleans.put("rpcAll", rpcAll);
         strings.put("cmdPrefix", cmdPrefix);
         values.put("watermarkX", watermarkX);
         values.put("watermarkY", watermarkY);
@@ -59,6 +61,7 @@ public class SoftConfigUtils {
         switch (setting) {
             case "hudRender" -> hudRender = Boolean.valueOf(val);
             case "discordRpc" -> discordRpc = Boolean.valueOf(val);
+            case "rpcAll" -> rpcAll = Boolean.valueOf(val);
             default -> throw new IllegalStateException("Unikko: Unexpected value in SoftConfigUtils/updateBoolean: " + setting);
         }
     }

@@ -26,7 +26,9 @@ public class ToggleCommand extends Command {
                 .then(literal("hud")
                     .executes(ctx -> toggle(ctx.getSource(), "hudRender")))
                 .then(literal("rpc")
-                        .executes(ctx -> toggle(ctx.getSource(), "discordRpc")));
+                        .executes(ctx -> toggle(ctx.getSource(), "discordRpc")))
+                .then(literal("rpcall")
+                        .executes(ctx -> toggle(ctx.getSource(), "rpcAll")));
     }
 
     private static int toggle(CommandSource source, String setting)   {
@@ -37,7 +39,7 @@ public class ToggleCommand extends Command {
         Text feedback = new TranslatableText("commands.utoggle." + setting + ".success", bool);
         ChatInfoUtils.sendFeedback(feedback);
         SoftConfigUtils.saveBooleansToConfigFile();
-        if(setting.equals("discordRpc")) {
+        if(setting.equals("discordRpc") || setting.equals("rpcAll")) {
             DiscordRPC.init();
         }
         return SINGLE_SUCCESS;

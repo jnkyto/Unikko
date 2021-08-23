@@ -75,6 +75,7 @@ public class HardConfigUtils {
         configJson.put(Unikko.MODID, Unikko.VERSION);
         configJson.put("hudRender", "true");
         configJson.put("discordRpc", "true");
+        configJson.put("rpcAll", "true");
         configJson.put("cmdPrefix", ";");
         configJson.put("watermarkX", "10");
         configJson.put("watermarkY", "10");

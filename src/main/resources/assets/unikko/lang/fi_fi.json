@@ -12,6 +12,7 @@
 
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu. Arvo nyt: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC togglattu. Arvo nyt: %f",
+  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: rpcAll toggled. Value now: %f",
 
   "commands.uhelp.line.0": "§d[Unikko]§f Komentoapu:",
   "commands.uhelp.line.1": "  §cfov§7 - Muuta näkökentän kokoa (Field of View)",
