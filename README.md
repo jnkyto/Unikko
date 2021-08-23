@@ -30,7 +30,6 @@ Type ';help' in chat like a regular Minecraft command for interactive help. More
 
 ### Planned features
 - Add a command suggester for Unikko's commands
-- Add ability to change command prefix
 - Add GUI and means to edit it
 - More "useful" commands
 
