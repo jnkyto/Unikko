@@ -23,8 +23,7 @@ import java.text.DecimalFormat;
 
 @Mixin(InGameHud.class)
 public abstract class MixinInGameHud {
-    @Shadow @Final
-    private MinecraftClient client;
+    @Shadow @Final private MinecraftClient client;
     private final DecimalFormat df = new DecimalFormat("0.0");
     String yawStr;
 
@@ -42,20 +41,20 @@ public abstract class MixinInGameHud {
             double zpos = client.player.getZ();
             String yaw = client.player.getHorizontalFacing().asString();
             yawStr = FacingTowards.get(yaw);
-            if(!this.client.options.debugEnabled && (boolean) SoftConfigUtils.get("hudRender")) {
+            if(!this.client.options.debugEnabled && SoftConfigUtils.getBoolean("hudRender")) {
                 TextRenderer textRenderer = this.getTextRenderer();
-                textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION,
-                        (int) SoftConfigUtils.get("watermarkX"), (int) SoftConfigUtils.get("watermarkY"),
+                textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION + Unikko.DEV,
+                        SoftConfigUtils.getInt("watermarkX"), SoftConfigUtils.getInt("watermarkY"),
                         RainbowColor.gen(0));
                         // ^ render watermark
-                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, (int) SoftConfigUtils.get("reldateX"),
-                        (int) SoftConfigUtils.get("reldateY"), RainbowColor.gen(300));
+                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, SoftConfigUtils.getInt("reldateX"),
+                        SoftConfigUtils.getInt("reldateY"), RainbowColor.gen(300));
                         // ^ render release date
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
-                        df.format(zpos)), (int) SoftConfigUtils.get("yawX"), screenHeight - 26, 16777215);
+                        df.format(zpos)), SoftConfigUtils.getInt("yawX"), screenHeight - 26, 16777215);
                         // ^ render yaw and coords (i gave up on yawY. i promise i'll figure it out)
-                textRenderer.drawWithShadow(matrices, fps, (int) SoftConfigUtils.get("fpsX"),
-                        (int) SoftConfigUtils.get("fpsY"), 16777215);
+                textRenderer.drawWithShadow(matrices, fps, SoftConfigUtils.getInt("fpsX"),
+                        SoftConfigUtils.getInt("fpsY"), 16777215);
                         // ^ render fps
             }
         }

@@ -35,8 +35,14 @@ public class MixinClientPlayNetworkHandler {
         CommandHandler.init();
     }
 
-    /*@Inject(method = "onGameJoin", at = @At("RETURN"))
-    private void postGameJoin(CallbackInfo ci)  {Relogger.onRelogSuccess();}*/
+    /*
+
+    @Inject(method = "onGameJoin", at = @At("RETURN"))
+    private void postGameJoin(CallbackInfo ci)  {Relogger.onRelogSuccess();}
+
+    this relog thing is skidded from somewhere but having it on this client might be neat
+
+    */
 
     @Inject(method = "onCommandTree", at = @At("TAIL"))
     public void onOnCommandTree(CommandTreeS2CPacket packet, CallbackInfo ci)   {
@@ -45,6 +51,6 @@ public class MixinClientPlayNetworkHandler {
 
     @Inject(method = "onEntitySpawn", at = @At("TAIL"))
     public void onOnEntitySpawn(EntitySpawnS2CPacket packet, CallbackInfo ci)   {
-        ClientPlayerEntity player = client.player;
+
     }
 }

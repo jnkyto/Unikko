@@ -30,7 +30,8 @@ public class ToggleCommand extends Command {
     }
 
     private static int toggle(CommandSource source, String setting)   {
-        Boolean bool = (Boolean) SoftConfigUtils.get(setting);
+        System.out.println("Unikko: toggle command was used");
+        Boolean bool = SoftConfigUtils.getBoolean(setting);
         bool = !bool;
         SoftConfigUtils.updateBoolean(setting, String.valueOf(bool));
         Text feedback = new TranslatableText("commands.utoggle." + setting + ".success", bool);
@@ -43,6 +44,7 @@ public class ToggleCommand extends Command {
     }
 
     private static int incomplete(CommandSource source) {
+        System.out.println("Unikko: toggle command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.toggle"));
         return SINGLE_SUCCESS;
     }

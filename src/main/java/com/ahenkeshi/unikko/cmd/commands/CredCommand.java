@@ -8,6 +8,7 @@ import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.CommandSource;
+import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
@@ -20,12 +21,13 @@ public class CredCommand extends Command {
 
     @Override
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
-        builder.executes(ctx -> credits(ctx.getSource(), "commands.ucred.line."));
+        builder.executes(ctx -> credits(ctx.getSource()));
     }
 
-    private static int credits(CommandSource source, String message)  {
+    private static int credits(CommandSource source)  {
+        System.out.println("Unikko: cred command was used");
         for(int i=0; i<4; i++) {
-            Text feedback = new TranslatableText(message + i);
+            Text feedback = new TranslatableText("commands.ucred.line." + i);
             ChatInfoUtils.sendFeedback(feedback);
         }
         return SINGLE_SUCCESS;

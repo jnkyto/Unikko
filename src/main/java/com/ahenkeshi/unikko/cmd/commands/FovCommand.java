@@ -32,7 +32,7 @@ public class FovCommand extends Command {
                         .executes(ctx -> setFov(ctx.getSource(), 110)));
     }
     private static int setFov(CommandSource source, double newFov) {
-        System.out.println("Unikko: ;fov command was used");
+        System.out.println("Unikko: fov command was used");
         MinecraftClient.getInstance().options.fov = newFov;
         Text feedback = new TranslatableText("commands.ufov.success", newFov);
         ChatInfoUtils.sendFeedback(feedback);

@@ -17,7 +17,7 @@ import static com.mojang.brigadier.arguments.DoubleArgumentType.*;
 
 public class GammaCommand extends Command {
     public GammaCommand()   {
-        super("gamma", "Changes brightness eg. gamma");
+        super("gamma", "Changes brightness/gamma");
     }
 
     @Override
@@ -30,7 +30,7 @@ public class GammaCommand extends Command {
     }
 
     private static int setGamma(CommandSource source, double newGamma)    {
-        System.out.println("Unikko: ugamma command was used");
+        System.out.println("Unikko: gamma command was used");
         MinecraftClient.getInstance().options.gamma = newGamma;
         Text feedback = new TranslatableText("commands.ugamma.success", newGamma);
         ChatInfoUtils.sendFeedback(feedback);

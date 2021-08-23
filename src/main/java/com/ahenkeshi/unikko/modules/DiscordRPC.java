@@ -30,7 +30,7 @@ public class DiscordRPC {
     public static void init() {
         handlers.ready = (user) -> System.out.println("Unikko: DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = (boolean) SoftConfigUtils.get("discordRpc");
+        boolean shouldStart = SoftConfigUtils.getBoolean("discordRpc");
 
         if (shouldStart) {
             basicPresence();
@@ -74,7 +74,7 @@ public class DiscordRPC {
         presence.startTimestamp = start_time; // epoch second
         presence.largeImageKey = "icon";
         presence.largeImageText = Unikko.MODID;
-        presence.details = Unikko.VERSION;
+        presence.details = Unikko.VERSION + Unikko.DEV;
         presence.state = "In the main menu";
         presence.instance = 1;
         lib.Discord_UpdatePresence(presence);
@@ -109,9 +109,9 @@ public class DiscordRPC {
                         serverip = "Somewhere...";
                     }
                 }
-                presence.details = Unikko.VERSION + " | " + serverip;
+                presence.details = Unikko.VERSION + Unikko.DEV + " | " + serverip;
             } else {
-                presence.details = Unikko.VERSION + " | Singleplayer";
+                presence.details = Unikko.VERSION + Unikko.DEV + " | Singleplayer";
             }
             presence.smallImageText = "Playing as " + playername;
             lib.Discord_UpdatePresence(presence);

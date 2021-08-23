@@ -4,15 +4,20 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.utils;
 
+import net.minecraft.text.Text;
+
 import java.util.HashMap;
 import java.util.Map;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class SoftConfigUtils {
-    private static final HashMap<String, Boolean> booleans = new HashMap<>();
-    private static final HashMap<String, Integer> values = new HashMap<>();
+    private static final Map<String, Boolean> booleans = new HashMap<>();
+    private static final Map<String, Integer> values = new HashMap<>();
+    private static final Map<String, String> strings = new HashMap<>();
+
     private static Boolean hudRender = Boolean.valueOf(HardConfigUtils.getValueWithKey("hudRender"));
     private static Boolean discordRpc = Boolean.valueOf(HardConfigUtils.getValueWithKey("discordRpc"));
+    private static String cmdPrefix = HardConfigUtils.getValueWithKey("cmdPrefix");
     private static int watermarkX = Integer.parseInt(HardConfigUtils.getValueWithKey("watermarkX"));
     private static int watermarkY = Integer.parseInt(HardConfigUtils.getValueWithKey("watermarkY"));
     private static int reldateX = Integer.parseInt(HardConfigUtils.getValueWithKey("reldateX"));
@@ -25,6 +30,7 @@ public class SoftConfigUtils {
     public static void saveBooleansToConfigFile()    {
         booleans.put("hudRender", hudRender);
         booleans.put("discordRpc", discordRpc);
+        strings.put("cmdPrefix", cmdPrefix);
         values.put("watermarkX", watermarkX);
         values.put("watermarkY", watermarkY);
         values.put("reldateX", reldateX);
@@ -42,6 +48,10 @@ public class SoftConfigUtils {
             HardConfigUtils.putInFile(entry.getKey(), String.valueOf(entry.getValue()));
         }
 
+        for(Map.Entry<String, String> entry : strings.entrySet())   {
+            HardConfigUtils.putInFile(entry.getKey(), String.valueOf(entry.getValue()));
+        }
+
         System.out.println("Unikko: SoftConfigUtils has saved values to configfile");
     }
 
@@ -53,16 +63,30 @@ public class SoftConfigUtils {
         }
     }
 
-    public static Object get(String key)  {
-        if(booleans.containsKey(key)) {
-            // System.out.println("Unikko: SoftConfigUtils - Got " + key + " with value " + booleans.get(key));
-            return booleans.get(key);
-        } else if(values.containsKey(key)) {
+    public static int getInt(String key)  {
+        try {
             return values.get(key);
+        } catch (NullPointerException e)   {
+            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getInt error! Given key doesn't exist"));
+            return 0;
         }
-        else {
-            System.out.println("Unikko: SoftConfigUtils.java get()-error: Given key doesn't exist");
+    }
+
+    public static boolean getBoolean(String key)    {
+        try {
+            return booleans.get(key);
+        } catch (NullPointerException e)   {
+            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getBoolean error! Given key doesn't exist"));
             return false;
+        }
+    }
+
+    public static String getString(String key)  {
+        try {
+            return strings.get(key);
+        } catch (NullPointerException e) {
+            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getString error! Given key doesn't exist"));
+            return null;
         }
     }
 }
