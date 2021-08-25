@@ -110,3 +110,11 @@ publishing {
 		// retrieving dependencies.
 	}
 }
+
+println('')
+println('               _ __   __       ')
+println('  __  ______  (_) /__/ /______    Version: ' + project.version)
+println(' / / / / __ \\/ / //_/ //_/ __ \\   Made for Minecraft 1.16.5')
+println('/ /_/ / / / / / ,< / ,< / /_/ /   https://github.com/jnkyto/Unikko')
+println('\\__,_/_/ /_/_/_/|_/_/|_|\\____/    Licenced under CC0-1.0.')
+println('')

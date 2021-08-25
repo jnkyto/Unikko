@@ -1,6 +1,6 @@
 ---
 name: Suggestion
-about: Suggest a change to EpstoriClient
+about: Suggest a change to Unikko
 title: Suggestion
 labels: enhancement
 ---
@@ -15,4 +15,4 @@ labels: enhancement
 
 **Final checklist**:
 - [x] I know how checkboxes work and how to use them properly.
-- [ ] This suggestion only applies to EpstoriClient alone, not some other mod.
+- [ ] This suggestion only applies to Unikko alone, not some other mod.

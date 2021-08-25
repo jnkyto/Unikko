@@ -22,15 +22,17 @@ public class DiscordRPC {
     private static final DiscordEventHandlers handlers = new DiscordEventHandlers();
     private static final Long start_time = System.currentTimeMillis() / 1000;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
+    private static boolean rpcAll;
 
     private static Integer times = 0;
     private static Timer t = new Timer();
     private static TimerTask task;
 
     public static void init() {
+        rpcAll = SoftConfigUtils.getBoolean("rpcAll");
         handlers.ready = (user) -> System.out.println("Unikko: DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = (boolean) SoftConfigUtils.get("discordRpc");
+        boolean shouldStart = SoftConfigUtils.getBoolean("discordRpc");
 
         if (shouldStart) {
             basicPresence();
@@ -74,14 +76,15 @@ public class DiscordRPC {
         presence.startTimestamp = start_time; // epoch second
         presence.largeImageKey = "icon";
         presence.largeImageText = Unikko.MODID;
-        presence.details = Unikko.VERSION;
-        presence.state = "In the main menu";
+        presence.details = Unikko.VERSION + Unikko.DEV;
+        presence.state = "Playing with power!";
         presence.instance = 1;
         lib.Discord_UpdatePresence(presence);
     }
 
     private static void updatePresence() {
-        if (mc.world != null) {
+
+        if (mc.world != null & rpcAll) {
             times++;
             boolean inSingleplayer = mc.isInSingleplayer();
             String playername = mc.getSession().getUsername();
@@ -109,9 +112,9 @@ public class DiscordRPC {
                         serverip = "Somewhere...";
                     }
                 }
-                presence.details = Unikko.VERSION + " | " + serverip;
+                presence.details = Unikko.VERSION + Unikko.DEV + " | " + serverip;
             } else {
-                presence.details = Unikko.VERSION + " | Singleplayer";
+                presence.details = Unikko.VERSION + Unikko.DEV + " | Singleplayer";
             }
             presence.smallImageText = "Playing as " + playername;
             lib.Discord_UpdatePresence(presence);

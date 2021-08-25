@@ -2,6 +2,8 @@
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
 */
 
+// very useful class :)
+
 package com.ahenkeshi.unikko.utils;
 
 public class FacingTowards {
