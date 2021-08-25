@@ -18,7 +18,7 @@ import static com.mojang.brigadier.arguments.DoubleArgumentType.getDouble;
 
 public class FovCommand extends Command {
     public FovCommand() {
-        super("fov", "Change the field of view");
+        super("fov");
     }
 
     @Override

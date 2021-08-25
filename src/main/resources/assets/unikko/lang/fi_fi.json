@@ -25,7 +25,7 @@
 
   "commands.uhelp.command.fov": "§7Käyttö: §cfov §e<arvo>§7. Myös §e'normal' §7tai §e'quake' §7voidaan käyttää arvoina.",
   "commands.uhelp.command.gamma": "§7Käyttö: §cgamma §e<arvo>§7. Kirjoittamalla arvoksi §e'fb'§7 saat Fullbrightin.",
-  "commands.uhelp.command.toggle": "§7Käyvät moduulit: §erpc§7, §ehud§7. Käyttö: §ctoggle §e<moduuli>§7.",
+  "commands.uhelp.command.toggle": "§7Käyvät moduulit: §erpc§7, §ehud§7, §erpcall§7. Käyttö: §ctoggle §e<moduuli>§7.",
   "commands.uhelp.command.help": "§7Tiedät jo miten tätä komentoa käytetään.",
   "commands.uhelp.command.cred": "§7Ihanko oikeasti tarvitset apua tämän komennon käyttämisessä?",
   "commands.uhelp.command.say": "§7Lähettää viestin chattiin. Vaaditaan viesteille, jotka alkavat komentomerkillä. Käyttö: §csay §e<viesti>§7.",

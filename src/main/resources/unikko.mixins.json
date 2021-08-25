@@ -6,6 +6,7 @@
   "mixins": [
     "MixinClientPlayerEntity",
     "MixinClientPlayNetworkHandler",
+    "MixinCommandSuggestor",
     "MixinInGameHud",
     "MixinMinecraftClient",
     "MixinTextFieldWidget",

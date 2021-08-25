@@ -25,7 +25,6 @@ import java.util.Objects;
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
-    // @Unique private boolean sprintWasPressed = false;
     @Unique private final String cmdPrefix = Objects.requireNonNull(SoftConfigUtils.getString("cmdPrefix"));
 
     public MixinClientPlayerEntity(ClientWorld world, GameProfile profile)  {
@@ -35,7 +34,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onSendChatMessage(String message, CallbackInfo ci) {
         if (message.startsWith(cmdPrefix))    {
-            System.out.println("Unikko: A chat message with a command symbol was sent");
+            System.out.println("Unikko: A command was used.");
             try {
                 CommandHandler.dispatch(message.substring(cmdPrefix.length()));
             } catch (CommandSyntaxException e) {

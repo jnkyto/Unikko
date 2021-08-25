@@ -21,7 +21,7 @@ public class SayCommand extends Command {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
 
     public SayCommand() {
-        super("say", "Sends a message to chat");
+        super("say");
     }
 
     @Override

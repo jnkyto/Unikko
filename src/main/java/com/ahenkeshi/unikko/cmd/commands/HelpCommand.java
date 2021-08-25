@@ -11,7 +11,7 @@ import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 
 public class HelpCommand extends Command {
     public HelpCommand()    {
-        super("help", "Shows help");
+        super("help");
     }
 
     @Override

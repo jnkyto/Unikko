@@ -11,16 +11,19 @@ import com.mojang.brigadier.builder.RequiredArgumentBuilder;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.command.CommandSource;
 
+import java.util.ArrayList;
+import java.util.List;
+
 public abstract class Command {
      protected static MinecraftClient mc;
 
      private final String name;
-     private final String desc;
+     private static List<String> commands = new ArrayList<>();
 
-     public Command(String name, String desc)   {
+     public Command(String name)   {
          this.name = name;
-         this.desc = desc;
          mc = MinecraftClient.getInstance();
+         commands.add(name);
      }
 
      protected static <T> RequiredArgumentBuilder<CommandSource, T> argument(final String name, final ArgumentType<T> type) {
@@ -47,7 +50,7 @@ public abstract class Command {
          return name;
      }
 
-     public String getDesc()    {
-         return desc;
+     public static boolean isCommand(String command)  {
+         return commands.stream().anyMatch(command::equals);
      }
 }

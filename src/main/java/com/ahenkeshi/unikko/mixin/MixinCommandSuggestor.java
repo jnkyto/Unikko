@@ -6,50 +6,64 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.mixin;
 
-/*
-import com.ahenkeshi.unikko.cmd.CommandManager;
-import com.ahenkeshi.unikko.interfaces.ITextFieldWidget;
+import com.ahenkeshi.unikko.cmd.CommandHandler;
+import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
+import com.mojang.brigadier.suggestion.Suggestions;
+import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.gui.screen.CommandSuggestor;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.command.CommandSource;
+import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
-import org.spongepowered.asm.mixin.Unique;
 import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
+import org.spongepowered.asm.mixin.injection.callback.LocalCapture;
+
+import java.util.concurrent.CompletableFuture;
 
 
 @Mixin(CommandSuggestor.class)
-public class MixinCommandSuggestor {
+public abstract class MixinCommandSuggestor {
     @Shadow private ParseResults<CommandSource> parse;
     @Shadow @Final TextFieldWidget textField;
+    @Shadow @Nullable CommandSuggestor.SuggestionWindow window;
+    @Shadow boolean completingSuggestions;
+    @Shadow protected abstract void show();
+    @Shadow private CompletableFuture<Suggestions> pendingSuggestions;
 
-    @Unique private int oldMaxLength;
-    @Unique private boolean wasCommand = false;
+    @Inject(method = "refresh",
+            at = @At(value = "INVOKE", target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
+                    remap = false),
+            cancellable = true,
+            locals = LocalCapture.CAPTURE_FAILHARD)
+    private void onRefresh(CallbackInfo ci, String str, StringReader reader) {
+        String cmdPref = SoftConfigUtils.getString("cmdPrefix");
+        assert cmdPref != null;
+        int prefLength = cmdPref.length();
+        if (reader.canRead(prefLength) && reader.getString().startsWith(cmdPref, reader.getCursor())) {
+            reader.setCursor(reader.getCursor() + prefLength);
+            CommandDispatcher<CommandSource> commandDispatcher = CommandHandler.getDISPATCHER();
+            if (this.parse == null) {
+                this.parse = commandDispatcher.parse(reader, CommandHandler.getCOMMAND_SOURCE());
+            }
+            int cursor = textField.getCursor();
+            if (cursor >= 1 && (this.window == null || this.completingSuggestions)) {
+                this.pendingSuggestions = commandDispatcher.getCompletionSuggestions(this.parse, cursor);
+                this.pendingSuggestions.thenRun(() -> {
+                    if (this.pendingSuggestions.isDone()) {
+                        this.show();
+                    }
+                });
+            }
+            ci.cancel();
+        }
 
-    @Inject(method = "refresh", at = @At("RETURN"))
-    private void onRefresh(CallbackInfo ci) {
-        boolean isCommand;
-        if (parse == null) {
-            isCommand = false;
-        }
-        else {
-            StringReader reader = new StringReader(parse.getReader().getString());
-            reader.skip();
-            String command = reader.canRead() ? reader.readUnquotedString() : "";
-            isCommand = CommandManager.isCommand(command);
-        }
+    }
+}
 
-        if (isCommand && !wasCommand)   {
-            wasCommand = true;
-            oldMaxLength = ((ITextFieldWidget) textField).commands_getMaxLength();
-            textField.setMaxLength(Math.max(oldMaxLength, 32500));
-        } else if (!isCommand && wasCommand)    {
-            wasCommand = false;
-            textField.setMaxLength(oldMaxLength);
-        }
-}*/

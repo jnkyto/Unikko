@@ -8,11 +8,9 @@ import com.ahenkeshi.unikko.cmd.Command;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.CommandSource;
 
-import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-
 public class GuiCommand extends Command {
     public GuiCommand() {
-        super("gui", "Open GUI (doesn't work)");
+        super("gui");
     }
 
     @Override

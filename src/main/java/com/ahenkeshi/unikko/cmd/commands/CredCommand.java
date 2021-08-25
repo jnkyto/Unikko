@@ -8,7 +8,6 @@ import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.CommandSource;
-import net.minecraft.text.ClickEvent;
 import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
@@ -16,7 +15,7 @@ import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 
 public class CredCommand extends Command {
     public CredCommand()    {
-        super("cred", "Show credits");
+        super("cred");
     }
 
     @Override

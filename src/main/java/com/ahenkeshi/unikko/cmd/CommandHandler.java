@@ -23,7 +23,7 @@ public class CommandHandler {
 
     private static final CommandDispatcher<CommandSource> DISPATCHER = new CommandDispatcher<>();
     private static final List<Command> commands = new ArrayList<>();
-    private final CommandSource COMMAND_SOURCE = new ChatCommandSource(mc);
+    private final static CommandSource COMMAND_SOURCE = new ChatCommandSource(mc);
     private static final Map<Class<? extends Command>, Command> commandMap = new HashMap<>();
 
     public static Class<CommandHandler> get() {
@@ -48,11 +48,11 @@ public class CommandHandler {
         DISPATCHER.execute(res);
     }
 
-    public CommandDispatcher<CommandSource> getDISPATCHER() {
+    public static CommandDispatcher<CommandSource> getDISPATCHER() {
         return DISPATCHER;
     }
 
-    public CommandSource getCOMMAND_SOURCE()    {
+    public static CommandSource getCOMMAND_SOURCE()    {
         return COMMAND_SOURCE;
     }
 

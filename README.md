@@ -29,11 +29,11 @@ Clone the repository or download it as a zip file. Run 'gradlew build' with comm
 Type ';help' in chat like a regular Minecraft command for interactive help. More help in [Unikko's wiki page](https://github.com/jnkyto/Unikko/wiki).
 
 ### Planned features
-- Add a command suggester for Unikko's commands
 - Add GUI and means to edit it
 - More "useful" commands
 
 ### Thanks to
 - Earthcomputer for https://github.com/Earthcomputer/clientcommands
+- meteordevelopment for https://github.com/MeteorDevelopment/meteor-client
 - amitojsingh366 for https://github.com/amitojsingh366/Amitojs-Minecraft-RPC-Fabric
 - MinnDevelopment for https://github.com/MinnDevelopment/java-discord-rpc

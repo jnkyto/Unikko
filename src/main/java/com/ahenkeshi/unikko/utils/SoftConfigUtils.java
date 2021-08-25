@@ -57,12 +57,12 @@ public class SoftConfigUtils {
         System.out.println("Unikko: SoftConfigUtils has saved values to configfile");
     }
 
-    public static void updateBoolean(String setting, String val)   {
-        switch (setting) {
+    public static void updateBoolean(String key, String val)   {
+        switch (key) {
             case "hudRender" -> hudRender = Boolean.valueOf(val);
             case "discordRpc" -> discordRpc = Boolean.valueOf(val);
             case "rpcAll" -> rpcAll = Boolean.valueOf(val);
-            default -> throw new IllegalStateException("Unikko: Unexpected value in SoftConfigUtils/updateBoolean: " + setting);
+            default -> ChatInfoUtils.sendError(Text.of("Unikko: Unexpected value in SoftConfigUtils updateBoolean: " + key));
         }
     }
 
@@ -70,7 +70,7 @@ public class SoftConfigUtils {
         try {
             return values.get(key);
         } catch (NullPointerException e)   {
-            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getInt error! Given key doesn't exist"));
+            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getInt error! Given key doesn't exist:" + key));
             return 0;
         }
     }
@@ -79,7 +79,7 @@ public class SoftConfigUtils {
         try {
             return booleans.get(key);
         } catch (NullPointerException e)   {
-            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getBoolean error! Given key doesn't exist"));
+            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getBoolean error! Given key doesn't exist:" + key));
             return false;
         }
     }
@@ -88,7 +88,7 @@ public class SoftConfigUtils {
         try {
             return strings.get(key);
         } catch (NullPointerException e) {
-            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getString error! Given key doesn't exist"));
+            ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getString error! Given key doesn't exist:" + key));
             return null;
         }
     }

@@ -31,7 +31,6 @@ public abstract class MixinInGameHud {
 
     @Inject(method="render", at=@At("RETURN"))
     private void render(MatrixStack matrices, float tickDelta, CallbackInfo ci)  {
-        // Text devd = new TranslatableText("unikko.devd");
         if(this.client.player != null) {
             String fps = ("fps: " + Integer.parseInt(client.fpsDebugString.split(" ")[0].split("/")[0]));
             int screenHeight = client.getWindow().getScaledHeight();

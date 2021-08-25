@@ -77,7 +77,7 @@ public class DiscordRPC {
         presence.largeImageKey = "icon";
         presence.largeImageText = Unikko.MODID;
         presence.details = Unikko.VERSION + Unikko.DEV;
-        presence.state = "Playing with power";
+        presence.state = "Playing with power!";
         presence.instance = 1;
         lib.Discord_UpdatePresence(presence);
     }

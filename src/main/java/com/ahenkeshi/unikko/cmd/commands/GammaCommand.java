@@ -17,7 +17,7 @@ import static com.mojang.brigadier.arguments.DoubleArgumentType.*;
 
 public class GammaCommand extends Command {
     public GammaCommand()   {
-        super("gamma", "Changes brightness/gamma");
+        super("gamma");
     }
 
     @Override
