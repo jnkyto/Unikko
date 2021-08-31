@@ -9,6 +9,8 @@ import net.minecraft.text.Text;
 import java.util.HashMap;
 import java.util.Map;
 
+import static com.ahenkeshi.unikko.Unikko.logger;
+
 @SuppressWarnings("FieldMayBeFinal")
 public class SoftConfigUtils {
     private static final Map<String, Boolean> booleans = new HashMap<>();
@@ -29,6 +31,7 @@ public class SoftConfigUtils {
     private static int fpsY = Integer.parseInt(HardConfigUtils.getValueWithKey("fpsY"));
 
     public static void saveBooleansToConfigFile()    {
+        long saveStart = System.currentTimeMillis();
         booleans.put("hudRender", hudRender);
         booleans.put("discordRpc", discordRpc);
         booleans.put("rpcAll", rpcAll);
@@ -53,8 +56,8 @@ public class SoftConfigUtils {
         for(Map.Entry<String, String> entry : strings.entrySet())   {
             HardConfigUtils.putInFile(entry.getKey(), String.valueOf(entry.getValue()));
         }
-
-        System.out.println("Unikko: SoftConfigUtils has saved values to configfile");
+        long saveFinish = System.currentTimeMillis() - saveStart;
+        logger.info("Configfile updated in " + saveFinish + "ms.");
     }
 
     public static void updateBoolean(String key, String val)   {

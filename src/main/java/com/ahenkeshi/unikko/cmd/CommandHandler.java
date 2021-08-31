@@ -1,5 +1,7 @@
 /* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Unikko's new (meaning this one) command framework was ***heavily*** inspired by Meteor client.
 */
 
 package com.ahenkeshi.unikko.cmd;
@@ -18,8 +20,7 @@ import java.util.List;
 import java.util.Map;
 
 public class CommandHandler {
-    @SuppressWarnings("FieldMayBeFinal")
-    private static MinecraftClient mc = MinecraftClient.getInstance();
+    private static final MinecraftClient mc = MinecraftClient.getInstance();
 
     private static final CommandDispatcher<CommandSource> DISPATCHER = new CommandDispatcher<>();
     private static final List<Command> commands = new ArrayList<>();
@@ -37,6 +38,7 @@ public class CommandHandler {
         add(new SayCommand());
         add(new HelpCommand());
         add(new ToggleCommand());
+        add(new NbtCommand());
     }
 
     public static void dispatch(String message) throws CommandSyntaxException  {
@@ -77,10 +79,6 @@ public class CommandHandler {
 
     public List<Command> getAll()   {
         return commands;
-    }
-
-    public boolean isCommand(String commandName)  {
-        return commands.contains(null);
     }
 
     @SuppressWarnings("unchecked")

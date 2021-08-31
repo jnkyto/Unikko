@@ -16,6 +16,7 @@ import net.minecraft.text.TranslatableText;
 import java.util.Objects;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
+import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class SayCommand extends Command {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
@@ -35,7 +36,7 @@ public class SayCommand extends Command {
     }
 
     private int incomplete(CommandSource source)    {
-        System.out.println("Unikko: say command was used -> incomplete");
+        logger.info("Say command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.say"));
         return SINGLE_SUCCESS;
     }

@@ -14,6 +14,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
+import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class ToggleCommand extends Command {
     public ToggleCommand()  {
@@ -32,7 +33,7 @@ public class ToggleCommand extends Command {
     }
 
     private static int toggle(CommandSource source, String setting)   {
-        System.out.println("Unikko: toggle command was used");
+        logger.info("Toggle command was used");
         Boolean bool = SoftConfigUtils.getBoolean(setting);
         bool = !bool;
         SoftConfigUtils.updateBoolean(setting, String.valueOf(bool));
@@ -46,7 +47,7 @@ public class ToggleCommand extends Command {
     }
 
     private static int incomplete(CommandSource source) {
-        System.out.println("Unikko: toggle command was used -> incomplete");
+        logger.info("Toggle command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.toggle"));
         return SINGLE_SUCCESS;
     }

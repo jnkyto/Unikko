@@ -21,6 +21,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 import java.util.Objects;
 
+import static com.ahenkeshi.unikko.Unikko.logger;
 
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
@@ -34,7 +35,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onSendChatMessage(String message, CallbackInfo ci) {
         if (message.startsWith(cmdPrefix))    {
-            System.out.println("Unikko: A command was used.");
+            // logger.info("A command was used.");
             try {
                 CommandHandler.dispatch(message.substring(cmdPrefix.length()));
             } catch (CommandSyntaxException e) {

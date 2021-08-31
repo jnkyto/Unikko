@@ -15,6 +15,8 @@ import net.minecraft.util.Hand;
 import java.util.Timer;
 import java.util.TimerTask;
 
+import static com.ahenkeshi.unikko.Unikko.logger;
+
 public class DiscordRPC {
     private static final club.minnced.discord.rpc.DiscordRPC lib = club.minnced.discord.rpc.DiscordRPC.INSTANCE;
     private static final String applicationID = "851423491525705769";
@@ -30,7 +32,7 @@ public class DiscordRPC {
 
     public static void init() {
         rpcAll = SoftConfigUtils.getBoolean("rpcAll");
-        handlers.ready = (user) -> System.out.println("Unikko: DiscordRPC ready.");
+        handlers.ready = (user) -> logger.info("DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
         boolean shouldStart = SoftConfigUtils.getBoolean("discordRpc");
 
@@ -51,7 +53,7 @@ public class DiscordRPC {
                 }
             };
             t.scheduleAtFixedRate(task, 5000, 5000);
-            System.out.println("Unikko: DiscordRPC successfully started!");
+            logger.info("Started or updated rich presence.");
         } else {
             lib.Discord_ClearPresence();
             lib.Discord_Shutdown();
@@ -59,7 +61,7 @@ public class DiscordRPC {
                 task.cancel();
                 t.purge();
             }
-            System.out.println("Unikko: DRPC init skipped because discordRpc is toggled false");
+            logger.info("DRPC init skipped because discordRpc is toggled false");
         }
     }
 

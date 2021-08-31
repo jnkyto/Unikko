@@ -12,7 +12,7 @@
 
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu. Arvo nyt: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC togglattu. Arvo nyt: %f",
-  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: rpcAll toggled. Value now: %f",
+  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: rpcAll togglattu. Arvo nyt: %f",
 
   "commands.uhelp.line.0": "§d[Unikko]§f Komentoapu:",
   "commands.uhelp.line.1": "  §cfov§7 - Muuta näkökentän kokoa (Field of View)",
@@ -29,6 +29,9 @@
   "commands.uhelp.command.help": "§7Tiedät jo miten tätä komentoa käytetään.",
   "commands.uhelp.command.cred": "§7Ihanko oikeasti tarvitset apua tämän komennon käyttämisessä?",
   "commands.uhelp.command.say": "§7Lähettää viestin chattiin. Vaaditaan viesteille, jotka alkavat komentomerkillä. Käyttö: §csay §e<viesti>§7.",
+
+  "commands.nbt.item": "§d[Unikko]§7 Nbt-tägit itemille %f",
+  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 Ei Nbt-tägejä tai sinulla ei ole mitään kädessä",
 
   "command.context.here": " > Ei tarpeeksi parametreja.",
 

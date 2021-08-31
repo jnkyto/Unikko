@@ -12,6 +12,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
+import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class CredCommand extends Command {
     public CredCommand()    {
@@ -24,7 +25,7 @@ public class CredCommand extends Command {
     }
 
     private static int credits(CommandSource source)  {
-        System.out.println("Unikko: cred command was used");
+        logger.info("Cred command was used");
         for(int i=0; i<4; i++) {
             Text feedback = new TranslatableText("commands.ucred.line." + i);
             ChatInfoUtils.sendFeedback(feedback);

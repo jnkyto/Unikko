@@ -8,6 +8,7 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
+import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class HelpCommand extends Command {
     public HelpCommand()    {
@@ -31,7 +32,7 @@ public class HelpCommand extends Command {
                         .executes(ctx -> commandHelp(ctx.getSource(), "say")));
     }
     public static int commonHelp(CommandSource source)   {
-        System.out.println("Unikko: help command was used -> commonHelp");
+        logger.info("Help command was used -> commonHelp");
         for(int i=0; i<8; i++)  {
             Text feedback = new TranslatableText("commands.uhelp.line." + i);
             ChatInfoUtils.sendFeedback(feedback);
@@ -40,7 +41,7 @@ public class HelpCommand extends Command {
     }
 
     public static int commandHelp(CommandSource source, String command)   {
-        System.out.println("Unikko: help command was used -> commandHelp");
+        logger.info("Help command was used -> commandHelp");
         Text feedback = new TranslatableText("commands.uhelp.command." + command);
         ChatInfoUtils.sendFeedback(feedback);
         return SINGLE_SUCCESS;

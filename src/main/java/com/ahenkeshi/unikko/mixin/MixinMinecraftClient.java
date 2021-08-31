@@ -13,6 +13,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
 import static com.ahenkeshi.unikko.Unikko.DEV_MODE;
+import static com.ahenkeshi.unikko.Unikko.logger;
 
 @Mixin(MinecraftClient.class)
 public class MixinMinecraftClient {
@@ -27,7 +28,7 @@ public class MixinMinecraftClient {
 
     @Inject(method = "onResolutionChanged", at = @At("HEAD"), cancellable = true)
     private void onResolutionChanged(CallbackInfo ci)  {
-        System.out.println("Unikko: Resolution changed. Print this message just because.");
+        logger.info("Resolution changed. Print this message just because.");
     }
 
 }

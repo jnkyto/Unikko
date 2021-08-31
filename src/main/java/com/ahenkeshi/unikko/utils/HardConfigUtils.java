@@ -19,6 +19,8 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
+import static com.ahenkeshi.unikko.Unikko.logger;
+
 @SuppressWarnings("unchecked")
 public class HardConfigUtils {
     private static final File configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID));
@@ -32,7 +34,7 @@ public class HardConfigUtils {
             configJson = new JSONObject();
             createDefaultEntries();
             Files.writeString(Paths.get(jsonName), configJson.toJSONString());
-            System.out.println("Unikko: Created new configfile " + jsonName);
+            logger.info("Created new configfile " + jsonName);
         } else  {
             try {
                 configJson = (JSONObject) readFile(jsonName);
@@ -42,11 +44,11 @@ public class HardConfigUtils {
                     // config manually.
                 }
             } catch (ParseException | ConfigVersionMismatchException pe) {
-                CrashReport report = new CrashReport("executing Unikko utility mod.", pe);
+                CrashReport report = new CrashReport("Unikko was creating its configfile.", pe);
                 pe.printStackTrace();
                 MinecraftClient.printCrashReport(report);
             }
-            System.out.println("Unikko: Configfile already exists, creation skipped");
+            logger.info("Configfile already exists, creation skipped");
         }
     }
 
@@ -59,10 +61,14 @@ public class HardConfigUtils {
     public static void putInFile(String setting, String value) {
         if(configJson.containsKey(setting)) {configJson.replace(setting, value);}
         else  {configJson.put(setting, value);}
-        System.out.println(Unikko.MODID + " " + setting + " was changed in configfile");
+        //logger.info(Unikko.MODID + " " + setting + " was changed in configfile");
         try {
             Files.writeString(Paths.get(jsonName), configJson.toJSONString());
-        } catch (IOException e) {e.printStackTrace();}
+        } catch (IOException e) {
+            CrashReport report = new CrashReport("Unikko was reading existing configfile.", e);
+            e.printStackTrace();
+            MinecraftClient.printCrashReport(report);
+        }
     }
 
     public static String getValueWithKey(String key)    {
@@ -85,6 +91,7 @@ public class HardConfigUtils {
         configJson.put("yawY", "188");
         configJson.put("fpsX", "110");
         configJson.put("fpsY", "10");
+        logger.info("Default config entries created.");
     }
 }
 
