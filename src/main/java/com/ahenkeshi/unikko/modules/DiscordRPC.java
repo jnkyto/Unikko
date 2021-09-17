@@ -15,8 +15,6 @@ import net.minecraft.util.Hand;
 import java.util.Timer;
 import java.util.TimerTask;
 
-import static com.ahenkeshi.unikko.Unikko.logger;
-
 public class DiscordRPC {
     private static final club.minnced.discord.rpc.DiscordRPC lib = club.minnced.discord.rpc.DiscordRPC.INSTANCE;
     private static final String applicationID = "851423491525705769";
@@ -32,7 +30,7 @@ public class DiscordRPC {
 
     public static void init() {
         rpcAll = SoftConfigUtils.getBoolean("rpcAll");
-        handlers.ready = (user) -> logger.info("DiscordRPC ready.");
+        handlers.ready = (user) -> Unikko.logger.info("DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
         boolean shouldStart = SoftConfigUtils.getBoolean("discordRpc");
 
@@ -53,7 +51,7 @@ public class DiscordRPC {
                 }
             };
             t.scheduleAtFixedRate(task, 5000, 5000);
-            logger.info("Started or updated rich presence.");
+            Unikko.logger.info("Started or updated rich presence.");
         } else {
             lib.Discord_ClearPresence();
             lib.Discord_Shutdown();
@@ -61,17 +59,18 @@ public class DiscordRPC {
                 task.cancel();
                 t.purge();
             }
-            logger.info("DRPC init skipped because discordRpc is toggled false");
+            Unikko.logger.info("DRPC init skipped because discordRpc is toggled false");
         }
     }
 
     /*
     DiscordRPCModule cheat sheet:
     Line 1 Title: Game title from app id
-    Line 2 presence.Details: Version ( + server )
+    Line 2 presence.Details: Version ( + server / singleplayer )
     Line 3 presence.State: Main menu / Holding
     Line 4: Playtime
      */
+
 
     public static void basicPresence() {
         DiscordRichPresence presence = new DiscordRichPresence();

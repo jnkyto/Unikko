@@ -4,6 +4,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.cmd.commands;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -15,7 +16,6 @@ import net.minecraft.text.TranslatableText;
 import net.minecraft.util.Hand;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class NbtCommand extends Command {
     public NbtCommand() {
@@ -36,7 +36,7 @@ public class NbtCommand extends Command {
     }
 
     private void viewNbt(CommandSource source, Item item)    {
-        logger.info("Nbt command was used -> viewNbt");
+        Unikko.logger.info("Nbt command was used -> viewNbt");
         String itemNbtStr = "";
         String itemStr = item.getName().getString();
         Text feedback0 = new TranslatableText("commands.nbt.no_nbt.line.0");
@@ -46,7 +46,13 @@ public class NbtCommand extends Command {
             if (itemNbt != null) {
                 itemNbtStr += itemNbt.toString();
                 feedback0 = new TranslatableText("commands.nbt.item", itemStr);
-                feedback1 = Text.of(itemNbtStr);
+                if(itemNbtStr.length() < 4096) {
+                    feedback1 = Text.of(itemNbtStr);
+                } else  {
+                    String newNbtStr = itemNbtStr.substring(0, 4096);
+                    feedback1 = Text.of(newNbtStr + "<...>");
+                    ChatInfoUtils.sendError(Text.of("NBT data over 4096 characters. The text has been trimmed."));
+                }
                 ChatInfoUtils.sendFeedback(feedback0);
                 ChatInfoUtils.sendFeedback(feedback1);
             } else {

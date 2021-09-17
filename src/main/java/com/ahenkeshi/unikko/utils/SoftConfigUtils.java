@@ -4,12 +4,11 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.utils;
 
+import com.ahenkeshi.unikko.Unikko;
 import net.minecraft.text.Text;
 
 import java.util.HashMap;
 import java.util.Map;
-
-import static com.ahenkeshi.unikko.Unikko.logger;
 
 @SuppressWarnings("FieldMayBeFinal")
 public class SoftConfigUtils {
@@ -57,7 +56,7 @@ public class SoftConfigUtils {
             HardConfigUtils.putInFile(entry.getKey(), String.valueOf(entry.getValue()));
         }
         long saveFinish = System.currentTimeMillis() - saveStart;
-        logger.info("Configfile updated in " + saveFinish + "ms.");
+        Unikko.logger.info("Configfile updated in " + saveFinish + "ms.");
     }
 
     public static void updateBoolean(String key, String val)   {
@@ -92,7 +91,7 @@ public class SoftConfigUtils {
             return strings.get(key);
         } catch (NullPointerException e) {
             ChatInfoUtils.sendError(Text.of("Unikko: SoftConfigUtils getString error! Given key doesn't exist:" + key));
-            return null;
+            return "error";
         }
     }
 }

@@ -5,9 +5,9 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
 import com.ahenkeshi.unikko.utils.FacingTowards;
 import com.ahenkeshi.unikko.utils.RainbowColor;
+import com.ahenkeshi.unikko.utils.SoftConfigUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.InGameHud;

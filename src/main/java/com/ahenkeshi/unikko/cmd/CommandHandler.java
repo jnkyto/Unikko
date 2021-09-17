@@ -10,6 +10,7 @@ import com.ahenkeshi.unikko.cmd.commands.*;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
+import com.ahenkeshi.unikko.cmd.commands.*;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.network.ClientCommandSource;
 import net.minecraft.command.CommandSource;
@@ -77,7 +78,7 @@ public class CommandHandler {
         return commands.size();
     }
 
-    public List<Command> getAll()   {
+    public static List<Command> getAll()   {
         return commands;
     }
 

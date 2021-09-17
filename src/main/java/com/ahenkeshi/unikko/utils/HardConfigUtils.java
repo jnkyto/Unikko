@@ -19,8 +19,6 @@ import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 
-import static com.ahenkeshi.unikko.Unikko.logger;
-
 @SuppressWarnings("unchecked")
 public class HardConfigUtils {
     private static final File configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID));
@@ -34,7 +32,7 @@ public class HardConfigUtils {
             configJson = new JSONObject();
             createDefaultEntries();
             Files.writeString(Paths.get(jsonName), configJson.toJSONString());
-            logger.info("Created new configfile " + jsonName);
+            Unikko.logger.info("Created new configfile " + jsonName);
         } else  {
             try {
                 configJson = (JSONObject) readFile(jsonName);
@@ -48,7 +46,7 @@ public class HardConfigUtils {
                 pe.printStackTrace();
                 MinecraftClient.printCrashReport(report);
             }
-            logger.info("Configfile already exists, creation skipped");
+            Unikko.logger.info("Configfile already exists, creation skipped");
         }
     }
 
@@ -91,7 +89,7 @@ public class HardConfigUtils {
         configJson.put("yawY", "188");
         configJson.put("fpsX", "110");
         configJson.put("fpsY", "10");
-        logger.info("Default config entries created.");
+        Unikko.logger.info("Default config entries created.");
     }
 }
 

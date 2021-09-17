@@ -12,14 +12,11 @@ import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfoReturnable;
 
-import static com.ahenkeshi.unikko.Unikko.DEV_MODE;
-import static com.ahenkeshi.unikko.Unikko.logger;
-
 @Mixin(MinecraftClient.class)
 public class MixinMinecraftClient {
     @Inject(method ="getWindowTitle" ,at = @At("RETURN"), cancellable = true)
     private void getWindowTitle(final CallbackInfoReturnable<String> cir)   {
-        if(DEV_MODE) {
+        if(Unikko.DEV_MODE) {
             cir.setReturnValue(Unikko.MODID + " " + Unikko.VERSION + " (" + Unikko.REL_DATE + ") *");
             // Decided that changing the window title is a stupid idea.
             // Still do it if devmode enabled because idk
@@ -28,7 +25,7 @@ public class MixinMinecraftClient {
 
     @Inject(method = "onResolutionChanged", at = @At("HEAD"), cancellable = true)
     private void onResolutionChanged(CallbackInfo ci)  {
-        logger.info("Resolution changed. Print this message just because.");
+        Unikko.logger.info("Resolution changed. Print this message just because.");
     }
 
 }

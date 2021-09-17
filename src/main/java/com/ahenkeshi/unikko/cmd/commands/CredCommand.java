@@ -4,6 +4,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.cmd.commands;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -12,7 +13,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class CredCommand extends Command {
     public CredCommand()    {
@@ -25,7 +25,7 @@ public class CredCommand extends Command {
     }
 
     private static int credits(CommandSource source)  {
-        logger.info("Cred command was used");
+        Unikko.logger.info("Cred command was used");
         for(int i=0; i<4; i++) {
             Text feedback = new TranslatableText("commands.ucred.line." + i);
             ChatInfoUtils.sendFeedback(feedback);

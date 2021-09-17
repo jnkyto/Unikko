@@ -4,6 +4,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.cmd.commands;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.brigadier.arguments.StringArgumentType;
@@ -16,7 +17,6 @@ import net.minecraft.text.TranslatableText;
 import java.util.Objects;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class SayCommand extends Command {
     private static final MinecraftClient mc = MinecraftClient.getInstance();
@@ -36,7 +36,7 @@ public class SayCommand extends Command {
     }
 
     private int incomplete(CommandSource source)    {
-        logger.info("Say command was used -> incomplete");
+        Unikko.logger.info("Say command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.say"));
         return SINGLE_SUCCESS;
     }

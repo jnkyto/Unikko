@@ -4,6 +4,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.cmd.commands;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.modules.DiscordRPC;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
@@ -14,7 +15,6 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class ToggleCommand extends Command {
     public ToggleCommand()  {
@@ -33,7 +33,7 @@ public class ToggleCommand extends Command {
     }
 
     private static int toggle(CommandSource source, String setting)   {
-        logger.info("Toggle command was used");
+        Unikko.logger.info("Toggle command was used");
         Boolean bool = SoftConfigUtils.getBoolean(setting);
         bool = !bool;
         SoftConfigUtils.updateBoolean(setting, String.valueOf(bool));
@@ -47,7 +47,7 @@ public class ToggleCommand extends Command {
     }
 
     private static int incomplete(CommandSource source) {
-        logger.info("Toggle command was used -> incomplete");
+        Unikko.logger.info("Toggle command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.toggle"));
         return SINGLE_SUCCESS;
     }

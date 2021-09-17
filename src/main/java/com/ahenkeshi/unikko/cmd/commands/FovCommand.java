@@ -4,6 +4,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.cmd.commands;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -15,7 +16,6 @@ import net.minecraft.text.TranslatableText;
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 import static com.mojang.brigadier.arguments.DoubleArgumentType.doubleArg;
 import static com.mojang.brigadier.arguments.DoubleArgumentType.getDouble;
-import static com.ahenkeshi.unikko.Unikko.logger;
 
 public class FovCommand extends Command {
     public FovCommand() {
@@ -33,7 +33,7 @@ public class FovCommand extends Command {
                         .executes(ctx -> setFov(ctx.getSource(), 110)));
     }
     private static int setFov(CommandSource source, double newFov) {
-        logger.info("Fov command was used -> setFov");
+        Unikko.logger.info("Fov command was used -> setFov");
         MinecraftClient.getInstance().options.fov = newFov;
         Text feedback = new TranslatableText("commands.ufov.success", newFov);
         ChatInfoUtils.sendFeedback(feedback);
@@ -41,7 +41,7 @@ public class FovCommand extends Command {
     }
 
     private static int incomplete(CommandSource source) {
-        logger.info("Fov command was used -> incomplete");
+        Unikko.logger.info("Fov command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.fov"));
         return SINGLE_SUCCESS;
     }

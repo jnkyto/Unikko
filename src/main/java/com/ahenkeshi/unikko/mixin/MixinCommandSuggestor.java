@@ -43,7 +43,6 @@ public abstract class MixinCommandSuggestor {
             locals = LocalCapture.CAPTURE_FAILHARD)
     private void onRefresh(CallbackInfo ci, String str, StringReader reader) {
         String cmdPref = SoftConfigUtils.getString("cmdPrefix");
-        assert cmdPref != null;
         int prefLength = cmdPref.length();
         if (reader.canRead(prefLength) && reader.getString().startsWith(cmdPref, reader.getCursor())) {
             reader.setCursor(reader.getCursor() + prefLength);
