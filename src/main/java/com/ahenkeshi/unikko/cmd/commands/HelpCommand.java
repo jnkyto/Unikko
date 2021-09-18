@@ -21,22 +21,7 @@ public class HelpCommand extends Command {
 
     @Override
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
-        builder.executes(ctx ->(commonHelp(ctx.getSource())))
-                .then(literal("fov")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "fov")))
-                .then(literal("gamma")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "gamma")))
-                .then(literal("toggle")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "toggle")))
-                .then(literal("help")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "help")))
-                .then(literal("cred")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "cred")))
-                .then(literal("say")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "say")))
-                .then(literal("nbt")
-                        .executes(ctx -> commandHelp(ctx.getSource(), "nbt")));
-                // I might get rid of these, and just use those hover events instead.
+        builder.executes(ctx ->(commonHelp(ctx.getSource())));
     }
     public static int commonHelp(CommandSource source)   {
         Unikko.logger.info("Help command was used -> commonHelp");
@@ -50,9 +35,7 @@ public class HelpCommand extends Command {
         {
             Command cmd = commands.get(i);
             commandTextList.append(getCommandText(cmd));
-            if(!(i == commands.size() - 1))    {
-                commandTextList.append(", ");
-            }
+            commandTextList.append(" ");
         }
         ChatInfoUtils.sendFeedback(help0);
         ChatInfoUtils.sendFeedback(commandTextList);
@@ -68,9 +51,9 @@ public class HelpCommand extends Command {
     }
 
     public static Text getCommandText(Command cmd)   {
-        Text info = new TranslatableText("commands.uhelp.line." + cmd.getName());
+        BaseText info = new TranslatableText("commands.uhelp.command." + cmd.getName());
         BaseText finalCommand = new LiteralText(SoftConfigUtils.getString("cmdPrefix") + cmd.getName());
         finalCommand.setStyle(finalCommand.getStyle().withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, info)));
-        return finalCommand.formatted(Formatting.YELLOW);
+        return finalCommand.formatted(Formatting.RED);
     }
 }
