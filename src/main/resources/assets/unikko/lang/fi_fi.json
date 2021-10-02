@@ -12,7 +12,7 @@
 
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender togglattu. Arvo nyt: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC togglattu. Arvo nyt: %f",
-  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: rpcAll togglattu. Arvo nyt: %f",
+  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: Yksityiskohtainen RPC togglattu. Arvo nyt: %f",
 
   "commands.uhelp.line.0": "§d[Unikko] §fKomentolista:",
   "commands.uhelp.line.1": "§7Liikuta hiiri komennon päälle saadaksesi lisätietoja.",
@@ -29,6 +29,8 @@
   "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 Ei Nbt-tägejä tai sinulla ei ole mitään kädessä",
 
   "command.context.here": " > Ei tarpeeksi parametreja.",
+
+  "utils.tickrate.alert": "Lag-varoitus",
 
   "unikko.devd": "Ahenkeshi teki tän",
 

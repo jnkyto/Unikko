@@ -8,6 +8,7 @@ import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.utils.FacingTowards;
 import com.ahenkeshi.unikko.utils.RainbowColor;
 import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.TickRateUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
 import net.minecraft.client.gui.hud.InGameHud;
@@ -19,6 +20,7 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
+import java.awt.*;
 import java.text.DecimalFormat;
 
 @Mixin(InGameHud.class)
@@ -34,7 +36,7 @@ public abstract class MixinInGameHud {
         if(this.client.player != null) {
             String fps = ("fps: " + Integer.parseInt(client.fpsDebugString.split(" ")[0].split("/")[0]));
             int screenHeight = client.getWindow().getScaledHeight();
-            // int screenWidth = mc.getWindow().getScaledWidth(); not needed atm
+            // int screenWidth = client.getWindow().getScaledWidth();
             double xpos = client.player.getX();
             double ypos = client.player.getY();
             double zpos = client.player.getZ();
@@ -55,6 +57,9 @@ public abstract class MixinInGameHud {
                 textRenderer.drawWithShadow(matrices, fps, SoftConfigUtils.getInt("fpsX"),
                         SoftConfigUtils.getInt("fpsY"), 16777215);
                         // ^ render fps
+                textRenderer.drawWithShadow(matrices, (String) TickRateUtils.getSinceLastTick(true),
+                        SoftConfigUtils.getInt("lagX"), SoftConfigUtils.getInt("lagY"), Color.red.getRGB());
+                        // ^ render lag alert
             }
         }
     }

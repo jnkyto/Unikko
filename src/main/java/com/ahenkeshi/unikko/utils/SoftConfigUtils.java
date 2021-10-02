@@ -28,6 +28,8 @@ public class SoftConfigUtils {
     private static int yawY = Integer.parseInt(HardConfigUtils.getValueWithKey("yawY"));
     private static int fpsX = Integer.parseInt(HardConfigUtils.getValueWithKey("fpsX"));
     private static int fpsY = Integer.parseInt(HardConfigUtils.getValueWithKey("fpsY"));
+    private static int lagX = Integer.parseInt(HardConfigUtils.getValueWithKey("lagX"));
+    private static int lagY = Integer.parseInt(HardConfigUtils.getValueWithKey("lagY"));
 
     public static void saveBooleansToConfigFile()    {
         long saveStart = System.currentTimeMillis();
@@ -43,6 +45,8 @@ public class SoftConfigUtils {
         values.put("yawY", yawY);
         values.put("fpsX", fpsX);
         values.put("fpsY", fpsY);
+        values.put("lagX", lagX);
+        values.put("lagY", lagY);
 
         for(Map.Entry<String, Boolean> entry : booleans.entrySet()) {
             HardConfigUtils.putInFile(entry.getKey(), String.valueOf(entry.getValue()));

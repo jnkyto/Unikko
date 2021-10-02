@@ -5,6 +5,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.cmd.CommandHandler;
+import com.ahenkeshi.unikko.utils.TickRateUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.CommandDispatcher;
 import net.minecraft.client.MinecraftClient;
@@ -13,7 +14,7 @@ import net.minecraft.client.network.ClientPlayNetworkHandler;
 import net.minecraft.command.CommandSource;
 import net.minecraft.network.ClientConnection;
 import net.minecraft.network.packet.s2c.play.CommandTreeS2CPacket;
-import net.minecraft.network.packet.s2c.play.EntitySpawnS2CPacket;
+import net.minecraft.network.packet.s2c.play.WorldTimeUpdateS2CPacket;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
@@ -34,22 +35,18 @@ public class MixinClientPlayNetworkHandler {
         CommandHandler.init();
     }
 
-    /*
-
     @Inject(method = "onGameJoin", at = @At("RETURN"))
-    private void postGameJoin(CallbackInfo ci)  {Relogger.onRelogSuccess();}
+    private void postGameJoin(CallbackInfo ci)  {
+        TickRateUtils.setGameJoined(System.currentTimeMillis());
+    }
 
-    this relog thing is skidded from somewhere but having it on this client might be neat
-
-    */
+    @Inject(method = "onWorldTimeUpdate", at = @At("RETURN"))
+    public void onOnWorldTimeUpdate(WorldTimeUpdateS2CPacket packet, CallbackInfo ci)   {
+        TickRateUtils.setLastTickAt(System.currentTimeMillis());
+    }
 
     @Inject(method = "onCommandTree", at = @At("TAIL"))
     public void onOnCommandTree(CommandTreeS2CPacket packet, CallbackInfo ci)   {
         CommandHandler.init();
-    }
-
-    @Inject(method = "onEntitySpawn", at = @At("TAIL"))
-    public void onOnEntitySpawn(EntitySpawnS2CPacket packet, CallbackInfo ci)   {
-
     }
 }

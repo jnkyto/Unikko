@@ -12,7 +12,7 @@
 
   "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender toggled. Value now: %f",
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled. Value now: %f",
-  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: rpcAll toggled. Value now: %f",
+  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: Detailed RPC toggled. Value now: %f",
 
   "commands.uhelp.line.0": "§d[Unikko] §fCommand list:§r",
   "commands.uhelp.line.1": "§7Hover cursor over a command for more info.",
@@ -29,6 +29,8 @@
   "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 No Nbt tags on item or you're holding nothing.",
 
   "command.context.here": " > Expected more arguments.",
+
+  "utils.tickrate.alert": "Lag alert",
 
   "unikko.devd": "Dev'd by Ahenkeshi",
 

@@ -89,6 +89,8 @@ public class HardConfigUtils {
         configJson.put("yawY", "188");
         configJson.put("fpsX", "110");
         configJson.put("fpsY", "10");
+        configJson.put("lagX", "110");
+        configJson.put("lagY", "20");
         Unikko.logger.info("Default config entries created.");
     }
 }

@@ -30,10 +30,7 @@ public class HelpCommand extends Command {
         BaseText commandTextList = new LiteralText("");
         Text help0 = new TranslatableText("commands.uhelp.line.0");
         Text help1 = new TranslatableText("commands.uhelp.line.1");
-
-        for(int i = 0; i < commands.size(); i++)
-        {
-            Command cmd = commands.get(i);
+        for (Command cmd : commands) {
             commandTextList.append(getCommandText(cmd));
             commandTextList.append(" ");
         }

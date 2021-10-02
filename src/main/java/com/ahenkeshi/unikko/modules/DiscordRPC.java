@@ -76,7 +76,7 @@ public class DiscordRPC {
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.startTimestamp = start_time; // epoch second
         presence.largeImageKey = "icon";
-        presence.largeImageText = Unikko.MODID;
+        presence.largeImageText = Unikko.MOD.getMetadata().getVersion().getFriendlyString();
         presence.details = Unikko.VERSION + Unikko.DEV;
         presence.state = "Playing with power!";
         presence.instance = 1;
@@ -101,7 +101,7 @@ public class DiscordRPC {
             }
             presence.startTimestamp = start_time;
             presence.largeImageKey = "icon";
-            presence.largeImageText = Unikko.MODID;
+            presence.largeImageText = Unikko.MOD.getMetadata().getVersion().getFriendlyString();
             presence.instance = 1;
             presence.smallImageKey = "player";
             if (!inSingleplayer) {
