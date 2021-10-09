@@ -2,9 +2,10 @@
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
 */
 
-package com.ahenkeshi.unikko.utils;
+package com.ahenkeshi.unikko.utils.config;
 
 import com.ahenkeshi.unikko.Unikko;
+import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import net.minecraft.text.Text;
 
 import java.util.HashMap;
@@ -28,8 +29,11 @@ public class SoftConfigUtils {
     private static int yawY = Integer.parseInt(HardConfigUtils.getValueWithKey("yawY"));
     private static int fpsX = Integer.parseInt(HardConfigUtils.getValueWithKey("fpsX"));
     private static int fpsY = Integer.parseInt(HardConfigUtils.getValueWithKey("fpsY"));
+    private static int tpsX = Integer.parseInt(HardConfigUtils.getValueWithKey("tpsX"));
+    private static int tpsY = Integer.parseInt(HardConfigUtils.getValueWithKey("tpsY"));
     private static int lagX = Integer.parseInt(HardConfigUtils.getValueWithKey("lagX"));
     private static int lagY = Integer.parseInt(HardConfigUtils.getValueWithKey("lagY"));
+    private static int lagDuration = Integer.parseInt(HardConfigUtils.getValueWithKey("lagDuration"));
 
     public static void saveBooleansToConfigFile()    {
         long saveStart = System.currentTimeMillis();
@@ -45,8 +49,12 @@ public class SoftConfigUtils {
         values.put("yawY", yawY);
         values.put("fpsX", fpsX);
         values.put("fpsY", fpsY);
+        values.put("tpsX", tpsX);
+        values.put("tpsY", tpsY);
         values.put("lagX", lagX);
         values.put("lagY", lagY);
+        values.put("lagDuration", lagDuration);
+
 
         for(Map.Entry<String, Boolean> entry : booleans.entrySet()) {
             HardConfigUtils.putInFile(entry.getKey(), String.valueOf(entry.getValue()));

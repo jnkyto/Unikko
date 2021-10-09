@@ -1,12 +1,12 @@
 {
   "unikko": "§d[Unikko]§7",
-  "command.failed": "§d[Unikko]§7: Command failed.",
-  "command.notfound": "§d[Unikko]§7: Incomplete or missing command. Do §chelp§7 or §csay§7 if you want to send your input as a chat message.",
+  "command.failed": "§d[Unikko]§7: コマンド失敗した。",
+  "command.notfound": "§d[Unikko]§7: コマンドじゃありません。 コマンドリストに「help」と入力します。",
   "commands.ufov.success": "§d[Unikko]§7: Set FOV to %f",
   "commands.ugamma.success": "§d[Unikko]§7: Set Gamma to %f",
 
   "commands.ucred.line.0": "§d[Unikko] §fwas brought to you by:§r",
-  "commands.ucred.line.1": "  §c§lDeveloper: §r§cjnkyto/Ahenkeshi",
+  "commands.ucred.line.1": "  §c§lDeveloper: §r§cjnkyto/アヘンケシ",
   "commands.ucred.line.2": "  §7Unikko is licensed under CC0-1.0.",
   "commands.ucred.line.3": "  §7More info on GitHub §f> ",
 
@@ -14,7 +14,7 @@
   "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled. Value now: %f",
   "commands.utoggle.rpcAll.success": "§d[Unikko]§7: Detailed RPC toggled. Value now: %f",
 
-  "commands.uhelp.line.0": "§d[Unikko] §fCommand list:§r",
+  "commands.uhelp.line.0": "§d[Unikko] §fコマンドリスト:§r",
   "commands.uhelp.line.1": "§7Hover cursor over a command for more info.",
 
   "commands.uhelp.command.fov": "§7Usage: §cfov §e<value>\n§e'normal' §7or §e'quake' §7can also be used as the value.",
@@ -25,15 +25,15 @@
   "commands.uhelp.command.say": "§7Usage: §csay §e<message>\n§7Sends a message to chat. Needed for messages that start with the command prefix.",
   "commands.uhelp.command.nbt": "§7Usage: §cnbt §7while holding item\n§7Prints NBT data of item held.",
 
-  "commands.nbt.item": "§d[Unikko]§7 Nbt tags of %f",
-  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 No Nbt tags on item or you're holding nothing.",
-  "commands.nbt.error.toomanychars": "NBT data over 4096 characters. The text has been trimmed.",
+  "commands.nbt.item": "§d[Unikko]§7 %fのNBT鬼ごっこ:",
+  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 NBT鬼ごっこなし。 あなたはなんでもないを持っていますか？",
+  "commands.nbt.error.toomanychars": "4096文字を超えるNBTデータ。 テキストが短縮されました。",
 
-  "command.context.here": " > Expected more arguments.",
+  "command.context.here": " > より多くのパラメータが必要です。",
 
-  "utils.tickrate.alert": "Lag alert",
+  "utils.tickrate.alert": "ラグアラート",
 
-  "unikko.devd": "Dev'd by Ahenkeshi",
+  "unikko.devd": "アヘンケシが作った",
 
-  "translatabletext.test": "§d[Unikko]§7: This is a test string."
+  "translatabletext.test": "§d[Unikko]§7: これはテスト文字列です。"
 }

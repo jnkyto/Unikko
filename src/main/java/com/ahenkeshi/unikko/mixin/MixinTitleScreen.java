@@ -5,7 +5,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.modules.DiscordRPC;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;

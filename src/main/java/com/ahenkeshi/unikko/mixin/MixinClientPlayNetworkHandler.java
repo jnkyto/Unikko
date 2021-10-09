@@ -36,13 +36,13 @@ public class MixinClientPlayNetworkHandler {
     }
 
     @Inject(method = "onGameJoin", at = @At("RETURN"))
-    private void postGameJoin(CallbackInfo ci)  {
-        TickRateUtils.setGameJoined(System.currentTimeMillis());
+    private void onOnGameJoin(CallbackInfo ci)  {
+        TickRateUtils.gameJoined(System.currentTimeMillis());
     }
 
     @Inject(method = "onWorldTimeUpdate", at = @At("RETURN"))
     public void onOnWorldTimeUpdate(WorldTimeUpdateS2CPacket packet, CallbackInfo ci)   {
-        TickRateUtils.setLastTickAt(System.currentTimeMillis());
+        TickRateUtils.onReceivePacket();
     }
 
     @Inject(method = "onCommandTree", at = @At("TAIL"))

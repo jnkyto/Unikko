@@ -7,7 +7,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.cmd.CommandHandler;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;

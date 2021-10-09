@@ -7,7 +7,7 @@ package com.ahenkeshi.unikko.mixin;
 import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.utils.FacingTowards;
 import com.ahenkeshi.unikko.utils.RainbowColor;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.ahenkeshi.unikko.utils.TickRateUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -57,6 +57,9 @@ public abstract class MixinInGameHud {
                 textRenderer.drawWithShadow(matrices, fps, SoftConfigUtils.getInt("fpsX"),
                         SoftConfigUtils.getInt("fpsY"), 16777215);
                         // ^ render fps
+                textRenderer.drawWithShadow(matrices, ("tps: " + TickRateUtils.getTickrate()),
+                        SoftConfigUtils.getInt("tpsX"), SoftConfigUtils.getInt("tpsY"), 16777215);
+                        // ^ render tps
                 textRenderer.drawWithShadow(matrices, (String) TickRateUtils.getSinceLastTick(true),
                         SoftConfigUtils.getInt("lagX"), SoftConfigUtils.getInt("lagY"), Color.red.getRGB());
                         // ^ render lag alert

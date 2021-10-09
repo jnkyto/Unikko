@@ -46,15 +46,16 @@ public class NbtCommand extends Command {
             if (itemNbt != null) {
                 itemNbtStr += itemNbt.toString();
                 feedback0 = new TranslatableText("commands.nbt.item", itemStr);
+                ChatInfoUtils.sendFeedback(feedback0);
                 if(itemNbtStr.length() < 4096) {
                     feedback1 = Text.of(itemNbtStr);
+                    ChatInfoUtils.sendFeedback(feedback1);
                 } else  {
                     String newNbtStr = itemNbtStr.substring(0, 4096);
                     feedback1 = Text.of(newNbtStr + "<...>");
-                    ChatInfoUtils.sendError(Text.of("NBT data over 4096 characters. The text has been trimmed."));
+                    ChatInfoUtils.sendFeedback(feedback1);
+                    ChatInfoUtils.sendError(new TranslatableText("commands.nbt.error.toomanychars"));
                 }
-                ChatInfoUtils.sendFeedback(feedback0);
-                ChatInfoUtils.sendFeedback(feedback1);
             } else {
                 ChatInfoUtils.sendFeedback(feedback0);
             }

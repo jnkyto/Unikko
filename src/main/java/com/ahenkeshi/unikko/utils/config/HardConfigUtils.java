@@ -2,7 +2,7 @@
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
 */
 
-package com.ahenkeshi.unikko.utils;
+package com.ahenkeshi.unikko.utils.config;
 
 import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.exceptions.ConfigVersionMismatchException;
@@ -89,8 +89,11 @@ public class HardConfigUtils {
         configJson.put("yawY", "188");
         configJson.put("fpsX", "110");
         configJson.put("fpsY", "10");
-        configJson.put("lagX", "110");
+        configJson.put("tpsX", "170");
+        configJson.put("tpsY", "10");
+        configJson.put("lagX", "170");
         configJson.put("lagY", "20");
+        configJson.put("lagDuration", "2000");
         Unikko.logger.info("Default config entries created.");
     }
 }

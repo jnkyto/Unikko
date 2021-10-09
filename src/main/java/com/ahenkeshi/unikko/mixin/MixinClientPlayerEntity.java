@@ -6,7 +6,7 @@ package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.cmd.CommandHandler;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.client.network.AbstractClientPlayerEntity;

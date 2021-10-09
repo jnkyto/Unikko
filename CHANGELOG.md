@@ -2,12 +2,13 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## Unreleased (1.1.0-alpha.3) - 2021/10/02
+## Unreleased (1.1.0-alpha.4) - 2021/10/09
 
----
 ### Added
  - Changelog
  - Lag meter
+ - TPS counter
+ - Japanese translation (unfinished)
 
 ### Changed
  - Help command now lists all commands with hover events providing additional info.

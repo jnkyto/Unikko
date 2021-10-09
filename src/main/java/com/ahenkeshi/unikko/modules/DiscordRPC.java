@@ -7,7 +7,7 @@ package com.ahenkeshi.unikko.modules;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRichPresence;
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;

@@ -8,7 +8,7 @@ import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.modules.DiscordRPC;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
-import com.ahenkeshi.unikko.utils.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
