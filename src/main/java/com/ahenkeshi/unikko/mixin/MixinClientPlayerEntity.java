@@ -4,9 +4,9 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.mixin;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.CommandHandler;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.mojang.authlib.GameProfile;
 import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import net.minecraft.client.network.AbstractClientPlayerEntity;
@@ -19,12 +19,10 @@ import org.spongepowered.asm.mixin.injection.At;
 import org.spongepowered.asm.mixin.injection.Inject;
 import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
-import java.util.Objects;
-
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
-    @Unique private final String cmdPrefix = Objects.requireNonNull(SoftConfigUtils.getString("cmdPrefix"));
+    @Unique private final String cmdPrefix = (String) Unikko.softConfig.cmdPrefix.value();
 
     public MixinClientPlayerEntity(ClientWorld world, GameProfile profile)  {
         super(world, profile);

@@ -32,7 +32,7 @@ public class CommandHandler {
         return CommandHandler.class;
     }
 
-    public static void init()  {
+    public static void init() {
         add(new CredCommand());
         add(new FovCommand());
         add(new GammaCommand());
@@ -42,11 +42,11 @@ public class CommandHandler {
         add(new NbtCommand());
     }
 
-    public static void dispatch(String message) throws CommandSyntaxException  {
+    public static void dispatch(String message) throws CommandSyntaxException {
         dispatch(message, new ChatCommandSource(mc));
     }
 
-    public static void dispatch(String message, CommandSource source) throws CommandSyntaxException    {
+    public static void dispatch(String message, CommandSource source) throws CommandSyntaxException {
         ParseResults<CommandSource> res = DISPATCHER.parse(message, source);
         DISPATCHER.execute(res);
     }
@@ -55,17 +55,17 @@ public class CommandHandler {
         return DISPATCHER;
     }
 
-    public static CommandSource getCOMMAND_SOURCE()    {
+    public static CommandSource getCOMMAND_SOURCE() {
         return COMMAND_SOURCE;
     }
 
-    private final static class ChatCommandSource extends ClientCommandSource    {
-        public ChatCommandSource(MinecraftClient mc)    {
+    private final static class ChatCommandSource extends ClientCommandSource {
+        public ChatCommandSource(MinecraftClient mc) {
             super(null, mc);
         }
     }
 
-    public static void add(Command command)    {
+    public static void add(Command command) {
         commands.removeIf(command1 -> command1.getName().equals(command.getName()));
         commandMap.values().removeIf(command1 -> command1.getName().equals(command.getName()));
 
@@ -74,16 +74,11 @@ public class CommandHandler {
         commandMap.put(command.getClass(), command);
     }
 
-    public int getCount()   {
+    public int getCount() {
         return commands.size();
     }
 
-    public static List<Command> getAll()   {
+    public static List<Command> getAll() {
         return commands;
-    }
-
-    @SuppressWarnings("unchecked")
-    public <T extends Command> T get(Class<T> clazz)    {
-        return (T) commandMap.get(clazz);
     }
 }

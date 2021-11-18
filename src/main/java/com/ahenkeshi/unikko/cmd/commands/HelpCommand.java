@@ -1,10 +1,13 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.cmd.commands;
 
 import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.cmd.CommandHandler;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.*;
@@ -40,16 +43,9 @@ public class HelpCommand extends Command {
         return SINGLE_SUCCESS;
     }
 
-    public static int commandHelp(CommandSource source, String command)   {
-        Unikko.logger.info("Help command was used -> commandHelp");
-        Text feedback = new TranslatableText("commands.uhelp.command." + command);
-        ChatInfoUtils.sendFeedback(feedback);
-        return SINGLE_SUCCESS;
-    }
-
     public static Text getCommandText(Command cmd)   {
         BaseText info = new TranslatableText("commands.uhelp.command." + cmd.getName());
-        BaseText finalCommand = new LiteralText(SoftConfigUtils.getString("cmdPrefix") + cmd.getName());
+        BaseText finalCommand = new LiteralText(Unikko.softConfig.cmdPrefix.value() + cmd.getName());
         finalCommand.setStyle(finalCommand.getStyle().withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, info)));
         return finalCommand.formatted(Formatting.RED);
     }

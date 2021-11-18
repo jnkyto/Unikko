@@ -1,5 +1,7 @@
 /* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+Inspired by Amitoj Singh's Amitojs-Minecraft-RPC-Fabric
 */
 
 package com.ahenkeshi.unikko.modules;
@@ -7,7 +9,6 @@ package com.ahenkeshi.unikko.modules;
 import club.minnced.discord.rpc.DiscordEventHandlers;
 import club.minnced.discord.rpc.DiscordRichPresence;
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.item.ItemStack;
 import net.minecraft.util.Hand;
@@ -29,10 +30,10 @@ public class DiscordRPC {
     private static TimerTask task;
 
     public static void init() {
-        rpcAll = SoftConfigUtils.getBoolean("rpcAll");
+        rpcAll = (Boolean) Unikko.softConfig.rpcAll.value();
         handlers.ready = (user) -> Unikko.logger.info("DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = SoftConfigUtils.getBoolean("discordRpc");
+        boolean shouldStart = (Boolean) Unikko.softConfig.discordRpc.value();
 
         if (shouldStart) {
             basicPresence();
@@ -77,8 +78,8 @@ public class DiscordRPC {
         presence.startTimestamp = start_time; // epoch second
         presence.largeImageKey = "icon";
         presence.largeImageText = Unikko.MOD.getMetadata().getVersion().getFriendlyString();
-        presence.details = Unikko.VERSION + Unikko.DEV;
-        presence.state = "Playing with power!";
+        presence.details = "Playing with power!";
+        // presence.state = "";
         presence.instance = 1;
         lib.Discord_UpdatePresence(presence);
     }
@@ -109,13 +110,13 @@ public class DiscordRPC {
                 if (mc.getCurrentServerEntry() != null) {
                     serverip = mc.getCurrentServerEntry().address.toLowerCase();
                     if (serverip.equals("motimaa.net"))	{	// funny joek xd
-                        playername = "Someone...";
-                        serverip = "Somewhere...";
+                        playername = "anyone ig";
+                        serverip = "wherever idk";
                     }
                 }
-                presence.details = Unikko.VERSION + Unikko.DEV + " | " + serverip;
+                presence.details = "Playing at " + serverip;
             } else {
-                presence.details = Unikko.VERSION + Unikko.DEV + " | Singleplayer";
+                presence.details = "Singleplayer";
             }
             presence.smallImageText = "Playing as " + playername;
             lib.Discord_UpdatePresence(presence);

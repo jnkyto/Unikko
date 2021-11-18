@@ -23,7 +23,7 @@ public class MixinMinecraftClient {
         }
     }
 
-    @Inject(method = "onResolutionChanged", at = @At("HEAD"), cancellable = true)
+    @Inject(method = "onResolutionChanged", at = @At("HEAD"))
     private void onResolutionChanged(CallbackInfo ci)  {
         Unikko.logger.info("Resolution changed. Print this message just because.");
     }

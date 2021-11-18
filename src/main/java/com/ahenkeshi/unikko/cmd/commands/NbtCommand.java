@@ -52,7 +52,7 @@ public class NbtCommand extends Command {
                     ChatInfoUtils.sendFeedback(feedback1);
                 } else  {
                     String newNbtStr = itemNbtStr.substring(0, 4096);
-                    feedback1 = Text.of(newNbtStr + "<...>");
+                    feedback1 = Text.of(newNbtStr + " <...>");
                     ChatInfoUtils.sendFeedback(feedback1);
                     ChatInfoUtils.sendError(new TranslatableText("commands.nbt.error.toomanychars"));
                 }

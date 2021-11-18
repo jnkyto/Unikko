@@ -6,8 +6,8 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 
 package com.ahenkeshi.unikko.mixin;
 
+import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.CommandHandler;
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
@@ -42,7 +42,7 @@ public abstract class MixinCommandSuggestor {
             cancellable = true,
             locals = LocalCapture.CAPTURE_FAILHARD)
     private void onRefresh(CallbackInfo ci, String str, StringReader reader) {
-        String cmdPref = SoftConfigUtils.getString("cmdPrefix");
+        String cmdPref = (String) Unikko.softConfig.cmdPrefix.value();
         int prefLength = cmdPref.length();
         if (reader.canRead(prefLength) && reader.getString().startsWith(cmdPref, reader.getCursor())) {
             reader.setCursor(reader.getCursor() + prefLength);

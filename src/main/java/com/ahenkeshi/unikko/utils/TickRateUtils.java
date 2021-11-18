@@ -1,10 +1,12 @@
 /* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+
+***Heavily*** inspired by Meteor Client, which in turn was inspired by Kami Client
 */
 
 package com.ahenkeshi.unikko.utils;
 
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
+import com.ahenkeshi.unikko.Unikko;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.text.TranslatableText;
 
@@ -29,7 +31,7 @@ public class TickRateUtils {
     public static Object getSinceLastTick(boolean formattedForHud) {
         long now = System.currentTimeMillis();
         if (formattedForHud) {
-            if(now - gameJoined > 3000 && now - lastTickAt > SoftConfigUtils.getInt("lagDuration")
+            if(now - gameJoined > 3000 && now - lastTickAt > (int) Unikko.softConfig.lagDuration.value()
                     && !mc.isInSingleplayer()) {
                 String alert = new TranslatableText("utils.tickrate.alert").getString();
                 return (alert + ": " + df.format((now - lastTickAt) / 1000f));
@@ -38,11 +40,11 @@ public class TickRateUtils {
     }
 
     public static void onReceivePacket() {
-            long now = System.currentTimeMillis();
-            float elapsed = (float) (now - lastTickAt) / 1000.0F;
-            tickrates[nextIndex] = CommonUtils.clamp(20.0f / elapsed, 0.0f, 20.0f);
-            nextIndex = (nextIndex + 1) % tickrates.length;
-            lastTickAt = now;
+        long now = System.currentTimeMillis();
+        float elapsed = (float) (now - lastTickAt) / 1000.0F;
+        tickrates[nextIndex] = CommonUtils.clamp(20.0f / elapsed, 0.0f, 20.0f);
+        nextIndex = (nextIndex + 1) % tickrates.length;
+        lastTickAt = now;
     }
 
     public static String getTickrate()  {

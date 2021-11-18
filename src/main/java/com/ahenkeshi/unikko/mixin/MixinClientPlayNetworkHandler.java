@@ -24,11 +24,8 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 
 @Mixin(ClientPlayNetworkHandler.class)
 public class MixinClientPlayNetworkHandler {
-    @Shadow
-    private CommandDispatcher<CommandSource> commandDispatcher;
-
-    @Shadow @Final
-    private MinecraftClient client;
+    @Shadow private CommandDispatcher<CommandSource> commandDispatcher;
+    @Shadow @Final private MinecraftClient client;
 
     @Inject(method = "<init>", at = @At("RETURN"))
     public void onInit(MinecraftClient mc, Screen screen, ClientConnection connection, GameProfile profile, CallbackInfo ci)    {

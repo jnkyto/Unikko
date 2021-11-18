@@ -13,7 +13,7 @@
 
 <b>Unikko</b> is a utility mod for Minecraft 1.17.x. It's features include Discord Rich Presence and some commands. This mod is mainly for my personal learning purposes; don't expect 5-star quality and daily updates.
 
-Unikko will be developed mainly for 1.17.x. Changes *may* be occasionally backported to 1.16.5.
+Unikko will be developed mainly for 1.17.x. ~~Changes *may* be occasionally backported to 1.16.5.~~ Because the release of 1.18 seems to be just around the corner, I see no reason for 1.16 support to continue.
 
 ### Building from source
 Clone the repository or download it as a zip file. Run 'gradlew build' with command line in project root folder. Two .jar files should show up in build/libs. The working mod is the only one without a suffix.

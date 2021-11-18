@@ -8,7 +8,7 @@ import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
 import com.ahenkeshi.unikko.modules.DiscordRPC;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
+import com.ahenkeshi.unikko.utils.config.SoftConfig;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
 import net.minecraft.command.CommandSource;
 import net.minecraft.text.Text;
@@ -25,24 +25,21 @@ public class ToggleCommand extends Command {
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
         builder.executes(ctx ->(incomplete(ctx.getSource())))
                 .then(literal("hud")
-                    .executes(ctx -> toggle(ctx.getSource(), "hudRender")))
+                    .executes(ctx -> toggle(ctx.getSource(), Unikko.softConfig.hudRender)))
                 .then(literal("rpc")
-                        .executes(ctx -> toggle(ctx.getSource(), "discordRpc"))
+                        .executes(ctx -> toggle(ctx.getSource(), Unikko.softConfig.discordRpc))
                     .then(literal("detailed")
-                            .executes(ctx -> toggle(ctx.getSource(), "rpcAll"))));
+                            .executes(ctx -> toggle(ctx.getSource(), Unikko.softConfig.rpcAll))));
     }
 
-    private static int toggle(CommandSource source, String setting)   {
-        Unikko.logger.info("Toggle command was used");
-        Boolean bool = SoftConfigUtils.getBoolean(setting);
-        bool = !bool;
-        SoftConfigUtils.updateBoolean(setting, String.valueOf(bool));
-        Text feedback = new TranslatableText("commands.utoggle." + setting + ".success", bool);
+    private static int toggle(CommandSource source, SoftConfig.SoftConfigEntry setting)   {
+        boolean temp = !(Boolean) setting.value();
+        Unikko.logger.info("Toggle command was used, setting:" + setting.getKey() + " oval:" + setting.value() + " nval:" + temp);
+        setting.set(temp);
+        Text feedback = new TranslatableText("commands.utoggle." + setting.getKey() + ".success", setting.value());
         ChatInfoUtils.sendFeedback(feedback);
-        SoftConfigUtils.saveBooleansToConfigFile();
-        if(setting.equals("discordRpc") || setting.equals("rpcAll")) {
-            DiscordRPC.init();
-        }
+        DiscordRPC.init();
+        Unikko.softConfig.pushHard();
         return SINGLE_SUCCESS;
     }
 

@@ -18,13 +18,32 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.HashMap;
+
+/**
+ * @author Joona Kytöniemi kjoona@outlook.com
+ * @since 1.0.0
+ *
+ * File operation utilities for the configuration file.
+ */
+
+/* TODO: Maybe merge configMap and configJson. Also all methods of this class are static... */
 
 @SuppressWarnings("unchecked")
 public class HardConfigUtils {
     private static final File configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID));
     private static JSONObject configJson;
+
+    private static HashMap<String, String> configMap = new HashMap<>();
     private static final String jsonName = (configFolder.getPath() + "/" + Unikko.MODID + "_" + Unikko.VERSION + ".json");
 
+
+    /**
+     * Creates a configuration file if it doesn't exist. Otherwise, runs readFile() to parse existing file.
+     * Also creates a config hashmap to pass on to SoftConfig.
+     *
+     * @throws IOException Normal exception that can occur from file operation issues.
+     */
     public static void createFile() throws IOException {
         //noinspection ResultOfMethodCallIgnored
         configFolder.mkdirs();
@@ -48,18 +67,32 @@ public class HardConfigUtils {
             }
             Unikko.logger.info("Configfile already exists, creation skipped");
         }
+        configMap = (HashMap<String, String>) configJson.clone();
     }
 
+    /**
+     * Reads and parses an existing configuration file.
+     *
+     * @param filename The path to the configuration file.
+     * @return Return parsed file that will be cast to a JSONObject.
+     * @throws IOException Normal exception that can occur from file operation issues.
+     * @throws ParseException Exception that occurs when config file is unlike what was expected.
+     */
     public static Object readFile(String filename) throws IOException, ParseException {
         FileReader reader = new FileReader(filename);
         JSONParser parser = new JSONParser();
         return parser.parse(reader);
     }
 
+    /**
+     * Writes the provided setting+value to the configuration file.
+     *
+     * @param setting The key to be created/changed.
+     * @param value The value of the key to be changed/created.
+     */
     public static void putInFile(String setting, String value) {
         if(configJson.containsKey(setting)) {configJson.replace(setting, value);}
         else  {configJson.put(setting, value);}
-        //logger.info(Unikko.MODID + " " + setting + " was changed in configfile");
         try {
             Files.writeString(Paths.get(jsonName), configJson.toJSONString());
         } catch (IOException e) {
@@ -69,12 +102,21 @@ public class HardConfigUtils {
         }
     }
 
+    /**
+     * Fetches the value of a key (setting) from the configuration file.
+     *
+     * @param key The key where the value will be fetched.
+     * @return The value of the provided key. If the key doesn't exist, return null.
+     */
     public static String getValueWithKey(String key)    {
         if(configJson.containsKey(key)) {
             return (String) configJson.get(key);
         } else  {return "false";}
     }
 
+    /**
+     * Creates the default configuration file entries.
+     */
     public static void createDefaultEntries()   {   // default entries to be added to configfile upon creation
         configJson.put(Unikko.MODID, Unikko.VERSION);
         configJson.put("hudRender", "true");
@@ -95,6 +137,10 @@ public class HardConfigUtils {
         configJson.put("lagY", "20");
         configJson.put("lagDuration", "2000");
         Unikko.logger.info("Default config entries created.");
+    }
+
+    public static HashMap<String, String> getConfigMap() {
+        return configMap;
     }
 }
 

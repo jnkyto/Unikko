@@ -7,7 +7,6 @@ package com.ahenkeshi.unikko.mixin;
 import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.utils.FacingTowards;
 import com.ahenkeshi.unikko.utils.RainbowColor;
-import com.ahenkeshi.unikko.utils.config.SoftConfigUtils;
 import com.ahenkeshi.unikko.utils.TickRateUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -26,42 +25,40 @@ import java.text.DecimalFormat;
 @Mixin(InGameHud.class)
 public abstract class MixinInGameHud {
     @Shadow @Final private MinecraftClient client;
-    private final DecimalFormat df = new DecimalFormat("0.0");
-    String yawStr;
-
     @Shadow public abstract TextRenderer getTextRenderer();
+
+    private final DecimalFormat df = new DecimalFormat("0.0");
 
     @Inject(method="render", at=@At("RETURN"))
     private void render(MatrixStack matrices, float tickDelta, CallbackInfo ci)  {
         if(this.client.player != null) {
             String fps = ("fps: " + Integer.parseInt(client.fpsDebugString.split(" ")[0].split("/")[0]));
             int screenHeight = client.getWindow().getScaledHeight();
-            // int screenWidth = client.getWindow().getScaledWidth();
             double xpos = client.player.getX();
             double ypos = client.player.getY();
             double zpos = client.player.getZ();
             String yaw = client.player.getHorizontalFacing().asString();
-            yawStr = FacingTowards.get(yaw);
-            if(!this.client.options.debugEnabled && SoftConfigUtils.getBoolean("hudRender")) {
+            String yawStr = FacingTowards.get(yaw);
+            if(!this.client.options.debugEnabled && (Boolean) Unikko.softConfig.hudRender.value()) {
                 TextRenderer textRenderer = this.getTextRenderer();
                 textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION + Unikko.DEV,
-                        SoftConfigUtils.getInt("watermarkX"), SoftConfigUtils.getInt("watermarkY"),
+                        (Integer) Unikko.softConfig.watermarkX.value(), (Integer) Unikko.softConfig.watermarkY.value(),
                         RainbowColor.gen(0));
                         // ^ render watermark
-                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, SoftConfigUtils.getInt("reldateX"),
-                        SoftConfigUtils.getInt("reldateY"), RainbowColor.gen(300));
+                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, (Integer) Unikko.softConfig.reldateX.value(),
+                        (Integer) Unikko.softConfig.reldateY.value(), RainbowColor.gen(300));
                         // ^ render release date
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
-                        df.format(zpos)), SoftConfigUtils.getInt("yawX"), screenHeight - 26, 16777215);
+                        df.format(zpos)), (Integer) Unikko.softConfig.yawX.value(), screenHeight - 26, 16777215);
                         // ^ render yaw and coords (i gave up on yawY. i promise i'll figure it out)
-                textRenderer.drawWithShadow(matrices, fps, SoftConfigUtils.getInt("fpsX"),
-                        SoftConfigUtils.getInt("fpsY"), 16777215);
+                textRenderer.drawWithShadow(matrices, fps, (Integer) Unikko.softConfig.fpsX.value(),
+                        (Integer) Unikko.softConfig.fpsY.value(), 16777215);
                         // ^ render fps
                 textRenderer.drawWithShadow(matrices, ("tps: " + TickRateUtils.getTickrate()),
-                        SoftConfigUtils.getInt("tpsX"), SoftConfigUtils.getInt("tpsY"), 16777215);
+                        (Integer) Unikko.softConfig.tpsX.value(), (Integer) Unikko.softConfig.tpsY.value(), 16777215);
                         // ^ render tps
                 textRenderer.drawWithShadow(matrices, (String) TickRateUtils.getSinceLastTick(true),
-                        SoftConfigUtils.getInt("lagX"), SoftConfigUtils.getInt("lagY"), Color.red.getRGB());
+                        (Integer) Unikko.softConfig.lagX.value(), (Integer) Unikko.softConfig.lagY.value(), Color.red.getRGB());
                         // ^ render lag alert
             }
         }
