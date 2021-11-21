@@ -1,18 +1,18 @@
 {
   "unikko": "§d[Unikko]§7",
   "command.failed": "§d[Unikko]§7: コマンド失敗した。",
-  "command.notfound": "§d[Unikko]§7: コマンドじゃありません。 コマンドリストに「help」と入力します。",
-  "commands.ufov.success": "§d[Unikko]§7: Set FOV to %f",
-  "commands.ugamma.success": "§d[Unikko]§7: Set Gamma to %f",
+  "command.notfound": "§d[Unikko]§7: コマンドじゃありません。 コマンドリストはみせてには「help」と入力します。",
+  "commands.ufov.success": "§d[Unikko]§7: FOVは%f§7なりました。",
+  "commands.ugamma.success": "§d[Unikko]§7: Gammaは%f§7なりました。",
 
   "commands.ucred.line.0": "§d[Unikko] §fwas brought to you by:§r",
   "commands.ucred.line.1": "  §c§lDeveloper: §r§cjnkyto/アヘンケシ",
   "commands.ucred.line.2": "  §7Unikko is licensed under CC0-1.0.",
   "commands.ucred.line.3": "  §7More info on GitHub §f> ",
 
-  "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRender toggled. Value now: %f",
-  "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPC toggled. Value now: %f",
-  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: Detailed RPC toggled. Value now: %f",
+  "commands.utoggle.hudRender.success": "§d[Unikko]§7: hudRenderはトグルしました. 今は: %f",
+  "commands.utoggle.discordRpc.success": "§d[Unikko]§7: DiscordRPCはトグルしました. 今は: %f",
+  "commands.utoggle.rpcAll.success": "§d[Unikko]§7: 詳細なRPCはトグルしました. 今は: %f",
 
   "commands.uhelp.line.0": "§d[Unikko] §fコマンドリスト:§r",
   "commands.uhelp.line.1": "§7Hover cursor over a command for more info.",
@@ -25,8 +25,8 @@
   "commands.uhelp.command.say": "§7Usage: §csay §e<message>\n§7Sends a message to chat. Needed for messages that start with the command prefix.",
   "commands.uhelp.command.nbt": "§7Usage: §cnbt §7while holding item\n§7Prints NBT data of item held.",
 
-  "commands.nbt.item": "§d[Unikko]§7 %fのNBT鬼ごっこ:",
-  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 NBT鬼ごっこなし。 あなたはなんでもないを持っていますか？",
+  "commands.nbt.item": "§d[Unikko]§7 %fのNBTタグ:",
+  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 NBTタグなし。 あなたはなんでもないを持っていますか？",
   "commands.nbt.error.toomanychars": "4096文字を超えるNBTデータ。 テキストが短縮されました。",
 
   "command.context.here": " > より多くのパラメータが必要です。",

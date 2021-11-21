@@ -2,15 +2,15 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## Unreleased (1.1.0-alpha.5) - 2021/11/18
+## Release 1.1.0 - 2021/11/21
 
-Note: This version should be ready for release, but I have yet to test it comprehensively.
+Note: Japanese translation is not finished, it will be in 1.1.1. Still releasing this version as-is because of upcoming uni stuff and not making a release in like three months.
 
 ### Added
  - Changelog
  - Lag meter
  - TPS counter
- - Japanese translation (unfinished)
+ - Japanese translation
 
 ### Changed
  - SoftConfig is now object-based, e.g. no more static methods. This is somewhat of a big update, so bugs may occur.
@@ -20,5 +20,6 @@ Note: This version should be ready for release, but I have yet to test it compre
  - Homepage has been updated in fabric.mod.json
  - Made Unikko adhere to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
  - Improved toggling of detailed DiscordRPC
- - README file updates
  - Bumped dependencies.
+ - README file updates
+ - Refactoring

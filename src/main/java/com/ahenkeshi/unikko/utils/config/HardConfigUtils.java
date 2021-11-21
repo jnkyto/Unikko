@@ -18,7 +18,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.HashMap;
+import java.util.Map;
 
 /**
  * @author Joona Kytöniemi kjoona@outlook.com
@@ -26,15 +26,11 @@ import java.util.HashMap;
  *
  * File operation utilities for the configuration file.
  */
-
-/* TODO: Maybe merge configMap and configJson. Also all methods of this class are static... */
-
 @SuppressWarnings("unchecked")
 public class HardConfigUtils {
     private static final File configFolder = new File(String.valueOf(FabricLoader.getInstance().getConfigDir()), (Unikko.MODID));
     private static JSONObject configJson;
 
-    private static HashMap<String, String> configMap = new HashMap<>();
     private static final String jsonName = (configFolder.getPath() + "/" + Unikko.MODID + "_" + Unikko.VERSION + ".json");
 
 
@@ -67,7 +63,6 @@ public class HardConfigUtils {
             }
             Unikko.logger.info("Configfile already exists, creation skipped");
         }
-        configMap = (HashMap<String, String>) configJson.clone();
     }
 
     /**
@@ -139,8 +134,13 @@ public class HardConfigUtils {
         Unikko.logger.info("Default config entries created.");
     }
 
-    public static HashMap<String, String> getConfigMap() {
-        return configMap;
+    /**
+     * Getter method for the configuration JSON.
+     *
+     * @return A copy of the configuration JSON-object, cast to a Map-object
+     */
+    public static Map<String, String> getConfigMap() {
+        return ((Map<String, String>) configJson.clone());
     }
 }
 

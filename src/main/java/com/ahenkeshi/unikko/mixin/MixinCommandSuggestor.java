@@ -2,8 +2,6 @@
 distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
 */
 
-// THIS MIXIN IS CURRENTLY BROKEN AND NOT NEEDED
-
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.Unikko;

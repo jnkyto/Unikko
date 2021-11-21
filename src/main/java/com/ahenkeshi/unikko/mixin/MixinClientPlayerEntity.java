@@ -31,7 +31,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onSendChatMessage(String message, CallbackInfo ci) {
         if (message.startsWith(cmdPrefix))    {
-            // logger.info("A command was used.");
+            Unikko.logger.info("Command " + message + " was used.");
             try {
                 CommandHandler.dispatch(message.substring(cmdPrefix.length()));
             } catch (CommandSyntaxException e) {

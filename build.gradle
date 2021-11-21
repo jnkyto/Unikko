@@ -1,15 +1,14 @@
 plugins {
-	id 'fabric-loom' version '0.9.+'
+	id 'fabric-loom' version '0.10-SNAPSHOT'
 	id 'maven-publish'
 }
 
-apply plugin: 'java'
 sourceCompatibility = JavaVersion.VERSION_16
 targetCompatibility = JavaVersion.VERSION_16
 
 archivesBaseName = project.archives_base_name
-version = project.mod_version + (System.getenv("CIRCLE_BUILD_NUM") != null ? ("-" + System.getenv("CIRCLE_BUILD_NUM")) : "")
-group = project.maven_group as Object
+version = project.mod_version
+group = project.maven_group
 
 repositories {
 	// Add repositories to retrieve artifacts from in here.
@@ -71,6 +70,7 @@ java {
 	// Loom will automatically attach sourcesJar to a RemapSourcesJar task and to the "build" task
 	// if it is present.
 	// If you remove this line, sources will not be generated.
+
 	// withSourcesJar()
 }
 

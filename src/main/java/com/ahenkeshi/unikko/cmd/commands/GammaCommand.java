@@ -14,7 +14,8 @@ import net.minecraft.text.Text;
 import net.minecraft.text.TranslatableText;
 
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
-import static com.mojang.brigadier.arguments.DoubleArgumentType.*;
+import static com.mojang.brigadier.arguments.DoubleArgumentType.doubleArg;
+import static com.mojang.brigadier.arguments.DoubleArgumentType.getDouble;
 
 public class GammaCommand extends Command {
     public GammaCommand()   {

@@ -13,6 +13,12 @@ import net.minecraft.text.TranslatableText;
 import java.text.DecimalFormat;
 import java.util.Arrays;
 
+/**
+ * @author Joona Kytöniemi kjoona@outlook.com
+ * @since 1.1.0
+ *
+ * Static utility class for getting the server tickrate.
+ */
 public class TickRateUtils {
     private static long gameJoined = 0;
     private static long lastTickAt = 0;

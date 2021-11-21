@@ -13,14 +13,14 @@
 
 <b>Unikko</b> is a utility mod for Minecraft 1.17.x. It's features include Discord Rich Presence and some commands. This mod is mainly for my personal learning purposes; don't expect 5-star quality and daily updates.
 
-Unikko will be developed mainly for 1.17.x. ~~Changes *may* be occasionally backported to 1.16.5.~~ Because the release of 1.18 seems to be just around the corner, I see no reason for 1.16 support to continue.
+Unikko will be developed mainly for 1.17.x. A 1.18 release is also planned.
 
 ### Building from source
-Clone the repository or download it as a zip file. Run 'gradlew build' with command line in project root folder. Two .jar files should show up in build/libs. The working mod is the only one without a suffix.
+Clone the repository or download it as a zip file. Run 'gradlew build' with command line in project root folder. Two .jar files should show up in build/libs. The working mod is the one without a "-dev" suffix.
 
 ### Installing
-1. Install Fabric Loader from https://fabricmc.net/use
-2. Download Fabric API from https://www.curseforge.com/minecraft/mc-mods/fabric-api and drag it into %appdata%/.minecraft/mods
+1. Install the latest version of Fabric Loader from https://fabricmc.net/use
+2. Download the latest version of Fabric API from https://www.curseforge.com/minecraft/mc-mods/fabric-api and drag it into %appdata%/.minecraft/mods
 3. Drag unikko-1.17.x-1.x.x.jar into %appdata%/.minecraft/mods
 
 ### Getting started with Unikko

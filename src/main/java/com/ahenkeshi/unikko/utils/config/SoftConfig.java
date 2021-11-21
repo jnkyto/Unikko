@@ -1,3 +1,7 @@
+/* This file is a part of Unikko Utility Mod: https://github.com/jnkyto/Unikko which is
+distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/legalcode
+*/
+
 package com.ahenkeshi.unikko.utils.config;
 
 import com.ahenkeshi.unikko.Unikko;
@@ -5,10 +9,20 @@ import com.ahenkeshi.unikko.Unikko;
 import java.util.HashMap;
 import java.util.Map;
 
+/**
+ * @author Joona Kytöniemi kjoona@outlook.com
+ * @since 1.1.0
+ *
+ * Handling of Unikko's configuration values in the memory.
+ */
 public class SoftConfig {
     @SuppressWarnings("FieldMayBeFinal")
     private Map<String, String> configMap;
 
+    /**
+     * Defines every config entry used by Unikko to be loaded into memory.
+     * I felt that public variables were the best option.
+     */
     public SoftConfigEntry hudRender;
     public SoftConfigEntry discordRpc;
     public SoftConfigEntry rpcAll;
@@ -27,7 +41,13 @@ public class SoftConfig {
     public SoftConfigEntry lagY;
     public SoftConfigEntry lagDuration;
 
-    public SoftConfig(HashMap<String, String> inputMap)    {
+    /**
+     * Creates a new SoftConfig object, and creates SoftConfigEntries from every <key,value>
+     * contained in the inputMap.
+     *
+     * @param inputMap A configuration map, ideally fetched from HardConfigUtils.
+     */
+    public SoftConfig(Map<String, String> inputMap)    {
         this.configMap = new HashMap<>(inputMap);
 
         this.hudRender = new SoftConfigEntry("hudRender", Boolean.valueOf(configMap.get("hudRender")));
@@ -53,6 +73,10 @@ public class SoftConfig {
         return this.configMap;
     }
 
+    /**
+     * Pushes every <key,value> in the configMap to HardConfigUtils, to be written in the
+     * configuration file.
+     */
     public void pushHard()    {
         long saveStart = System.currentTimeMillis();
 
@@ -65,6 +89,12 @@ public class SoftConfig {
         Unikko.logger.info("Configfile updated in " + saveFinish + "ms.");
     }
 
+    /**
+     * @author Joona Kytöniemi kjoona@outlook.com
+     * @since 1.1.0
+     *
+     * Basically just a String,Object tuple to be used as a configuration entry.
+     */
     public static class SoftConfigEntry {
         private final String key;
         private Object value;
@@ -83,7 +113,7 @@ public class SoftConfig {
             Unikko.softConfig.getSoftConfigMap().put(this.key, String.valueOf(this.value));
         }
 
-        public String getKey()  {
+        public String key()  {
             return this.key;
         }
     }

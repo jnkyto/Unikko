@@ -5,9 +5,8 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko;
 
 import com.ahenkeshi.unikko.cmd.CommandHandler;
-import com.ahenkeshi.unikko.utils.config.SoftConfig;
 import com.ahenkeshi.unikko.utils.config.HardConfigUtils;
-import net.fabricmc.api.ClientModInitializer;
+import com.ahenkeshi.unikko.utils.config.SoftConfig;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
@@ -16,12 +15,12 @@ import org.apache.logging.log4j.Logger;
 
 import java.io.IOException;
 
-public class Unikko implements ClientModInitializer, ModInitializer {
-	public static final boolean DEV_MODE = true;
+public class Unikko implements ModInitializer {
+	public static final boolean DEV_MODE = false;
 
 	public static final String MODID = "Unikko";
 	public static final String VERSION = "1.1.0";
-	public static String REL_DATE = "2021/11/18";
+	public static String REL_DATE = "2021/11/21";
 	public static String DEV = "-dev";
 
 	public static final ModContainer MOD = FabricLoader.getInstance()
@@ -48,8 +47,4 @@ public class Unikko implements ClientModInitializer, ModInitializer {
 		softConfig = new SoftConfig(HardConfigUtils.getConfigMap());
 		logger.info("Initialization took " + initDuration + "ms.");
 	}
-
-	@Override
-	public void onInitializeClient() {}
-
 }

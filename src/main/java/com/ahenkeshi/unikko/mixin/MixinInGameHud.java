@@ -5,8 +5,7 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.utils.FacingTowards;
-import com.ahenkeshi.unikko.utils.RainbowColor;
+import com.ahenkeshi.unikko.utils.CommonUtils;
 import com.ahenkeshi.unikko.utils.TickRateUtils;
 import net.minecraft.client.MinecraftClient;
 import net.minecraft.client.font.TextRenderer;
@@ -38,15 +37,15 @@ public abstract class MixinInGameHud {
             double ypos = client.player.getY();
             double zpos = client.player.getZ();
             String yaw = client.player.getHorizontalFacing().asString();
-            String yawStr = FacingTowards.get(yaw);
+            String yawStr = CommonUtils.facing(yaw);
             if(!this.client.options.debugEnabled && (Boolean) Unikko.softConfig.hudRender.value()) {
                 TextRenderer textRenderer = this.getTextRenderer();
                 textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION + Unikko.DEV,
                         (Integer) Unikko.softConfig.watermarkX.value(), (Integer) Unikko.softConfig.watermarkY.value(),
-                        RainbowColor.gen(0));
+                        CommonUtils.rainbow(0));
                         // ^ render watermark
                 textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, (Integer) Unikko.softConfig.reldateX.value(),
-                        (Integer) Unikko.softConfig.reldateY.value(), RainbowColor.gen(300));
+                        (Integer) Unikko.softConfig.reldateY.value(), CommonUtils.rainbow(300));
                         // ^ render release date
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
                         df.format(zpos)), (Integer) Unikko.softConfig.yawX.value(), screenHeight - 26, 16777215);
