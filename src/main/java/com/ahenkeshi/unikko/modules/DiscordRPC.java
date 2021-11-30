@@ -30,10 +30,10 @@ public class DiscordRPC {
     private static TimerTask task;
 
     public static void init() {
-        rpcAll = (Boolean) Unikko.softConfig.rpcAll.value();
+        rpcAll = Unikko.softConfig.rpcAll.value();
         handlers.ready = (user) -> Unikko.logger.info("DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = (Boolean) Unikko.softConfig.discordRpc.value();
+        boolean shouldStart = Unikko.softConfig.discordRpc.value();
 
         if (shouldStart) {
             basicPresence();

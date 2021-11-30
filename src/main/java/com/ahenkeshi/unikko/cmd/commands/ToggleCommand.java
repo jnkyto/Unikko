@@ -32,7 +32,7 @@ public class ToggleCommand extends Command {
                             .executes(ctx -> toggle(Unikko.softConfig.rpcAll))));
     }
 
-    private static int toggle(SoftConfig.SoftConfigEntry setting)   {
+    private static int toggle(SoftConfig.SoftConfigEntry<Boolean> setting)   {
         boolean temp = !(Boolean) setting.value();
         Unikko.logger.info("Toggle command was used, setting:" + setting.key() + " oval:" + setting.value() + " nval:" + temp);
         setting.set(temp);

@@ -3,7 +3,7 @@
   "id": "unikko",
   "version": "${version}",
 
-  "name": "Unikko (for 1.17.x)",
+  "name": "Unikko (for 1.18.x)",
   "description": "A Minecraft utility mod dev'd by Ahenkeshi",
   "authors": [
     "jnkyto / Ahenkeshi"
@@ -30,8 +30,8 @@
   "depends": {
     "fabricloader": ">=0.12.0",
     "fabric": "*",
-    "minecraft": "1.17.x",
-    "java": ">=16"
+    "minecraft": "1.18.x",
+    "java": ">=17"
   },
   "suggests": {
     "another-mod": "*"
