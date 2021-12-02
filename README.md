@@ -1,6 +1,6 @@
 <h1 align="center">Unikko</h1>
 <p align="center">
-<img src="https://raw.githubusercontent.com/jnkyto/Unikko/legacy-1.16/src/main/resources/assets/unikko/unikko.png" width="30%" alt="The logo of Unikko Utility Mod">
+<img src="https://raw.githubusercontent.com/jnkyto/Unikko/legacy-1.16/src/main/resources/assets/unikko/unikko.png" width="20%" alt="The logo of Unikko Utility Mod">
 </p>
 
 <a href="https://github.com/jnkyto/Unikko/actions/workflows/build.yml">
