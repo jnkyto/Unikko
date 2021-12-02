@@ -25,14 +25,14 @@ public class ToggleCommand extends Command {
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
         builder.executes(ctx ->(incomplete(ctx.getSource())))
                 .then(literal("hud")
-                    .executes(ctx -> toggle(Unikko.softConfig.hudRender)))
+                        .executes(ctx -> toggle(Unikko.softConfig.hudRender)))
                 .then(literal("rpc")
                         .executes(ctx -> toggle(Unikko.softConfig.discordRpc))
-                    .then(literal("detailed")
-                            .executes(ctx -> toggle(Unikko.softConfig.rpcAll))));
+                        .then(literal("detailed")
+                                .executes(ctx -> toggle(Unikko.softConfig.rpcAll))));
     }
 
-    private static int toggle(SoftConfig.SoftConfigEntry setting)   {
+    private static int toggle(SoftConfig.SoftConfigEntry<Boolean> setting)   {
         boolean temp = !(Boolean) setting.value();
         Unikko.logger.info("Toggle command was used, setting:" + setting.key() + " oval:" + setting.value() + " nval:" + temp);
         setting.set(temp);

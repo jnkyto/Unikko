@@ -38,27 +38,27 @@ public abstract class MixinInGameHud {
             double zpos = client.player.getZ();
             String yaw = client.player.getHorizontalFacing().asString();
             String yawStr = CommonUtils.facing(yaw);
-            if(!this.client.options.debugEnabled && (Boolean) Unikko.softConfig.hudRender.value()) {
+            if(!this.client.options.debugEnabled && Unikko.softConfig.hudRender.value()) {
                 TextRenderer textRenderer = this.getTextRenderer();
                 textRenderer.drawWithShadow(matrices, Unikko.MODID + " " + Unikko.VERSION + Unikko.DEV,
-                        (Integer) Unikko.softConfig.watermarkX.value(), (Integer) Unikko.softConfig.watermarkY.value(),
+                        Unikko.softConfig.watermarkX.value(), Unikko.softConfig.watermarkY.value(),
                         CommonUtils.rainbow(0));
-                        // ^ render watermark
-                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, (Integer) Unikko.softConfig.reldateX.value(),
-                        (Integer) Unikko.softConfig.reldateY.value(), CommonUtils.rainbow(300));
-                        // ^ render release date
+                // ^ render watermark
+                textRenderer.drawWithShadow(matrices, Unikko.REL_DATE, Unikko.softConfig.reldateX.value(),
+                        Unikko.softConfig.reldateY.value(), CommonUtils.rainbow(300));
+                // ^ render release date
                 textRenderer.drawWithShadow(matrices, (yawStr + " " + df.format(xpos) + " " + df.format(ypos) + " " +
-                        df.format(zpos)), (Integer) Unikko.softConfig.yawX.value(), screenHeight - 26, 16777215);
-                        // ^ render yaw and coords (i gave up on yawY. i promise i'll figure it out)
-                textRenderer.drawWithShadow(matrices, fps, (Integer) Unikko.softConfig.fpsX.value(),
-                        (Integer) Unikko.softConfig.fpsY.value(), 16777215);
-                        // ^ render fps
+                        df.format(zpos)), Unikko.softConfig.yawX.value(), screenHeight - 26, 16777215);
+                // ^ render yaw and coords (i gave up on yawY. i promise i'll figure it out)
+                textRenderer.drawWithShadow(matrices, fps, Unikko.softConfig.fpsX.value(),
+                        Unikko.softConfig.fpsY.value(), 16777215);
+                // ^ render fps
                 textRenderer.drawWithShadow(matrices, ("tps: " + TickRateUtils.getTickrate()),
-                        (Integer) Unikko.softConfig.tpsX.value(), (Integer) Unikko.softConfig.tpsY.value(), 16777215);
-                        // ^ render tps
+                        Unikko.softConfig.tpsX.value(), Unikko.softConfig.tpsY.value(), 16777215);
+                // ^ render tps
                 textRenderer.drawWithShadow(matrices, (String) TickRateUtils.getSinceLastTick(true),
-                        (Integer) Unikko.softConfig.lagX.value(), (Integer) Unikko.softConfig.lagY.value(), Color.red.getRGB());
-                        // ^ render lag alert
+                        Unikko.softConfig.lagX.value(), Unikko.softConfig.lagY.value(), Color.red.getRGB());
+                // ^ render lag alert
             }
         }
     }

@@ -23,23 +23,23 @@ public class SoftConfig {
      * Defines every config entry used by Unikko to be loaded into memory.
      * I felt that public variables were the best option.
      */
-    public SoftConfigEntry hudRender;
-    public SoftConfigEntry discordRpc;
-    public SoftConfigEntry rpcAll;
-    public SoftConfigEntry cmdPrefix;
-    public SoftConfigEntry watermarkX;
-    public SoftConfigEntry watermarkY;
-    public SoftConfigEntry reldateX;
-    public SoftConfigEntry reldateY;
-    public SoftConfigEntry yawX;
-    public SoftConfigEntry yawY;
-    public SoftConfigEntry fpsX;
-    public SoftConfigEntry fpsY;
-    public SoftConfigEntry tpsX;
-    public SoftConfigEntry tpsY;
-    public SoftConfigEntry lagX;
-    public SoftConfigEntry lagY;
-    public SoftConfigEntry lagDuration;
+    public SoftConfigEntry<Boolean> hudRender;
+    public SoftConfigEntry<Boolean> discordRpc;
+    public SoftConfigEntry<Boolean> rpcAll;
+    public SoftConfigEntry<String> cmdPrefix;
+    public SoftConfigEntry<Integer> watermarkX;
+    public SoftConfigEntry<Integer> watermarkY;
+    public SoftConfigEntry<Integer> reldateX;
+    public SoftConfigEntry<Integer> reldateY;
+    public SoftConfigEntry<Integer> yawX;
+    public SoftConfigEntry<Integer> yawY;
+    public SoftConfigEntry<Integer> fpsX;
+    public SoftConfigEntry<Integer> fpsY;
+    public SoftConfigEntry<Integer> tpsX;
+    public SoftConfigEntry<Integer> tpsY;
+    public SoftConfigEntry<Integer> lagX;
+    public SoftConfigEntry<Integer> lagY;
+    public SoftConfigEntry<Integer> lagDuration;
 
     /**
      * Creates a new SoftConfig object, and creates SoftConfigEntries from every <key,value>
@@ -50,23 +50,23 @@ public class SoftConfig {
     public SoftConfig(Map<String, String> inputMap)    {
         this.configMap = new HashMap<>(inputMap);
 
-        this.hudRender = new SoftConfigEntry("hudRender", Boolean.valueOf(configMap.get("hudRender")));
-        this.discordRpc = new SoftConfigEntry("discordRpc", Boolean.valueOf(configMap.get("discordRpc")));
-        this.rpcAll = new SoftConfigEntry("rpcAll", Boolean.valueOf(configMap.get("rpcAll")));
-        this.cmdPrefix = new SoftConfigEntry("cmdPrefix", configMap.get("cmdPrefix"));
-        this.watermarkX = new SoftConfigEntry("watermarkX", Integer.valueOf(configMap.get("watermarkX")));
-        this.watermarkY = new SoftConfigEntry("watermarkY", Integer.valueOf(configMap.get("watermarkY")));
-        this.reldateX = new SoftConfigEntry("reldateX", Integer.valueOf(configMap.get("reldateX")));
-        this.reldateY = new SoftConfigEntry("reldateY", Integer.valueOf(configMap.get("reldateY")));
-        this.yawX = new SoftConfigEntry("yawX", Integer.valueOf(configMap.get("yawX")));
-        this.yawY = new SoftConfigEntry("yawY", Integer.valueOf(configMap.get("yawY")));
-        this.fpsX = new SoftConfigEntry("fpsX", Integer.valueOf(configMap.get("fpsX")));
-        this.fpsY = new SoftConfigEntry("fpsY", Integer.valueOf(configMap.get("fpsY")));
-        this.tpsX = new SoftConfigEntry("tpsX", Integer.valueOf(configMap.get("tpsX")));
-        this.tpsY = new SoftConfigEntry("tpsY", Integer.valueOf(configMap.get("tpsY")));
-        this.lagX = new SoftConfigEntry("lagX", Integer.valueOf(configMap.get("lagX")));
-        this.lagY = new SoftConfigEntry("lagY", Integer.valueOf(configMap.get("lagY")));
-        this.lagDuration = new SoftConfigEntry("lagDuration", Integer.valueOf(configMap.get("lagDuration")));
+        this.hudRender = new SoftConfigEntry<>("hudRender", Boolean.valueOf(configMap.get("hudRender")));
+        this.discordRpc = new SoftConfigEntry<>("discordRpc", Boolean.valueOf(configMap.get("discordRpc")));
+        this.rpcAll = new SoftConfigEntry<>("rpcAll", Boolean.valueOf(configMap.get("rpcAll")));
+        this.cmdPrefix = new SoftConfigEntry<>("cmdPrefix", configMap.get("cmdPrefix"));
+        this.watermarkX = new SoftConfigEntry<>("watermarkX", Integer.valueOf(configMap.get("watermarkX")));
+        this.watermarkY = new SoftConfigEntry<>("watermarkY", Integer.valueOf(configMap.get("watermarkY")));
+        this.reldateX = new SoftConfigEntry<>("reldateX", Integer.valueOf(configMap.get("reldateX")));
+        this.reldateY = new SoftConfigEntry<>("reldateY", Integer.valueOf(configMap.get("reldateY")));
+        this.yawX = new SoftConfigEntry<>("yawX", Integer.valueOf(configMap.get("yawX")));
+        this.yawY = new SoftConfigEntry<>("yawY", Integer.valueOf(configMap.get("yawY")));
+        this.fpsX = new SoftConfigEntry<>("fpsX", Integer.valueOf(configMap.get("fpsX")));
+        this.fpsY = new SoftConfigEntry<>("fpsY", Integer.valueOf(configMap.get("fpsY")));
+        this.tpsX = new SoftConfigEntry<>("tpsX", Integer.valueOf(configMap.get("tpsX")));
+        this.tpsY = new SoftConfigEntry<>("tpsY", Integer.valueOf(configMap.get("tpsY")));
+        this.lagX = new SoftConfigEntry<>("lagX", Integer.valueOf(configMap.get("lagX")));
+        this.lagY = new SoftConfigEntry<>("lagY", Integer.valueOf(configMap.get("lagY")));
+        this.lagDuration = new SoftConfigEntry<>("lagDuration", Integer.valueOf(configMap.get("lagDuration")));
     }
 
     public Map<String, String> getSoftConfigMap()   {
@@ -95,20 +95,20 @@ public class SoftConfig {
      *
      * Basically just a String,Object tuple to be used as a configuration entry.
      */
-    public static class SoftConfigEntry {
+    public static class SoftConfigEntry<T> {
         private final String key;
-        private Object value;
+        private T value;
 
-        public SoftConfigEntry(String key, Object value)    {
+        public SoftConfigEntry(String key, T value)    {
             this.key = key;
             this.value = value;
         }
 
-        public Object value()   {
+        public T value()   {
             return this.value;
         }
 
-        public void set(Object val) {
+        public void set(T val) {
             this.value = val;
             Unikko.softConfig.getSoftConfigMap().put(this.key, String.valueOf(this.value));
         }
