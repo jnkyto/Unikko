@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
-    @Unique private final String cmdPrefix = (String) Unikko.softConfig.cmdPrefix.value();
+    @Unique private final String cmdPrefix = Unikko.softConfig.cmdPrefix.value();
 
     public MixinClientPlayerEntity(ClientWorld world, GameProfile profile)  {
         super(world, profile);
