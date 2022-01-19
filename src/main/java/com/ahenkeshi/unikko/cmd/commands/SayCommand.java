@@ -29,14 +29,14 @@ public class SayCommand extends Command {
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
         builder.executes(ctx ->(incomplete(ctx.getSource())))
                 .then(argument("message", StringArgumentType.greedyString()).executes(ctx -> {
-            String msg = ctx.getArgument("message", String.class);
-            Objects.requireNonNull(mc.getNetworkHandler()).sendPacket(new ChatMessageC2SPacket(msg));
-            return SINGLE_SUCCESS;
-        }));
+                    String msg = ctx.getArgument("message", String.class);
+                    Objects.requireNonNull(mc.getNetworkHandler()).sendPacket(new ChatMessageC2SPacket(msg));
+                    return SINGLE_SUCCESS;
+                }));
     }
 
     private int incomplete(CommandSource source)    {
-        Unikko.logger.info("Say command was used -> incomplete");
+        Unikko.LOGGER.info("Say command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.say"));
         return SINGLE_SUCCESS;
     }

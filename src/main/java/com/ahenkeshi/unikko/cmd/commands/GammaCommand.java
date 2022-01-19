@@ -32,7 +32,7 @@ public class GammaCommand extends Command {
     }
 
     private static int setGamma(CommandSource source, double newGamma)    {
-        Unikko.logger.info("Gamma command was used -> setGamma");
+        Unikko.LOGGER.info("Gamma command was used -> setGamma");
         MinecraftClient.getInstance().options.gamma = newGamma;
         Text feedback = new TranslatableText("commands.ugamma.success", newGamma);
         ChatInfoUtils.sendFeedback(feedback);
@@ -40,7 +40,7 @@ public class GammaCommand extends Command {
     }
 
     private static int incomplete(CommandSource source) {
-        Unikko.logger.info("Gamma command was used -> incomplete");
+        Unikko.LOGGER.info("Gamma command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.gamma"));
         return SINGLE_SUCCESS;
     }

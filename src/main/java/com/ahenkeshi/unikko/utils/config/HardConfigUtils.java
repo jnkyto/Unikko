@@ -47,7 +47,7 @@ public class HardConfigUtils {
             configJson = new JSONObject();
             createDefaultEntries();
             Files.writeString(Paths.get(jsonName), configJson.toJSONString());
-            Unikko.logger.info("Created new configfile " + jsonName);
+            Unikko.LOGGER.info("Created new configfile " + jsonName);
         } else  {
             try {
                 configJson = (JSONObject) readFile(jsonName);
@@ -61,7 +61,7 @@ public class HardConfigUtils {
                 pe.printStackTrace();
                 MinecraftClient.printCrashReport(report);
             }
-            Unikko.logger.info("Configfile already exists, creation skipped");
+            Unikko.LOGGER.info("Configfile already exists, creation skipped");
         }
     }
 
@@ -131,7 +131,7 @@ public class HardConfigUtils {
         configJson.put("lagX", "170");
         configJson.put("lagY", "20");
         configJson.put("lagDuration", "2000");
-        Unikko.logger.info("Default config entries created.");
+        Unikko.LOGGER.info("Default config entries created.");
     }
 
     /**

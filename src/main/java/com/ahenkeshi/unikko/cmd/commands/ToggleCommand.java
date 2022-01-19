@@ -25,28 +25,28 @@ public class ToggleCommand extends Command {
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
         builder.executes(ctx ->(incomplete(ctx.getSource())))
                 .then(literal("hud")
-                        .executes(ctx -> toggle(Unikko.softConfig.hudRender)))
+                        .executes(ctx -> toggle(Unikko.SOFTCONFIG.hudRender)))
                 .then(literal("rpc")
-                        .executes(ctx -> toggle(Unikko.softConfig.discordRpc))
+                        .executes(ctx -> toggle(Unikko.SOFTCONFIG.discordRpc))
                         .then(literal("detailed")
-                                .executes(ctx -> toggle(Unikko.softConfig.rpcAll))));
+                                .executes(ctx -> toggle(Unikko.SOFTCONFIG.rpcAll))));
     }
 
     private static int toggle(SoftConfig.SoftConfigEntry<Boolean> setting)   {
         boolean temp = !(Boolean) setting.value();
-        Unikko.logger.info("Toggle command was used, setting:" + setting.key() + " oval:" + setting.value() + " nval:" + temp);
+        Unikko.LOGGER.info("Toggle command was used, setting:" + setting.key() + " oval:" + setting.value() + " nval:" + temp);
         setting.set(temp);
         Text feedback = new TranslatableText("commands.utoggle." + setting.key() + ".success", setting.value());
         ChatInfoUtils.sendFeedback(feedback);
         if(setting.key().equals("discordRpc")) { /* this is stupid, maybe do some dRPC refacts for 1.2.0 or w/e */
             DiscordRPC.init();
         }
-        Unikko.softConfig.pushHard();
+        Unikko.SOFTCONFIG.pushHard();
         return SINGLE_SUCCESS;
     }
 
     private static int incomplete(CommandSource source) {
-        Unikko.logger.info("Toggle command was used -> incomplete");
+        Unikko.LOGGER.info("Toggle command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.toggle"));
         return SINGLE_SUCCESS;
     }

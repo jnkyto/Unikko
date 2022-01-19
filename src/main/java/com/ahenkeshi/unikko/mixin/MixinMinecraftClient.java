@@ -17,7 +17,7 @@ public class MixinMinecraftClient {
     @Inject(method ="getWindowTitle" ,at = @At("RETURN"), cancellable = true)
     private void getWindowTitle(final CallbackInfoReturnable<String> cir)   {
         if(Unikko.DEV_MODE) {
-            cir.setReturnValue(Unikko.MODID + " " + Unikko.VERSION + " (" + Unikko.REL_DATE + ") *");
+            cir.setReturnValue(Unikko.MODID + " " + Unikko.VERSION + " *");
             // Decided that changing the window title is a stupid idea.
             // Still do it if devmode enabled because idk
         }
@@ -25,7 +25,7 @@ public class MixinMinecraftClient {
 
     @Inject(method = "onResolutionChanged", at = @At("HEAD"))
     private void onResolutionChanged(CallbackInfo ci)  {
-        Unikko.logger.info("Resolution changed. Print this message just because.");
+        Unikko.LOGGER.info("Resolution changed. Print this message just because.");
     }
 
 }

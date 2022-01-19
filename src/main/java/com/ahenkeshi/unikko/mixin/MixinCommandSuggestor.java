@@ -40,7 +40,7 @@ public abstract class MixinCommandSuggestor {
             cancellable = true,
             locals = LocalCapture.CAPTURE_FAILHARD)
     private void onRefresh(CallbackInfo ci, String str, StringReader reader) {
-        String cmdPref = Unikko.softConfig.cmdPrefix.value();
+        String cmdPref = Unikko.SOFTCONFIG.cmdPrefix.value();
         int prefLength = cmdPref.length();
         if (reader.canRead(prefLength) && reader.getString().startsWith(cmdPref, reader.getCursor())) {
             reader.setCursor(reader.getCursor() + prefLength);

@@ -16,35 +16,28 @@ import org.apache.logging.log4j.Logger;
 import java.io.IOException;
 
 public class Unikko implements ModInitializer {
-	public static final boolean DEV_MODE = false;
-
-	public static final String MODID = "Unikko";
-	public static final String VERSION = "1.1.0";
-	public static String REL_DATE = "2021/11/21";
-	public static String DEV = "-dev";
+	public static final boolean DEV_MODE = true;
 
 	public static final ModContainer MOD = FabricLoader.getInstance()
 			.getModContainer("unikko")
 			.orElseThrow(NullPointerException::new);
 
-	public static final Logger logger = LogManager.getLogger();
-	public static SoftConfig softConfig;
+	public static final String MODID = MOD.getMetadata().getName();
+	public static final String VERSION = MOD.getMetadata().getVersion().getFriendlyString();
+
+	public static final Logger LOGGER = LogManager.getLogger();
+	public static SoftConfig SOFTCONFIG;
 
 	@Override
 	public void onInitialize()	{
-		logger.info("Started initialization...");
+		LOGGER.info("Started initialization...");
 		long initStart = System.currentTimeMillis();
 
 		try {HardConfigUtils.createFile();} catch (IOException e) {e.printStackTrace();}
 
-		if(!DEV_MODE){
-			DEV = "";
-			REL_DATE = "";
-		}
-
 		CommandHandler.init();
 		long initDuration = System.currentTimeMillis() - initStart;
-		softConfig = new SoftConfig(HardConfigUtils.getConfigMap());
-		logger.info("Initialization took " + initDuration + "ms.");
+		SOFTCONFIG = new SoftConfig(HardConfigUtils.getConfigMap());
+		LOGGER.info("Initialization took " + initDuration + "ms.");
 	}
 }
