@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
+## 1.1.1-alpha.3 - 2022/01/19
+
+### Changed
+- Bumped dependencies
+- Refactoring
+
+
+
 ## Release 1.1.0 - 2021/11/21
 
 Note: Japanese translation is not finished, it will be in 1.1.1. Still releasing this version as-is because of upcoming uni stuff and not making a release in like three months.

@@ -27,7 +27,7 @@
 
   "commands.nbt.item": "§d[Unikko]§7 Nbt-tägit itemille %f",
   "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 Ei Nbt-tägejä tai sinulla ei ole mitään kädessä",
-  "commands.nbt.error.toomanychars": "NBT data over 4096 characters. The text has been trimmed.",
+  "commands.nbt.error.toomanychars": "NBT data on yli 4096 merkkiä. Data on tältä kohtaa leikattu.",
 
   "command.context.here": " > Ei tarpeeksi parametreja.",
 

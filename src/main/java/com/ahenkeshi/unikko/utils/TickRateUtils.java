@@ -37,7 +37,7 @@ public class TickRateUtils {
     public static Object getSinceLastTick(boolean formattedForHud) {
         long now = System.currentTimeMillis();
         if (formattedForHud) {
-            if(now - gameJoined > 3000 && now - lastTickAt > Unikko.softConfig.lagDuration.value()
+            if(now - gameJoined > 3000 && now - lastTickAt > Unikko.SOFTCONFIG.lagDuration.value()
                     && !mc.isInSingleplayer()) {
                 String alert = new TranslatableText("utils.tickrate.alert").getString();
                 return (alert + ": " + df.format((now - lastTickAt) / 1000f));

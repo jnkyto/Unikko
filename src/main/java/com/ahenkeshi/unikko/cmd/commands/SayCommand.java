@@ -36,7 +36,7 @@ public class SayCommand extends Command {
     }
 
     private int incomplete(CommandSource source)    {
-        Unikko.logger.info("Say command was used -> incomplete");
+        Unikko.LOGGER.info("Say command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.say"));
         return SINGLE_SUCCESS;
     }

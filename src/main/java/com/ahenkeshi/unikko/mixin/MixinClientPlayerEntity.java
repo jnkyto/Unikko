@@ -22,7 +22,7 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientPlayerEntity.class)
 public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
 
-    @Unique private final String cmdPrefix = Unikko.softConfig.cmdPrefix.value();
+    @Unique private final String cmdPrefix = Unikko.SOFTCONFIG.cmdPrefix.value();
 
     public MixinClientPlayerEntity(ClientWorld world, GameProfile profile)  {
         super(world, profile);
@@ -31,7 +31,7 @@ public class MixinClientPlayerEntity extends AbstractClientPlayerEntity {
     @Inject(method = "sendChatMessage", at = @At("HEAD"), cancellable = true)
     private void onSendChatMessage(String message, CallbackInfo ci) {
         if (message.startsWith(cmdPrefix))    {
-            Unikko.logger.info("Command " + message + " was used.");
+            Unikko.LOGGER.info("Command " + message + " was used.");
             try {
                 CommandHandler.dispatch(message.substring(cmdPrefix.length()));
             } catch (CommandSyntaxException e) {

@@ -1,7 +1,7 @@
 {
   "unikko": "§d[Unikko]§7",
   "command.failed": "§d[Unikko]§7: コマンド失敗した。",
-  "command.notfound": "§d[Unikko]§7: コマンドじゃありません。 コマンドリストはみせてには「help」と入力します。",
+  "command.notfound": "§d[Unikko]§7: コマンドじゃありません。 コマンドリストは見せてには「help」と入力します。",
   "commands.ufov.success": "§d[Unikko]§7: FOVは%f§7なりました。",
   "commands.ugamma.success": "§d[Unikko]§7: Gammaは%f§7なりました。",
 
@@ -15,18 +15,18 @@
   "commands.utoggle.rpcAll.success": "§d[Unikko]§7: 詳細なRPCはトグルしました. 今は: %f",
 
   "commands.uhelp.line.0": "§d[Unikko] §fコマンドリスト:§r",
-  "commands.uhelp.line.1": "§7Hover cursor over a command for more info.",
+  "commands.uhelp.line.1": "§7コマンドの上にカーソルをホバー して。",
 
-  "commands.uhelp.command.fov": "§7Usage: §cfov §e<value>\n§e'normal' §7or §e'quake' §7can also be used as the value.",
-  "commands.uhelp.command.gamma": "§7Usage: §cgamma §e<value>\n§7Type §e'fb'§7 as value for fullbright.",
-  "commands.uhelp.command.toggle": "§7Usage: §ctoggle §e<module>\n§7Valid modules: §erpc§7, §ehud§7, §erpcall§7.",
-  "commands.uhelp.command.help": "§7You already know how to use help.",
-  "commands.uhelp.command.cred": "§7Show §dUnikko§7's credits.",
-  "commands.uhelp.command.say": "§7Usage: §csay §e<message>\n§7Sends a message to chat. Needed for messages that start with the command prefix.",
-  "commands.uhelp.command.nbt": "§7Usage: §cnbt §7while holding item\n§7Prints NBT data of item held.",
+  "commands.uhelp.command.fov": "§7使い方: §cfov §e<value>\n§e'normal' §7or §e'quake' §7can also be used as the value.",
+  "commands.uhelp.command.gamma": "§7使い方: §cgamma §e<value>\n§7Type §e'fb'§7 as value for fullbright.",
+  "commands.uhelp.command.toggle": "§7使い方: §ctoggle §e<module>\n§7Valid modules: §erpc§7, §ehud§7, §erpcall§7.",
+  "commands.uhelp.command.help": "§7あなたは「help」の使い方もう知っている。",
+  "commands.uhelp.command.cred": "§7§dUnikko§7のクレジットを見せて。",
+  "commands.uhelp.command.say": "§7使い方: §csay §e<message>\n§7チャットにメッセージを送る。",
+  "commands.uhelp.command.nbt": "§7使い方: §cnbt §7while holding item\n§7Prints NBT data of item held.",
 
   "commands.nbt.item": "§d[Unikko]§7 %fのNBTタグ:",
-  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 NBTタグなし。 あなたはなんでもないを持っていますか？",
+  "commands.nbt.no_nbt.line.0": "§d[Unikko]§7 NBTタグはなし。 あなたはなんでもないを持っていますか？",
   "commands.nbt.error.toomanychars": "4096文字を超えるNBTデータ。 テキストが短縮されました。",
 
   "command.context.here": " > より多くのパラメータが必要です。",

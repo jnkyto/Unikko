@@ -30,10 +30,10 @@ public class DiscordRPC {
     private static TimerTask task;
 
     public static void init() {
-        rpcAll = Unikko.softConfig.rpcAll.value();
-        handlers.ready = (user) -> Unikko.logger.info("DiscordRPC ready.");
+        rpcAll = Unikko.SOFTCONFIG.rpcAll.value();
+        handlers.ready = (user) -> Unikko.LOGGER.info("DiscordRPC ready.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = Unikko.softConfig.discordRpc.value();
+        boolean shouldStart = Unikko.SOFTCONFIG.discordRpc.value();
 
         if (shouldStart) {
             basicPresence();
@@ -52,7 +52,7 @@ public class DiscordRPC {
                 }
             };
             t.scheduleAtFixedRate(task, 5000, 5000);
-            Unikko.logger.info("Started or updated rich presence.");
+            Unikko.LOGGER.info("Started or updated rich presence.");
         } else {
             lib.Discord_ClearPresence();
             lib.Discord_Shutdown();
@@ -60,7 +60,7 @@ public class DiscordRPC {
                 task.cancel();
                 t.purge();
             }
-            Unikko.logger.info("DRPC init skipped because discordRpc is toggled false");
+            Unikko.LOGGER.info("DRPC init skipped because discordRpc is toggled false");
         }
     }
 
@@ -78,7 +78,7 @@ public class DiscordRPC {
         presence.startTimestamp = start_time; // epoch second
         presence.largeImageKey = "icon";
         presence.largeImageText = Unikko.MOD.getMetadata().getVersion().getFriendlyString();
-        presence.details = "Playing with power!";
+        presence.details = "Posted at the menu screen";
         // presence.state = "";
         presence.instance = 1;
         lib.Discord_UpdatePresence(presence);
@@ -97,7 +97,7 @@ public class DiscordRPC {
                 if (!item_name.equals("Air")) {
                     presence.state = "Holding " + item_name;
                 } else {
-                    presence.state = "Epstori on top!";
+                    presence.state = "Punching the air";
                 }
             }
             presence.startTimestamp = start_time;
@@ -109,10 +109,6 @@ public class DiscordRPC {
                 String serverip = "";
                 if (mc.getCurrentServerEntry() != null) {
                     serverip = mc.getCurrentServerEntry().address.toLowerCase();
-                    if (serverip.equals("motimaa.net"))	{	// funny joek xd
-                        playername = "anyone ig";
-                        serverip = "wherever idk";
-                    }
                 }
                 presence.details = "Playing at " + serverip;
             } else {

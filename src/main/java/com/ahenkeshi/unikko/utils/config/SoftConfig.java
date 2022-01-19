@@ -23,23 +23,10 @@ public class SoftConfig {
      * Defines every config entry used by Unikko to be loaded into memory.
      * I felt that public variables were the best option.
      */
-    public SoftConfigEntry<Boolean> hudRender;
-    public SoftConfigEntry<Boolean> discordRpc;
-    public SoftConfigEntry<Boolean> rpcAll;
+    public SoftConfigEntry<Boolean> hudRender, discordRpc, rpcAll;
     public SoftConfigEntry<String> cmdPrefix;
-    public SoftConfigEntry<Integer> watermarkX;
-    public SoftConfigEntry<Integer> watermarkY;
-    public SoftConfigEntry<Integer> reldateX;
-    public SoftConfigEntry<Integer> reldateY;
-    public SoftConfigEntry<Integer> yawX;
-    public SoftConfigEntry<Integer> yawY;
-    public SoftConfigEntry<Integer> fpsX;
-    public SoftConfigEntry<Integer> fpsY;
-    public SoftConfigEntry<Integer> tpsX;
-    public SoftConfigEntry<Integer> tpsY;
-    public SoftConfigEntry<Integer> lagX;
-    public SoftConfigEntry<Integer> lagY;
-    public SoftConfigEntry<Integer> lagDuration;
+    public SoftConfigEntry<Integer> watermarkX, watermarkY, reldateX, reldateY, yawX, yawY, fpsX, fpsY, tpsX, tpsY,
+            lagX, lagY, lagDuration;
 
     /**
      * Creates a new SoftConfig object, and creates SoftConfigEntries from every <key,value>
@@ -86,7 +73,7 @@ public class SoftConfig {
 
         long saveFinish = System.currentTimeMillis() - saveStart;
 
-        Unikko.logger.info("Configfile updated in " + saveFinish + "ms.");
+        Unikko.LOGGER.info("Configfile updated in " + saveFinish + "ms.");
     }
 
     /**
@@ -110,7 +97,7 @@ public class SoftConfig {
 
         public void set(T val) {
             this.value = val;
-            Unikko.softConfig.getSoftConfigMap().put(this.key, String.valueOf(this.value));
+            Unikko.SOFTCONFIG.getSoftConfigMap().put(this.key, String.valueOf(this.value));
         }
 
         public String key()  {

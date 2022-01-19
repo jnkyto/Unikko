@@ -28,15 +28,15 @@ public class NbtCommand extends Command {
             if(mc.player != null)   {
                 Item item = mc.player.getStackInHand(Hand.MAIN_HAND).getItem();
                 if(item.asItem() != null)   {
-                    viewNbt(ctx.getSource(), item);
+                    viewNbt(item);
                 }
             }
             return SINGLE_SUCCESS;
         });
     }
 
-    private void viewNbt(CommandSource source, Item item)    {
-        Unikko.logger.info("Nbt command was used -> viewNbt");
+    private void viewNbt(Item item)    {
+        Unikko.LOGGER.info("Nbt command was used -> viewNbt");
         String itemNbtStr = "";
         String itemStr = item.getName().getString();
         Text feedback0 = new TranslatableText("commands.nbt.no_nbt.line.0");

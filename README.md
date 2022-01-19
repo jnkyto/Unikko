@@ -11,9 +11,9 @@
 
 ---
 
-<b>Unikko</b> is a utility mod for Minecraft 1.17.1 and 1.18. It's features include Discord Rich Presence and some commands. This mod is mainly for my personal learning purposes; don't expect 5-star quality and daily updates.
+<b>Unikko</b> is a utility mod for Minecraft 1.17.1 and 1.18.1. It's features include Discord Rich Presence and some commands. This mod is mainly for my personal learning purposes; don't expect 5-star quality and daily updates.
 
-This branch is for Unikko's Minecraft 1.18 version.
+This branch is for Unikko's Minecraft 1.18.1 version.
 
 ### Building from source
 Clone the repository or download it as a zip file. Run 'gradlew build' with command line in project root folder. Two .jar files should show up in build/libs. The working mod is the one without a "-dev" suffix.

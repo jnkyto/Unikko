@@ -33,7 +33,7 @@ public class FovCommand extends Command {
                         .executes(ctx -> setFov(ctx.getSource(), 110)));
     }
     private static int setFov(CommandSource source, double newFov) {
-        Unikko.logger.info("Fov command was used -> setFov");
+        Unikko.LOGGER.info("Fov command was used -> setFov");
         MinecraftClient.getInstance().options.fov = newFov;
         Text feedback = new TranslatableText("commands.ufov.success", newFov);
         ChatInfoUtils.sendFeedback(feedback);
@@ -41,7 +41,7 @@ public class FovCommand extends Command {
     }
 
     private static int incomplete(CommandSource source) {
-        Unikko.logger.info("Fov command was used -> incomplete");
+        Unikko.LOGGER.info("Fov command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.fov"));
         return SINGLE_SUCCESS;
     }

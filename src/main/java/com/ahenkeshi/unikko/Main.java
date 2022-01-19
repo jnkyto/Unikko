@@ -28,9 +28,9 @@ public class Main {
         }
         int option = JOptionPane.showOptionDialog(
                 null,
-                "To use Unikko, put it in your mods folder with Fabric API, and run Minecraft\n" +
-                        "with the latest version of Fabric Loader installed",
-                "Unikko " + Unikko.VERSION,
+                "To install Unikko, put it in your mods folder with Fabric API, and run\n" +
+                        "Minecraft with the latest version of Fabric Loader installed",
+                "Unikko",
                 JOptionPane.YES_NO_CANCEL_OPTION,
                 JOptionPane.INFORMATION_MESSAGE,
                 null,
