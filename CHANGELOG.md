@@ -2,13 +2,12 @@
 
 All notable changes to this project will be documented in this file. The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.0.0/).
 
-## 1.1.1-alpha.3 - 2022/01/19
+## 1.1.1-alpha.4 - 2022/02/02
 
 ### Changed
+- Fixed broken DiscordRPC and wrote it better (sort of)
 - Bumped dependencies
 - Refactoring
-
-
 
 ## Release 1.1.0 - 2021/11/21
 

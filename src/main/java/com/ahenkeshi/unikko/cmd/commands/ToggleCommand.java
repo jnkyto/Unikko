@@ -38,9 +38,6 @@ public class ToggleCommand extends Command {
         setting.set(temp);
         Text feedback = new TranslatableText("commands.utoggle." + setting.key() + ".success", setting.value());
         ChatInfoUtils.sendFeedback(feedback);
-        if(setting.key().equals("discordRpc")) { /* this is stupid, maybe do some dRPC refacts for 1.2.0 or w/e */
-            DiscordRPC.init();
-        }
         Unikko.SOFTCONFIG.pushHard();
         return SINGLE_SUCCESS;
     }

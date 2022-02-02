@@ -23,45 +23,31 @@ public class DiscordRPC {
     private static final DiscordEventHandlers handlers = new DiscordEventHandlers();
     private static final Long start_time = System.currentTimeMillis() / 1000;
     private static final MinecraftClient mc = MinecraftClient.getInstance();
-    private static boolean rpcAll;
 
-    private static Integer times = 0;
     private static Timer t = new Timer();
-    private static TimerTask task;
 
     public static void init() {
-        rpcAll = Unikko.SOFTCONFIG.rpcAll.value();
-        handlers.ready = (user) -> Unikko.LOGGER.info("DiscordRPC ready.");
+        handlers.ready = (user) -> Unikko.LOGGER.info("DiscordRPC initialized.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
-        boolean shouldStart = Unikko.SOFTCONFIG.discordRpc.value();
 
-        if (shouldStart) {
-            basicPresence();
-            new Thread(() -> {
-                while (!Thread.currentThread().isInterrupted()) {
-                    lib.Discord_RunCallbacks();
-                    try {
-                        Thread.sleep(2000);
-                    } catch (InterruptedException ignored) {}
-                }
-            }, "RPCCallbackHandler").start();
-            TimerTask task = new TimerTask() {
-                @Override
-                public void run() {
-                    updatePresence();
-                }
-            };
-            t.scheduleAtFixedRate(task, 5000, 5000);
-            Unikko.LOGGER.info("Started or updated rich presence.");
-        } else {
-            lib.Discord_ClearPresence();
-            lib.Discord_Shutdown();
-            if(task != null)    {
-                task.cancel();
-                t.purge();
+        new Thread(() -> {
+            while (!Thread.currentThread().isInterrupted()) {
+                lib.Discord_RunCallbacks();
+                try {
+                    Thread.sleep(2000);
+                } catch (InterruptedException ignored) {}}}, "RPCCallbackHandler").start();
+        TimerTask task = new TimerTask() {
+            @Override
+            public void run() {
+                updatePresence();
             }
-            Unikko.LOGGER.info("DRPC init skipped because discordRpc is toggled false");
-        }
+        };
+        t.scheduleAtFixedRate(task, 5000, 5000);
+        Unikko.LOGGER.info("Started or updated rich presence.");
+    }
+
+    private static void killRpc()   {
+        lib.Discord_ClearPresence();
     }
 
     /*
@@ -73,25 +59,30 @@ public class DiscordRPC {
      */
 
 
-    public static void basicPresence() {
+    private static DiscordRichPresence basicPresence() {
         DiscordRichPresence presence = new DiscordRichPresence();
         presence.startTimestamp = start_time; // epoch second
         presence.largeImageKey = "icon";
         presence.largeImageText = Unikko.MOD.getMetadata().getVersion().getFriendlyString();
-        presence.details = "Posted at the menu screen";
-        // presence.state = "";
+        presence.details = "ウニッコは最高!!";
+        // presence.state = "keep this here in case I want to do something w/ it";
         presence.instance = 1;
         lib.Discord_UpdatePresence(presence);
+        return presence;
     }
 
     private static void updatePresence() {
-
-        if (mc.world != null & rpcAll) {
-            times++;
+        boolean shouldStart = Unikko.SOFTCONFIG.discordRpc.value();
+        boolean rpcAll = Unikko.SOFTCONFIG.rpcAll.value();
+        if (!shouldStart)   {
+            killRpc();
+        } else if (!rpcAll) {
+            basicPresence();
+        } else if (mc.world != null) {
+            DiscordRichPresence presence = basicPresence();
             boolean inSingleplayer = mc.isInSingleplayer();
             String playername = mc.getSession().getUsername();
-            DiscordRichPresence presence = new DiscordRichPresence();
-            if(mc.player!=null){
+            if (mc.player != null){
                 ItemStack held_item = mc.player.getStackInHand(Hand.MAIN_HAND);
                 String item_name = held_item.getName().getString();
                 if (!item_name.equals("Air")) {
@@ -116,7 +107,6 @@ public class DiscordRPC {
             }
             presence.smallImageText = "Playing as " + playername;
             lib.Discord_UpdatePresence(presence);
-
         } else {
             basicPresence();
         }
