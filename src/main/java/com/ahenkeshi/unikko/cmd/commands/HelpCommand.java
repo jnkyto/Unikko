@@ -26,7 +26,7 @@ public class HelpCommand extends Command {
     public void build(LiteralArgumentBuilder<CommandSource> builder)    {
         builder.executes(ctx ->(commonHelp(ctx.getSource())));
     }
-    public static int commonHelp(CommandSource source)   {
+    public int commonHelp(CommandSource source)   {
         Unikko.LOGGER.info("Help command was used -> commonHelp");
 
         List<Command> commands = CommandHandler.getAll();
@@ -43,7 +43,7 @@ public class HelpCommand extends Command {
         return SINGLE_SUCCESS;
     }
 
-    public static Text getCommandText(Command cmd)   {
+    public Text getCommandText(Command cmd)   {
         BaseText info = new TranslatableText("commands.uhelp.command." + cmd.getName());
         BaseText finalCommand = new LiteralText(Unikko.SOFTCONFIG.cmdPrefix.value() + cmd.getName());
         finalCommand.setStyle(finalCommand.getStyle().withHoverEvent(new HoverEvent(HoverEvent.Action.SHOW_TEXT, info)));

@@ -27,7 +27,7 @@ public class CredCommand extends Command {
         builder.executes(ctx -> credits(ctx.getSource()));
     }
 
-    private static int credits(CommandSource source)  {
+    private int credits(CommandSource source)  {
         Unikko.LOGGER.info("Cred command was used");
         BaseText github = new LiteralText("jnkyto/Unikko");
         github.setStyle(github.getStyle().withClickEvent(new ClickEvent(ClickEvent.Action.OPEN_URL,

@@ -26,22 +26,22 @@ import org.spongepowered.asm.mixin.injection.callback.CallbackInfo;
 @Mixin(ClientPlayNetworkHandler.class)
 public class MixinClientPlayNetworkHandler {
     @Inject(method = "<init>", at = @At("RETURN"))
-    public void onInit(MinecraftClient client, Screen screen, ClientConnection connection, GameProfile profile, TelemetrySender telemetrySender, CallbackInfo ci)    {
+    public void init(MinecraftClient client, Screen screen, ClientConnection connection, GameProfile profile, TelemetrySender telemetrySender, CallbackInfo ci)    {
         CommandHandler.init();
     }
 
     @Inject(method = "onGameJoin", at = @At("RETURN"))
-    private void onOnGameJoin(CallbackInfo ci)  {
+    private void onGameJoin(CallbackInfo ci)  {
         TickRateUtils.gameJoined(System.currentTimeMillis());
     }
 
     @Inject(method = "onWorldTimeUpdate", at = @At("RETURN"))
-    public void onOnWorldTimeUpdate(WorldTimeUpdateS2CPacket packet, CallbackInfo ci)   {
+    public void onWorldTimeUpdate(WorldTimeUpdateS2CPacket packet, CallbackInfo ci)   {
         TickRateUtils.onReceivePacket();
     }
 
     @Inject(method = "onCommandTree", at = @At("TAIL"))
-    public void onOnCommandTree(CommandTreeS2CPacket packet, CallbackInfo ci)   {
+    public void onCommandTree(CommandTreeS2CPacket packet, CallbackInfo ci)   {
         CommandHandler.init();
     }
 }

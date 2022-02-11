@@ -30,19 +30,23 @@ public class DiscordRPC {
         handlers.ready = (user) -> Unikko.LOGGER.info("DiscordRPC initialized.");
         lib.Discord_Initialize(applicationID, handlers, true, steamId);
 
-        new Thread(() -> {
-            while (!Thread.currentThread().isInterrupted()) {
+        TimerTask RPCCallbackHandler = new TimerTask() {
+            @Override
+            public void run() {
                 lib.Discord_RunCallbacks();
-                try {
-                    Thread.sleep(2000);
-                } catch (InterruptedException ignored) {}}}, "RPCCallbackHandler").start();
-        TimerTask task = new TimerTask() {
+            }
+        };
+
+        TimerTask PresenceUpdater = new TimerTask() {
             @Override
             public void run() {
                 updatePresence();
             }
         };
-        t.scheduleAtFixedRate(task, 5000, 5000);
+
+        t.scheduleAtFixedRate(PresenceUpdater, 5000, 5000);
+        t.scheduleAtFixedRate(RPCCallbackHandler, 2000, 2000);
+
         Unikko.LOGGER.info("Started or updated rich presence.");
     }
 

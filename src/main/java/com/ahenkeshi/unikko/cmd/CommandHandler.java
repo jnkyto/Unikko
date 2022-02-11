@@ -27,10 +27,6 @@ public class CommandHandler {
     private final static CommandSource COMMAND_SOURCE = new ChatCommandSource(mc);
     private static final Map<Class<? extends Command>, Command> commandMap = new HashMap<>();
 
-    public static Class<CommandHandler> get() {
-        return CommandHandler.class;
-    }
-
     public static void init() {
         add(new CredCommand());
         add(new FovCommand());

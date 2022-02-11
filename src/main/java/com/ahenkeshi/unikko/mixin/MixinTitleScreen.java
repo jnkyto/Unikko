@@ -5,7 +5,6 @@ distributed under CC0-1.0: https://creativecommons.org/publicdomain/zero/1.0/leg
 package com.ahenkeshi.unikko.mixin;
 
 import com.ahenkeshi.unikko.Unikko;
-import com.ahenkeshi.unikko.modules.DiscordRPC;
 import net.minecraft.client.gui.screen.TitleScreen;
 import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.injection.At;
@@ -17,6 +16,5 @@ public class MixinTitleScreen {
     @Inject(at = @At("HEAD"), method = "init()V")
     private void init(CallbackInfo info)    {
         Unikko.SOFTCONFIG.pushHard();
-        DiscordRPC.init();
     }
 }

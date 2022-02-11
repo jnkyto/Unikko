@@ -28,11 +28,11 @@ public class ToggleCommand extends Command {
                     .executes(ctx -> toggle(Unikko.SOFTCONFIG.hudRender)))
                 .then(literal("rpc")
                         .executes(ctx -> toggle(Unikko.SOFTCONFIG.discordRpc))
-                    .then(literal("detailed")
-                            .executes(ctx -> toggle(Unikko.SOFTCONFIG.rpcAll))));
+                .then(literal("detailed")
+                        .executes(ctx -> toggle(Unikko.SOFTCONFIG.rpcAll))));
     }
 
-    private static int toggle(SoftConfig.SoftConfigEntry<Boolean> setting)   {
+    private int toggle(SoftConfig.SoftConfigEntry<Boolean> setting)   {
         boolean temp = !(Boolean) setting.value();
         Unikko.LOGGER.info("Toggle command was used, setting:" + setting.key() + " oval:" + setting.value() + " nval:" + temp);
         setting.set(temp);
@@ -42,7 +42,7 @@ public class ToggleCommand extends Command {
         return SINGLE_SUCCESS;
     }
 
-    private static int incomplete(CommandSource source) {
+    private int incomplete(CommandSource source) {
         Unikko.LOGGER.info("Toggle command was used -> incomplete");
         ChatInfoUtils.sendFeedback(new TranslatableText("commands.uhelp.command.toggle"));
         return SINGLE_SUCCESS;
