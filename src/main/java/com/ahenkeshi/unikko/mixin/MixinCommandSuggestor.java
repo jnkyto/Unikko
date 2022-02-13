@@ -7,20 +7,14 @@ package com.ahenkeshi.unikko.mixin;
 import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.CommandHandler;
 import com.ahenkeshi.unikko.utils.emoji.EmojiHandler;
-import com.google.common.base.Strings;
 import com.mojang.brigadier.CommandDispatcher;
 import com.mojang.brigadier.ParseResults;
 import com.mojang.brigadier.StringReader;
-import com.mojang.brigadier.builder.LiteralArgumentBuilder;
-import com.mojang.brigadier.context.CommandContextBuilder;
-import com.mojang.brigadier.exceptions.CommandSyntaxException;
 import com.mojang.brigadier.suggestion.Suggestions;
 import com.mojang.brigadier.suggestion.SuggestionsBuilder;
 import net.minecraft.client.gui.screen.CommandSuggestor;
 import net.minecraft.client.gui.widget.TextFieldWidget;
 import net.minecraft.command.CommandSource;
-import net.minecraft.text.OrderedText;
-import org.checkerframework.checker.units.qual.C;
 import org.jetbrains.annotations.Nullable;
 import org.spongepowered.asm.mixin.Final;
 import org.spongepowered.asm.mixin.Mixin;
@@ -44,8 +38,6 @@ public abstract class MixinCommandSuggestor {
     @Shadow boolean completingSuggestions;
     @Shadow protected abstract void show();
     @Shadow private CompletableFuture<Suggestions> pendingSuggestions;
-
-    private final Pattern emojiMatcher = Pattern.compile("(:)(?<!\\w:)");
 
     @Inject(method = "refresh",
             at = @At(value = "INVOKE", target = "Lcom/mojang/brigadier/StringReader;canRead()Z",
@@ -90,8 +82,10 @@ public abstract class MixinCommandSuggestor {
         }
 
     private int getEmojiNameStart(String input) {
+        Pattern emojiMatcher = Pattern.compile("(:)(?<!\\w:)");
+
         int i = 0;
-        for(Matcher matcher = this.emojiMatcher.matcher(input); matcher.find(); i = matcher.end()) {}
+        for(Matcher matcher = emojiMatcher.matcher(input); matcher.find(); i = matcher.end()) {}
         return i;
     }
 }

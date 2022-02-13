@@ -6,7 +6,6 @@ package com.ahenkeshi.unikko.cmd.commands;
 
 import com.ahenkeshi.unikko.Unikko;
 import com.ahenkeshi.unikko.cmd.Command;
-import com.ahenkeshi.unikko.modules.DiscordRPC;
 import com.ahenkeshi.unikko.utils.ChatInfoUtils;
 import com.ahenkeshi.unikko.utils.config.SoftConfig;
 import com.mojang.brigadier.builder.LiteralArgumentBuilder;
@@ -34,7 +33,7 @@ public class ToggleCommand extends Command {
 
     private int toggle(SoftConfig.SoftConfigEntry<Boolean> setting)   {
         boolean temp = !(Boolean) setting.value();
-        Unikko.LOGGER.info("Toggle command was used, setting:" + setting.key() + " oval:" + setting.value() + " nval:" + temp);
+        Unikko.LOGGER.info("Toggle command was used, setting:" + setting.key() + " old:" + setting.value() + " new:" + temp);
         setting.set(temp);
         Text feedback = new TranslatableText("commands.utoggle." + setting.key() + ".success", setting.value());
         ChatInfoUtils.sendFeedback(feedback);

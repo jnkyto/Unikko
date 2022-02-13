@@ -14,8 +14,6 @@ import net.minecraft.command.CommandSource;
 import net.minecraft.network.packet.c2s.play.ChatMessageC2SPacket;
 import net.minecraft.text.TranslatableText;
 
-import java.util.Objects;
-
 import static com.mojang.brigadier.Command.SINGLE_SUCCESS;
 
 public class SayCommand extends Command {
@@ -30,8 +28,10 @@ public class SayCommand extends Command {
         builder.executes(ctx ->(incomplete(ctx.getSource())))
                 .then(argument("message", StringArgumentType.greedyString()).executes(ctx -> {
             String msg = ctx.getArgument("message", String.class);
-            Objects.requireNonNull(mc.getNetworkHandler()).sendPacket(new ChatMessageC2SPacket(msg));
-            return SINGLE_SUCCESS;
+            if(mc.getNetworkHandler() != null) {
+                mc.getNetworkHandler().sendPacket(new ChatMessageC2SPacket(msg));
+                return SINGLE_SUCCESS;
+            } else return 0;
         }));
     }
 

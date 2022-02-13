@@ -8,7 +8,6 @@ import com.ahenkeshi.unikko.cmd.CommandHandler;
 import com.ahenkeshi.unikko.modules.DiscordRPC;
 import com.ahenkeshi.unikko.utils.config.HardConfigUtils;
 import com.ahenkeshi.unikko.utils.config.SoftConfig;
-import com.ahenkeshi.unikko.utils.emoji.EmojiHandler;
 import net.fabricmc.api.ModInitializer;
 import net.fabricmc.loader.api.FabricLoader;
 import net.fabricmc.loader.api.ModContainer;
